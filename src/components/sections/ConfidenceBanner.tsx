@@ -35,7 +35,7 @@ export default function ConfidenceBanner() {
 
               <div className="pt-4 flex justify-center">
                 <Link
-                  href="#contact"
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#facc15] hover:bg-[#fbbf24] text-neutral-950 font-bold px-8 py-3.5 text-sm sm:text-base shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <span>Get it free</span>

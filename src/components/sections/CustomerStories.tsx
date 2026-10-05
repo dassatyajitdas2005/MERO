@@ -10,40 +10,40 @@ export default function CustomerStories() {
 
   const stories = [
     {
-      company: "mettle.",
-      subtext: "by NatWest",
+      company: "mero",
+      subtext: "by MERO",
       bgAccent: "#22c55e",
       quote:
-        "“Being able to show hiring teams what else is going on across my portfolio drives a more constructive discussion and enables true executive positioning. It makes it easier to ensure my profile aligns with business objectives.”",
-      author: "CHARLIE DUKE",
-      role: "Senior Product Manager, Mettle",
+        "“Built to help professionals create a stronger identity through ATS-ready resumes, LinkedIn optimization, portfolio websites, and professional presentations.”",
+      author: "SATYAJIT DAS",
+      role: "Senior Product Manager, satyajit",
     },
     {
-      company: "deliveroo",
-      subtext: "Tech Org",
+      company: "NeedMet",
+      subtext: "Tech by NeedMet",
       bgAccent: "#f97316",
       quote:
-        "“MERO completely transformed how our engineering leads present their track record. Our interview callback rate jumped by over 80% within the first two weeks of launching.”",
-      author: "SARAH CHEN",
-      role: "VP of Engineering, Deliveroo",
+        "“Built a platform that helps businesses improve their digital presence, discover opportunities, and drive growth through structured listings and marketing solutions.”",
+      author: "Kingshuk Dash",
+      role: "Senior Developer",
     },
     {
-      company: "toast",
+      company: "Bookmipg",
       subtext: "Product Leadership",
       bgAccent: "#facc15",
       quote:
-        "“The contextual resume and portfolio website created an irresistible personal brand. Recruiters reached out to me directly with executive offers before I even applied.”",
-      author: "MARCUS VANCE",
-      role: "Principal Architect, Toast",
+        "“Designed and built a modern booking platform for discovering hotels, checking room availability, and making stays simple and convenient.”",
+      author: "RIK",
+      role: "Principal Architect,Bookmipg",
     },
     {
-      company: "booksy",
-      subtext: "Growth & Design",
+      company: "Pathshala AI",
+      subtext: "Education & Learning",
       bgAccent: "#ea580c",
       quote:
-        "“The AI highlights real business impact and measurable achievements without sounding robotic. It is hands down the highest ROI career investment I have ever made.”",
-      author: "ELENA ROSTOVA",
-      role: "Head of Product Design, Booksy",
+        "“Designed and built a distraction-free study platform that turns YouTube learning into structured notes, tasks, and organized study sessions.”",
+      author: "Satyajit & kingshuk",
+      role: "Head of Product Design, Pathshala AI",
     },
   ];
 

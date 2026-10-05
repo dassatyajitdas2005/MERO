@@ -14,7 +14,7 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Blog", href: "/#blog" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -37,6 +37,8 @@ export default function Navbar() {
               const isActive =
                 link.href === "/services"
                   ? pathname === "/services"
+                  : link.href === "/contact"
+                  ? pathname === "/contact"
                   : link.href === "/"
                   ? pathname === "/"
                   : false;
@@ -82,6 +84,8 @@ export default function Navbar() {
               const isActive =
                 link.href === "/services"
                   ? pathname === "/services"
+                  : link.href === "/contact"
+                  ? pathname === "/contact"
                   : link.href === "/"
                   ? pathname === "/"
                   : false;

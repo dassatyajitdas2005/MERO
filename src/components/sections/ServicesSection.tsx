@@ -462,7 +462,7 @@ export default function ServicesSection() {
               </p>
               <div className="pt-2">
                 <Link
-                  href="#contact"
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#191a23] hover:bg-[#2c2d3a] text-white px-7 py-4 text-sm sm:text-base font-semibold shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] group"
                 >
                   <span>Get your free proposal</span>
@@ -586,7 +586,7 @@ export default function ServicesSection() {
               {/* Bottom CTAs */}
               <div className="mt-8 flex flex-col sm:flex-row gap-3 pt-4 border-t border-neutral-800">
                 <Link
-                  href="#contact"
+                  href="/contact"
                   onClick={() => setSelectedService(null)}
                   className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#f97316] hover:bg-[#ea580c] text-white py-3 text-sm font-semibold transition-all shadow-md"
                 >

@@ -114,7 +114,7 @@ export default function FinalCTA() {
           className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link
-            href="#contact"
+            href="/contact"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#f97316] hover:bg-[#ea580c] px-8 py-3.5 text-sm sm:text-base font-semibold text-white shadow-lg shadow-orange-500/25 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
           >
             <span>Start Building Free</span>

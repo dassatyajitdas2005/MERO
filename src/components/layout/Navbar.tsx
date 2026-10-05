@@ -2,18 +2,19 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import BrandLogo from "@/components/ui/BrandLogo";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("Home");
+  const pathname = usePathname();
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "Blog", href: "#blog" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Blog", href: "/#blog" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -25,7 +26,6 @@ export default function Navbar() {
         <Link
           href="/"
           className="flex items-center focus:outline-none shrink-0"
-          onClick={() => setActiveItem("Home")}
         >
           <BrandLogo height={32} width={110} />
         </Link>
@@ -34,12 +34,16 @@ export default function Navbar() {
         <div className="flex items-center space-x-1 sm:space-x-3">
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
             {navLinks.map((link) => {
-              const isActive = activeItem === link.name;
+              const isActive =
+                link.href === "/services"
+                  ? pathname === "/services"
+                  : link.href === "/"
+                  ? pathname === "/"
+                  : false;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={() => setActiveItem(link.name)}
                   className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 rounded-full group ${isActive
                       ? "text-[#f97316] font-semibold"
                       : "text-neutral-300 hover:text-white"
@@ -75,15 +79,17 @@ export default function Navbar() {
         <div className="pointer-events-auto md:hidden mx-auto mt-3 max-w-sm rounded-3xl border border-neutral-800/80 bg-[#161619]/95 px-5 py-4 shadow-2xl backdrop-blur-xl transition-all">
           <nav className="flex flex-col space-y-1.5">
             {navLinks.map((link) => {
-              const isActive = activeItem === link.name;
+              const isActive =
+                link.href === "/services"
+                  ? pathname === "/services"
+                  : link.href === "/"
+                  ? pathname === "/"
+                  : false;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={() => {
-                    setActiveItem(link.name);
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center justify-between px-4 py-2.5 rounded-2xl text-sm font-medium transition-all ${isActive
                       ? "bg-neutral-800/60 text-[#f97316] font-semibold border-l-4 border-[#f97316]"
                       : "text-neutral-300 hover:bg-neutral-800/40 hover:text-white"

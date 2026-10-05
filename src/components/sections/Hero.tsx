@@ -176,7 +176,7 @@ export default function Hero() {
         >
           {/* Primary CTA (Vivid Orange) */}
           <Link
-            href="#services"
+            href="/services"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#f97316] hover:bg-[#ea580c] text-white px-8 py-3.5 text-sm sm:text-base font-semibold shadow-lg shadow-orange-500/25 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
             <span>Start Building Free</span>

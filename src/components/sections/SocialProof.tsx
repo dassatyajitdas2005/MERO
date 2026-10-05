@@ -46,7 +46,7 @@ export default function SocialProof() {
             </p>
             <div className="pt-2">
               <Link
-                href="#services"
+                href="/services"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#f97316] hover:text-[#ea580c] dark:text-[#f97316] dark:hover:text-[#facc15] transition-colors group"
               >
                 <span>M² Team Overview</span>

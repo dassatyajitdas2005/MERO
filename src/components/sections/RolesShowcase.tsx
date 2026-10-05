@@ -12,7 +12,7 @@ export default function AllInOneSolution() {
       description:
         "A resume designed around your experience, strengths, and goals.",
       linkText: "Build your resume",
-      href: "#services",
+      href: "/services",
       iconColor: "yellow",
       icon: (
         <svg
@@ -37,7 +37,7 @@ export default function AllInOneSolution() {
       description:
         "Turn your LinkedIn profile into a stronger professional presence.",
       linkText: "Optimize LinkedIn",
-      href: "#services",
+      href: "/services",
       iconColor: "orange",
       icon: (
         <svg
@@ -62,7 +62,7 @@ export default function AllInOneSolution() {
       description:
         "Showcase your work with a portfolio that feels uniquely yours.",
       linkText: "Build portfolio",
-      href: "#services",
+      href: "/services",
       iconColor: "yellow",
       icon: (
         <svg
@@ -86,7 +86,7 @@ export default function AllInOneSolution() {
       description:
         "Turn your ideas into clear, polished professional presentations.",
       linkText: "Create presentation",
-      href: "#services",
+      href: "/services",
       iconColor: "orange",
       icon: (
         <svg

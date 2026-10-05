@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function FinalCTA() {
   return (
-    <section className="relative pt-10 pb-12 sm:pt-14 sm:pb-16 overflow-hidden bg-[#121214] text-white transition-colors">
+    <section id="contact" className="relative pt-10 pb-12 sm:pt-14 sm:pb-16 overflow-hidden bg-[#121214] text-white transition-colors">
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div className="h-[320px] w-[560px] rounded-full bg-gradient-to-r from-[#f97316]/10 via-[#facc15]/10 to-transparent blur-[130px]" />
@@ -122,7 +122,7 @@ export default function FinalCTA() {
           </Link>
 
           <Link
-            href="#services"
+            href="/services"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-neutral-700/60 bg-neutral-900/40 hover:bg-neutral-800/60 text-neutral-200 px-7 py-3.5 text-sm sm:text-base font-medium shadow-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
             <span>Explore Services</span>

@@ -21,10 +21,10 @@ export default function Footer() {
   };
 
   const ecosystemLinks = [
-    { label: "Executive Resumes", href: "#services" },
-    { label: "LinkedIn Optimization", href: "#services" },
-    { label: "Portfolio Websites", href: "#services" },
-    { label: "Brand Presentations", href: "#services" },
+    { label: "Executive Resumes", href: "/services" },
+    { label: "LinkedIn Optimization", href: "/services" },
+    { label: "Portfolio Websites", href: "/services" },
+    { label: "Brand Presentations", href: "/services" },
   ];
 
   const companyLinks = [

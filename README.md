@@ -45,7 +45,7 @@ Custom-built with high-contrast neo-brutalist cards, solid drop shadows, and han
 
 ### 3. 📬 Interactive Contact Portal (`/contact`)
 - **Seamless Inquiry Form**: Multi-field form for discovery calls and bespoke package inquiries with instant feedback.
-- **Resource Center**: Built-in access to knowledgebase articles, FAQs, office presence details, and direct email channels (`support@mero.live`).
+- **Resource Center**: Built-in access to knowledgebase articles, FAQs, office presence details, and direct email channels (`meroindian@gmail.com`).
 
 ### 4. 🚀 High-Converting Landing Flow
 - **AI Resume Engine Showcase**: Interactive 98% ATS Circular Score radar and keyword match visualization.

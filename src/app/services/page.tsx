@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import ServicesSection from "@/components/sections/ServicesSection";
-import ConfidenceBanner from "@/components/sections/ConfidenceBanner";
-import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
   title: "Services | MERO - Executive Career & Digital Presence",
@@ -13,8 +11,6 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col min-h-full pt-4 sm:pt-8">
       <ServicesSection />
-      <ConfidenceBanner />
-      <FinalCTA />
     </div>
   );
 }

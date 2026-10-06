@@ -13,7 +13,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "Blog", href: "/#blog" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -37,6 +37,8 @@ export default function Navbar() {
               const isActive =
                 link.href === "/services"
                   ? pathname === "/services"
+                  : link.href === "/pricing"
+                  ? pathname === "/pricing"
                   : link.href === "/contact"
                   ? pathname === "/contact"
                   : link.href === "/"
@@ -84,6 +86,8 @@ export default function Navbar() {
               const isActive =
                 link.href === "/services"
                   ? pathname === "/services"
+                  : link.href === "/pricing"
+                  ? pathname === "/pricing"
                   : link.href === "/contact"
                   ? pathname === "/contact"
                   : link.href === "/"

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   HelpCircle,
@@ -21,16 +22,45 @@ export default function ContactSection() {
     phone: "",
     details: "",
   });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.email || !formData.firstName) return;
 
     setStatus("submitting");
-    setTimeout(() => {
-      setStatus("success");
-    }, 900);
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "86617c2d-b55a-4d40-822c-475ef9330623",
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          email: formData.email,
+          phone: formData.phone || "Not provided",
+          message: formData.details || "No details provided",
+          subject: `New Inquiry from ${formData.firstName} via MERO`,
+          from_name: "MERO Contact Form",
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+        setErrorMessage(result.message || "Failed to send message. Please verify your access key.");
+      }
+    } catch {
+      setStatus("error");
+      setErrorMessage("Network error. Please try again or email us directly at meroindian@gmail.com.");
+    }
   };
 
   const handleChange = (
@@ -198,6 +228,13 @@ export default function ContactSection() {
                   />
                 </div>
 
+                {/* Error Banner */}
+                {status === "error" && (
+                  <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-xs sm:text-sm text-red-400 flex items-center gap-2">
+                    <span>{errorMessage || "Failed to send message. Please try again."}</span>
+                  </div>
+                )}
+
                 {/* Row 5: Submit Button (Vibrant Brand Yellow from Screenshot) */}
                 <div className="pt-2">
                   <button
@@ -248,13 +285,13 @@ export default function ContactSection() {
                     Browse through all of our knowledgebase articles and career guides.
                   </p>
                   <div className="pt-2">
-                    <a
+                    <Link
                       href="/#features"
                       className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-300 hover:text-[#facc15] transition-colors group"
                     >
                       <span>Visit guides &amp; tutorials</span>
                       <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -274,13 +311,13 @@ export default function ContactSection() {
                     Explore our FAQ for quick, clear answers to common queries about ATS, LinkedIn, and portfolios.
                   </p>
                   <div className="pt-2">
-                    <a
+                    <Link
                       href="/#features"
                       className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-300 hover:text-[#facc15] transition-colors group"
                     >
                       <span>Visit FAQ</span>
                       <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -321,10 +358,10 @@ export default function ContactSection() {
                   </p>
                   <p className="pt-1">
                     <a
-                      href="mailto:support@mero.live"
+                      href="mailto:meroindian@gmail.com"
                       className="text-xs sm:text-sm font-semibold text-[#facc15] hover:text-[#f97316] transition-colors underline underline-offset-4"
                     >
-                      support@mero.live
+                      meroindian@gmail.com
                     </a>
                   </p>
                 </div>

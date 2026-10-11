@@ -34,7 +34,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* 2-Column Hero Grid: Left Content, Right Cartoon Line-Art Illustration */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
+
           {/* Left Column: Short, crisp, high-impact copy */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
@@ -147,7 +147,7 @@ export default function Hero() {
               <p className="text-sm sm:text-base font-bold text-neutral-200 tracking-wide leading-snug">
                 “Every breakthrough starts with a bold first step.”
               </p>
-              <p className="text-xs sm:text-sm font-medium text-[#facc15] leading-snug">
+              <p className="text-xs sm:text-sm font-medium text-neutral-300 leading-snug">
                 It’s competitive out there, but MERO’s got your back.
               </p>
             </div>

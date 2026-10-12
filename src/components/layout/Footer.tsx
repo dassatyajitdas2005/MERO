@@ -51,7 +51,8 @@ export default function Footer() {
     { label: "Executive Resumes", href: "/services" },
     { label: "LinkedIn Optimization", href: "/services" },
     { label: "Portfolio Websites", href: "/services" },
-    { label: "Brand Presentations", href: "/services" },
+    { label: "CRM", href: "/services" },
+    { label: "Stock ERP", href: "/services" },
   ];
 
   const companyLinks = [
@@ -59,11 +60,10 @@ export default function Footer() {
     { label: "Pricing", href: "/pricing" },
     { label: "Community", href: "https://chat.whatsapp.com/K8e6S57u1Y0Ap5rL3EG6SA" },
     { label: "Careers", href: "#careers", badge: "We're hiring!" },
-    { label: "Case Studies", href: "#featured" },
   ];
 
   return (
-    <footer className="w-full rounded-t-[2.5rem] sm:rounded-t-[3.5rem] md:rounded-t-[4rem] border-t border-neutral-700/60 bg-[#161619] text-neutral-300 shadow-[0_-16px_48px_rgba(0,0,0,0.6)] relative z-10 overflow-hidden">
+    <footer className="w-full rounded-t-[2.5rem] sm:rounded-t-[3.5rem] md:rounded-t-[4rem] border-t border-neutral-200 dark:border-neutral-700/60 bg-neutral-100 dark:bg-[#161619] text-neutral-600 dark:text-neutral-300 shadow-[0_-16px_48px_rgba(0,0,0,0.06)] dark:shadow-[0_-16px_48px_rgba(0,0,0,0.6)] relative z-10 overflow-hidden transition-colors duration-300">
       {/* Top curved edge highlight */}
       <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-3/4 max-w-3xl bg-gradient-to-r from-transparent via-[#f97316]/30 to-transparent" />
 
@@ -75,14 +75,14 @@ export default function Footer() {
             <Link href="/" className="group inline-flex items-center focus:outline-none">
               <BrandLogo height={34} width={115} />
             </Link>
-            <p className="text-xs text-neutral-400 leading-relaxed max-w-xs">
+            <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed max-w-xs">
               Crafting distinct personal brands and elite career identities that command attention.
             </p>
           </div>
 
           {/* Col 2: Services / Ecosystem */}
           <div className="lg:col-span-2 space-y-4">
-            <h3 className="text-sm font-semibold text-neutral-100 tracking-wide">
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-neutral-100 tracking-wide">
               Services
             </h3>
             <ul className="space-y-3 text-sm">
@@ -90,7 +90,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-neutral-400 hover:text-white transition-colors duration-150 inline-block"
+                    className="text-slate-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors duration-150 inline-block"
                   >
                     {link.label}
                   </Link>
@@ -101,7 +101,7 @@ export default function Footer() {
 
           {/* Col 3: Company */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-sm font-semibold text-neutral-100 tracking-wide">
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-neutral-100 tracking-wide">
               Company
             </h3>
             <ul className="space-y-3 text-sm">
@@ -112,14 +112,14 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-neutral-400 hover:text-white transition-colors duration-150 inline-flex items-center gap-1.5"
+                      className="text-slate-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors duration-150 inline-flex items-center gap-1.5"
                     >
                       <span>{link.label}</span>
                     </a>
                   ) : (
                     <Link
                       href={link.href}
-                      className="text-neutral-400 hover:text-white transition-colors duration-150"
+                      className="text-slate-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors duration-150"
                     >
                       {link.label}
                     </Link>
@@ -136,18 +136,18 @@ export default function Footer() {
 
           {/* Col 4: Newsletter / Stay up to date */}
           <div className="lg:col-span-4 space-y-4">
-            <h3 className="text-sm font-semibold text-neutral-100 tracking-wide">
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-neutral-100 tracking-wide">
               Stay up to date
             </h3>
             <form onSubmit={handleSubscribe} className="space-y-2">
-              <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center rounded-xl bg-neutral-900/90 border border-neutral-700/60 p-1.5 focus-within:border-amber-400/60 transition-colors">
+              <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center rounded-xl bg-white dark:bg-neutral-900/90 border border-neutral-300 dark:border-neutral-700/60 p-1.5 focus-within:border-amber-400/60 transition-colors">
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="w-full bg-transparent px-3 py-2 text-sm text-neutral-100 placeholder-neutral-500 focus:outline-none"
+                  className="w-full bg-transparent px-3 py-2 text-sm text-slate-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none"
                 />
                 <button
                   type="submit"
@@ -177,7 +177,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright & Socials */}
-        <div className="mt-16 pt-8 border-t border-neutral-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
+        <div className="mt-16 pt-8 border-t border-neutral-300 dark:border-neutral-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-neutral-400">
           <div>
             <span>© 2026 MERO. Crafted with precision for high-impact careers.</span>
           </div>

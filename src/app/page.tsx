@@ -7,7 +7,6 @@ import EcosystemGrid from "@/components/sections/EcosystemGrid";
 import CustomerStories from "@/components/sections/CustomerStories";
 import CommunityBanner from "@/components/sections/CommunityBanner";
 import ConfidenceBanner from "@/components/sections/ConfidenceBanner";
-import FinalCTA from "@/components/sections/FinalCTA";
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <CustomerStories />
       <CommunityBanner />
       <ConfidenceBanner />
-      <FinalCTA />
     </div>
   );
 }

@@ -2,227 +2,242 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Bot,
-  FileText,
-  Globe,
-  Lock,
-  CheckCircle2,
-} from "lucide-react";
 
 export default function FeatureBento() {
+  const features = [
+    {
+      id: "web-services",
+      title: "Modern Web Services",
+      subtitle:
+        "High-performance static and dynamic web applications built for speed, SEO, and seamless conversions.",
+      illustration: (
+        <svg
+          className="w-full max-w-[310px] h-[210px] sm:h-[230px] mx-auto select-none"
+          viewBox="0 0 320 220"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Angled Polygon Wedges matching reference screenshot */}
+          <polygon points="25,165 240,110 280,185 65,215" fill="#1e1b4b" fillOpacity="0.85" />
+          <polygon points="75,125 275,85 295,155 95,195" fill="#312e81" fillOpacity="0.75" />
+
+          {/* Floating Mobile Smartphone */}
+          <g transform="translate(138, 38) rotate(9)">
+            <rect x="0" y="0" width="78" height="138" rx="14" fill="#ffffff" stroke="#191a23" strokeWidth="2.2" />
+            <rect x="6" y="8" width="66" height="10" rx="3" fill="#818cf8" />
+            <rect x="6" y="24" width="66" height="30" rx="4" fill="#facc15" />
+            <rect x="6" y="60" width="34" height="9" rx="3" fill="#f97316" />
+            <rect x="6" y="75" width="66" height="22" rx="3" fill="#e0e7ff" />
+            <rect x="6" y="103" width="30" height="22" rx="4" fill="#f1f5f9" />
+            <rect x="42" y="103" width="30" height="22" rx="4" fill="#f1f5f9" />
+          </g>
+
+          {/* Floating Code Snippet Card in Front */}
+          <g transform="translate(55, 82) rotate(-6)">
+            <rect x="0" y="0" width="122" height="68" rx="10" fill="#18181b" stroke="#3f3f46" strokeWidth="1.8" />
+            <circle cx="10" cy="11" r="2.5" fill="#ef4444" />
+            <circle cx="18" cy="11" r="2.5" fill="#facc15" />
+            <circle cx="26" cy="11" r="2.5" fill="#22c55e" />
+            <rect x="10" y="22" width="48" height="4.5" rx="2" fill="#f43f5e" />
+            <rect x="18" y="32" width="70" height="4.5" rx="2" fill="#38bdf8" />
+            <rect x="18" y="42" width="54" height="4.5" rx="2" fill="#facc15" />
+            <rect x="10" y="52" width="38" height="4.5" rx="2" fill="#f43f5e" />
+          </g>
+
+          {/* Floating Globe Badge (Left) */}
+          <g transform="translate(38, 142)">
+            <circle cx="18" cy="18" r="18" fill="#18181b" stroke="#818cf8" strokeWidth="2" />
+            <circle cx="18" cy="18" r="12" stroke="#818cf8" strokeWidth="1.2" strokeDasharray="3 2" />
+            <path d="M6 18h24M18 6v24" stroke="#818cf8" strokeWidth="1.2" />
+          </g>
+
+          {/* 98+ Speed Pill Badge (Right) */}
+          <g transform="translate(195, 148)">
+            <rect x="0" y="0" width="78" height="22" rx="11" fill="#facc15" stroke="#191a23" strokeWidth="1.6" />
+            <text x="39" y="15" fontSize="9" fontWeight="900" textAnchor="middle" fill="#191a23" fontFamily="sans-serif">
+              98+ SPEED
+            </text>
+          </g>
+        </svg>
+      ),
+    },
+    {
+      id: "whatsapp-crm",
+      title: "WhatsApp CRM",
+      subtitle:
+        "Automate customer chats, capture leads 24/7, and manage your full sales pipeline directly in WhatsApp.",
+      illustration: (
+        <svg
+          className="w-full max-w-[310px] h-[210px] sm:h-[230px] mx-auto select-none"
+          viewBox="0 0 320 220"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Angled Polygon Wedges */}
+          <polygon points="35,175 245,105 285,180 75,215" fill="#064e3b" fillOpacity="0.9" />
+          <polygon points="85,115 270,75 295,145 110,185" fill="#047857" fillOpacity="0.8" />
+
+          {/* Floating Mobile Device (Left) */}
+          <g transform="translate(56, 42) rotate(-5)">
+            <rect x="0" y="0" width="76" height="136" rx="14" fill="#ffffff" stroke="#191a23" strokeWidth="2.2" />
+            <rect x="6" y="6" width="64" height="15" rx="4" fill="#10b981" />
+            <rect x="8" y="28" width="48" height="17" rx="6" fill="#f1f5f9" />
+            <rect x="18" y="52" width="50" height="20" rx="6" fill="#dcfce7" stroke="#86efac" strokeWidth="1" />
+            <path d="M58 64l2 2 4-4" stroke="#16a34a" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M61 64l2 2 4-4" stroke="#16a34a" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+            <rect x="8" y="78" width="44" height="16" rx="6" fill="#f1f5f9" />
+            <rect x="12" y="100" width="52" height="15" rx="5" fill="#f97316" />
+          </g>
+
+          {/* Floating CRM Pipeline Tablet Screen (Center Right) */}
+          <g transform="translate(136, 70) rotate(4)">
+            <rect x="0" y="0" width="128" height="96" rx="12" fill="#ffffff" stroke="#191a23" strokeWidth="2.2" />
+            <rect x="8" y="8" width="112" height="10" rx="3" fill="#f1f5f9" />
+            {/* Tile grid matching reference screenshot */}
+            <rect x="8" y="24" width="24" height="24" rx="6" fill="#fef08a" />
+            <rect x="37" y="24" width="24" height="24" rx="6" fill="#fed7aa" />
+            <rect x="66" y="24" width="24" height="24" rx="6" fill="#bbf7d0" />
+            <rect x="95" y="24" width="24" height="24" rx="6" fill="#e0e7ff" />
+
+            <rect x="8" y="55" width="24" height="24" rx="6" fill="#bbf7d0" />
+            <rect x="37" y="55" width="24" height="24" rx="6" fill="#fef08a" />
+            <rect x="66" y="55" width="24" height="24" rx="6" fill="#fca5a5" />
+            <rect x="95" y="55" width="24" height="24" rx="6" fill="#fed7aa" />
+          </g>
+
+          {/* WhatsApp Floating Green Badge */}
+          <g transform="translate(42, 42)">
+            <circle cx="14" cy="14" r="14" fill="#22c55e" stroke="#ffffff" strokeWidth="2" />
+            <path
+              d="M19 12.5a5.5 5.5 0 0 1-.6 2.5 5.6 5.6 0 0 1-5 3.1 5.5 5.5 0 0 1-2.5-.6L7 19l1.4-3.7a5.5 5.5 0 0 1-.6-2.5 5.6 5.6 0 0 1 3.1-5 5.5 5.5 0 0 1 2.5-.6h.3a5.6 5.6 0 0 1 5.3 5.3z"
+              stroke="#ffffff"
+              strokeWidth="1.2"
+              fill="none"
+            />
+          </g>
+
+          {/* Bottom Row Multi-Integration Node Icons */}
+          <g transform="translate(162, 180)">
+            <rect x="0" y="0" width="10" height="10" fill="#facc15" rx="2" />
+            <rect x="14" y="0" width="10" height="10" fill="#f97316" rx="2" />
+            <rect x="28" y="0" width="10" height="10" fill="#22c55e" rx="2" />
+            <rect x="42" y="0" width="10" height="10" fill="#38bdf8" rx="2" />
+          </g>
+        </svg>
+      ),
+    },
+    {
+      id: "stock-management",
+      title: "Stock Management",
+      subtitle:
+        "Real-time inventory tracking, multi-warehouse sync, and automated low-stock alerts for zero stockouts.",
+      illustration: (
+        <svg
+          className="w-full max-w-[310px] h-[210px] sm:h-[230px] mx-auto select-none"
+          viewBox="0 0 320 220"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Angled Polygon Wedges */}
+          <polygon points="40,165 245,95 285,175 80,215" fill="#1e293b" fillOpacity="0.9" />
+          <circle cx="160" cy="115" r="70" fill="#0f172a" fillOpacity="0.8" />
+
+          {/* Central Mobile Screen */}
+          <g transform="translate(112, 32)">
+            <rect x="0" y="0" width="96" height="152" rx="18" fill="#ffffff" stroke="#191a23" strokeWidth="2.2" />
+            <rect x="10" y="8" width="76" height="8" rx="3" fill="#e2e8f0" />
+
+            {/* Central Puzzle / Box Circle Graphic */}
+            <circle cx="48" cy="58" r="32" fill="#ccfbf1" stroke="#2dd4bf" strokeWidth="1.6" />
+            <rect x="36" y="46" width="24" height="24" rx="5" fill="#0f766e" />
+            <rect x="42" y="52" width="12" height="12" rx="3" fill="#facc15" />
+
+            {/* Barcode scanner laser beam */}
+            <g transform="translate(18, 102)">
+              <line x1="0" y1="0" x2="0" y2="12" stroke="#191a23" strokeWidth="2" />
+              <line x1="4" y1="0" x2="4" y2="12" stroke="#191a23" strokeWidth="1" />
+              <line x1="8" y1="0" x2="8" y2="12" stroke="#191a23" strokeWidth="2.5" />
+              <line x1="14" y1="0" x2="14" y2="12" stroke="#191a23" strokeWidth="1" />
+              <line x1="19" y1="0" x2="19" y2="12" stroke="#191a23" strokeWidth="2" />
+              <line x1="25" y1="0" x2="25" y2="12" stroke="#191a23" strokeWidth="1.5" />
+              <line x1="31" y1="0" x2="31" y2="12" stroke="#191a23" strokeWidth="2.2" />
+              <line x1="37" y1="0" x2="37" y2="12" stroke="#191a23" strokeWidth="1" />
+              <line x1="44" y1="0" x2="44" y2="12" stroke="#191a23" strokeWidth="2" />
+              <line x1="50" y1="0" x2="50" y2="12" stroke="#191a23" strokeWidth="1.5" />
+              <line x1="56" y1="0" x2="56" y2="12" stroke="#191a23" strokeWidth="2.5" />
+              <line x1="-8" y1="6" x2="68" y2="6" stroke="#ef4444" strokeWidth="2" strokeDasharray="4 2" />
+            </g>
+
+            {/* 98% SYNC Pill */}
+            <rect x="14" y="124" width="68" height="16" rx="8" fill="#10b981" />
+            <text x="48" y="135" fontSize="8" fontWeight="bold" textAnchor="middle" fill="#ffffff" fontFamily="sans-serif">
+              98% SYNCED
+            </text>
+          </g>
+
+          {/* Flanking Integration Badges */}
+          {/* Left Badge: Barcode SKU */}
+          <g transform="translate(56, 78)">
+            <rect x="0" y="0" width="36" height="36" rx="10" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.8" />
+            <rect x="8" y="10" width="20" height="16" rx="3" fill="#fef08a" />
+          </g>
+
+          {/* Top-Right Badge: Alert Flame */}
+          <g transform="translate(228, 54)">
+            <rect x="0" y="0" width="36" height="36" rx="10" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.8" />
+            <circle cx="18" cy="18" r="8" fill="#f97316" />
+          </g>
+
+          {/* Bottom-Right Badge: Cloud DB */}
+          <g transform="translate(214, 126)">
+            <rect x="0" y="0" width="38" height="38" rx="10" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.8" />
+            <circle cx="19" cy="19" r="9" fill="#38bdf8" />
+          </g>
+
+          {/* Connecting Curved Dashed Lines */}
+          <path d="M92 96 Q 102 96 112 100" stroke="#818cf8" strokeWidth="1.6" strokeDasharray="3 3" />
+          <path d="M228 72 Q 218 72 208 80" stroke="#818cf8" strokeWidth="1.6" strokeDasharray="3 3" />
+          <path d="M214 144 Q 205 144 195 136" stroke="#818cf8" strokeWidth="1.6" strokeDasharray="3 3" />
+        </svg>
+      ),
+    },
+  ];
+
   return (
-    <section id="features" className="relative py-8 md:py-14 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Bento Grid Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          
-          {/* Card 1 (Left Column): The AI Resume Engine */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 flex flex-col justify-between rounded-3xl border border-neutral-800/50 dark:border-neutral-800/50 border-neutral-200/80 bg-[#121214] dark:bg-[#121214] bg-white p-8 sm:p-10 shadow-xl relative overflow-hidden group"
-          >
-            {/* Ambient Corner Glow - Orange/Yellow */}
-            <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-[#f97316]/10 dark:bg-[#facc15]/10 blur-3xl transition-opacity duration-300 group-hover:opacity-100" />
+    <section id="features" className="relative py-12 sm:py-16 md:py-20 bg-white dark:bg-[#121214] text-slate-900 dark:text-white transition-colors duration-300 overflow-hidden">
+      {/* Ambient Subtle Glow */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[700px] rounded-full bg-gradient-to-tr from-[#f97316]/5 via-[#facc15]/5 to-transparent blur-[160px]" />
+      </div>
 
-            {/* Top Icon Badge */}
-            <div className="flex items-center justify-between">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-orange-400/20 dark:border-amber-400/20 bg-orange-50/80 dark:bg-amber-950/20 text-[#f97316] dark:text-[#facc15]">
-                <Bot className="h-6 w-6" />
-              </div>
-            </div>
-
-            {/* Center Graphic: ATS Circular Score Widget */}
-            <div className="my-10 sm:my-14 flex justify-center">
-              <div className="relative flex flex-col items-center justify-center rounded-3xl border border-neutral-800/60 dark:border-neutral-800/60 border-neutral-200/80 bg-neutral-900/60 dark:bg-neutral-900/60 bg-neutral-50 p-8 shadow-lg backdrop-blur-sm w-56 h-56 sm:w-60 sm:h-60">
-                {/* Glowing Outer Ring - Orange & Yellow */}
-                <div className="relative flex items-center justify-center">
-                  <svg className="w-32 h-32 -rotate-90 transform" viewBox="0 0 120 120">
-                    <defs>
-                      <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#facc15" />
-                        <stop offset="100%" stopColor="#f97316" />
-                      </linearGradient>
-                    </defs>
-                    <circle
-                      cx="60"
-                      cy="60"
-                      r="50"
-                      stroke="currentColor"
-                      strokeWidth="9"
-                      className="text-neutral-800/60 dark:text-neutral-800/60 text-neutral-200"
-                      fill="transparent"
-                    />
-                    <circle
-                      cx="60"
-                      cy="60"
-                      r="50"
-                      stroke="url(#scoreGradient)"
-                      strokeWidth="9"
-                      strokeDasharray="314"
-                      strokeDashoffset="6.28"
-                      strokeLinecap="round"
-                      className="drop-shadow-[0_0_12px_rgba(249,115,22,0.4)]"
-                      fill="transparent"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-3xl sm:text-4xl font-black tracking-tight text-neutral-900 dark:text-white">
-                      98<span className="text-xl sm:text-2xl font-bold text-neutral-400">%</span>
-                    </span>
-                  </div>
-                </div>
-
-                {/* Pill below score */}
-                <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-orange-400/30 dark:border-amber-400/30 bg-orange-50 dark:bg-amber-950/40 px-3 py-1 text-xs font-semibold text-[#f97316] dark:text-[#facc15]">
-                  <CheckCircle2 className="h-3 w-3" />
-                  <span>ATS Optimized</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Content */}
-            <div className="space-y-3">
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
-                The AI Resume Engine
-              </h3>
-              <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                Role-Specific Resumes in Seconds. Paste a job description, and the AI highlights your relevant achievements and keywords without inventing fake experience.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Right Side Column (Holds Top Wide Card + Bottom Two Cards) */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
-            
-            {/* Card 2: Contextual Cover Letters */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* 3-Column Layout Matching User Screenshot (No Cards, Direct Text & Graphics) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
+          {features.map((feature, idx) => (
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              key={feature.id}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="flex flex-col justify-between rounded-3xl border border-neutral-800/50 dark:border-neutral-800/50 border-neutral-200/80 bg-[#161619] dark:bg-[#161619] bg-white p-8 sm:p-10 shadow-xl relative overflow-hidden group"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="flex flex-col justify-between pt-6 sm:pt-8 border-t border-neutral-200 dark:border-neutral-800"
             >
-              {/* Top row with Icon and Floating Preview Card */}
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-amber-400/20 dark:border-amber-400/20 bg-amber-50 dark:bg-amber-950/30 text-[#f59e0b] dark:text-[#fbbf24] shrink-0">
-                  <FileText className="h-6 w-6" />
-                </div>
-
-                {/* Floating Preview Card matching reference */}
-                <div className="rounded-2xl border border-neutral-700/50 dark:border-neutral-700/50 border-neutral-200 bg-neutral-900/80 dark:bg-neutral-900/80 bg-neutral-50 p-4 shadow-md max-w-sm">
-                  <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#f59e0b] dark:text-[#fbbf24]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#facc15] animate-pulse" />
-                    <span>AI Tailoring</span>
-                  </div>
-                  <p className="mt-2 text-xs text-neutral-300 dark:text-neutral-300 text-neutral-700 leading-normal">
-                    Applying for{" "}
-                    <span className="inline-block rounded-md bg-amber-400/15 dark:bg-amber-400/20 px-1.5 py-0.5 font-medium text-[#f59e0b] dark:text-[#facc15] text-[11px]">
-                      Senior React Developer
-                    </span>{" "}
-                    - experience matches requirements.
-                  </p>
-                </div>
-              </div>
-
-              {/* Text Bottom */}
-              <div className="mt-6 space-y-3">
-                <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
-                  Contextual Cover Letters
+              {/* Top: Title & Concise 2-line Description */}
+              <div className="space-y-2.5">
+                <h3 className="text-2xl sm:text-[26px] font-bold tracking-tight text-slate-900 dark:text-white">
+                  {feature.title}
                 </h3>
-                <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl">
-                  Cover Letters That Don&apos;t Sound Like a Robot. Generate matched cover letters that sound like you and directly address the hiring manager&apos;s requirements.
+                <p className="text-sm sm:text-base text-slate-600 dark:text-neutral-400 font-normal leading-relaxed max-w-sm">
+                  {feature.subtitle}
                 </p>
               </div>
+
+              {/* Bottom: Custom Vector Graphic Floating Freely Below */}
+              <div className="pt-8 sm:pt-12 flex items-center justify-center">
+                {feature.illustration}
+              </div>
             </motion.div>
-
-            {/* Bottom Row: 2 Split Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              
-              {/* Card 3: Web Portfolios */}
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-col justify-between rounded-3xl border border-neutral-800/50 dark:border-neutral-800/50 border-neutral-200/80 bg-[#161619] dark:bg-[#161619] bg-white p-7 sm:p-8 shadow-xl relative overflow-hidden"
-              >
-                {/* Top: Icon + Mini Browser Window */}
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-orange-400/20 dark:border-orange-400/20 bg-orange-50 dark:bg-orange-950/30 text-[#f97316] shrink-0">
-                    <Globe className="h-5 w-5" />
-                  </div>
-
-                  {/* Browser Mockup */}
-                  <div className="rounded-xl border border-neutral-700/50 dark:border-neutral-700/50 border-neutral-200 bg-neutral-900/80 dark:bg-neutral-900/80 bg-neutral-100 p-2.5 shadow-sm w-36 sm:w-40">
-                    <div className="flex items-center gap-1 pb-1.5 border-b border-neutral-800/60 dark:border-neutral-800/60 border-neutral-200">
-                      <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
-                      <span className="ml-1 text-[8px] text-neutral-400 truncate">mero.live</span>
-                    </div>
-                    <div className="pt-2 flex items-center gap-2">
-                      <div className="h-5 w-5 rounded-full bg-gradient-to-tr from-[#f97316] to-[#facc15] shrink-0" />
-                      <div className="space-y-1 w-full">
-                        <div className="h-1.5 w-14 rounded-full bg-neutral-700 dark:bg-neutral-700 bg-neutral-300" />
-                        <div className="h-1.5 w-8 rounded-full bg-neutral-800 dark:bg-neutral-800 bg-neutral-200" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="mt-6 space-y-2">
-                  <h4 className="text-xl sm:text-2xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
-                    Web Portfolios
-                  </h4>
-                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                    Turn your resume into a live website. Publish an interactive web portfolio with your projects and GitHub links on your own mero.com subdomain, opening at launch.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Card 4: Privacy First */}
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex flex-col justify-between rounded-3xl border border-neutral-800/50 dark:border-neutral-800/50 border-neutral-200/80 bg-[#121214] dark:bg-[#121214] bg-white p-7 sm:p-8 shadow-xl relative overflow-hidden"
-              >
-                {/* Ambient Amber/Yellow Glow */}
-                <div className="pointer-events-none absolute -top-12 -left-12 h-36 w-36 rounded-full bg-[#facc15]/10 blur-2xl" />
-
-                {/* Top: Glowing Lock Icon + Local Vault Badge */}
-                <div className="flex items-center justify-between">
-                  <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl border border-amber-400/25 bg-amber-50 dark:bg-amber-950/30 text-[#f59e0b] dark:text-[#facc15]">
-                    <Lock className="h-5 w-5" />
-                  </div>
-
-                  <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/25 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-1 text-[11px] font-semibold text-[#f59e0b] dark:text-[#facc15]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#facc15] animate-pulse" />
-                    <span>Local Vault</span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="mt-6 space-y-2">
-                  <h4 className="text-xl sm:text-2xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
-                    Privacy First
-                  </h4>
-                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                    Your Data Stays on Your Machine. All PDF generation happens locally in your browser. No trackers, no databases hoarding your phone number or salary history.
-                  </p>
-                </div>
-              </motion.div>
-
-            </div>
-
-          </div>
-
+          ))}
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ MERO
+#   MERO
 ### Executive Career Acceleration & Personal Branding Platform
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-m4mero.vercel.app-f97316?style=for-the-badge&logo=vercel&logoColor=white)](https://m4mero.vercel.app)

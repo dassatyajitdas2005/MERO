@@ -163,14 +163,14 @@ export default function PricingSection() {
         "Direct 1-on-1 career profile audit",
       ],
       highlighted: true,
-      ctaText: "Get M² Bundle",
+      ctaText: "Get M² Plan",
       link: "/contact?plan=M2",
     },
     {
       id: "m3",
       name: "M³",
       subtitle: "Resume + LinkedIn + One-Page Portfolio",
-      badge: "FULL TRIFECTA",
+      badge: "FULL Package",
       badgeColor: "yellow",
       price: 349,
       strikethrough: 387,
@@ -185,7 +185,7 @@ export default function PricingSection() {
         "VIP expedited turnaround & priority support",
       ],
       highlighted: false,
-      ctaText: "Get M³ Trifecta",
+      ctaText: "Get M³ Plan",
       link: "/contact?plan=M3",
     },
   ];
@@ -312,7 +312,7 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="relative py-16 sm:py-20 md:py-28 bg-[#121214] text-white overflow-hidden border-t border-neutral-800/40"
+      className="relative py-16 sm:py-20 md:py-28 bg-white dark:bg-[#121214] text-slate-900 dark:text-white overflow-hidden border-t border-neutral-200 dark:border-neutral-800/40 transition-colors duration-300"
     >
       {/* Invisible anchor for backward compatibility with #blog */}
       <div id="blog" className="absolute -top-24 left-0 pointer-events-none" />
@@ -326,17 +326,6 @@ export default function PricingSection() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          {/* Top Pill Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 rounded-full border border-amber-400/25 bg-amber-500/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-[#facc15] shadow-sm backdrop-blur-md"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-[#facc15]" />
-            <span>TRANSPARENT PRICING • NO HIDDEN FEES</span>
-          </motion.div>
 
           {/* Heading */}
           <motion.h2
@@ -344,7 +333,7 @@ export default function PricingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.12]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.12]"
           >
             Start small. Build your professional identity.
           </motion.h2>
@@ -355,7 +344,7 @@ export default function PricingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="text-base sm:text-lg md:text-xl text-neutral-400 font-normal max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-neutral-400 font-normal max-w-2xl mx-auto leading-relaxed"
           >
             Pay only for what you need. Upgrade whenever you&apos;re ready.
           </motion.p>
@@ -363,19 +352,19 @@ export default function PricingSection() {
 
         {/* Pricing Category Tabs Switcher */}
         <div className="mt-10 sm:mt-12 flex justify-center">
-          <div className="inline-flex p-1.5 rounded-2xl bg-[#18181c] border border-neutral-800 shadow-xl max-w-full overflow-x-auto">
+          <div className="inline-flex p-1.5 rounded-2xl bg-neutral-100 dark:bg-[#18181c] border border-neutral-200 dark:border-neutral-800 shadow-md dark:shadow-xl max-w-full overflow-x-auto">
             <button
               type="button"
               onClick={() => setActiveTab("mero-plans")}
               className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center gap-2 ${
                 activeTab === "mero-plans"
                   ? "bg-gradient-to-r from-[#f97316] to-[#ea580c] text-white shadow-md shadow-orange-500/20"
-                  : "text-neutral-400 hover:text-white"
+                  : "text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white"
               }`}
             >
               <Zap className="h-3.5 w-3.5" />
               <span>MERO Plans</span>
-              <span className="hidden sm:inline-block text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-black/30 text-amber-200">
+              <span className="hidden sm:inline-block text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-black/20 dark:bg-black/30 text-amber-900 dark:text-amber-200">
                 Bundles
               </span>
             </button>
@@ -386,7 +375,7 @@ export default function PricingSection() {
               className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center gap-2 ${
                 activeTab === "individual"
                   ? "bg-gradient-to-r from-[#f97316] to-[#ea580c] text-white shadow-md shadow-orange-500/20"
-                  : "text-neutral-400 hover:text-white"
+                  : "text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white"
               }`}
             >
               <FileText className="h-3.5 w-3.5" />
@@ -399,7 +388,7 @@ export default function PricingSection() {
               className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center gap-2 ${
                 activeTab === "custom"
                   ? "bg-gradient-to-r from-[#f97316] to-[#ea580c] text-white shadow-md shadow-orange-500/20"
-                  : "text-neutral-400 hover:text-white"
+                  : "text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white"
               }`}
             >
               <Code2 className="h-3.5 w-3.5" />
@@ -411,8 +400,8 @@ export default function PricingSection() {
               onClick={() => setActiveTab("all")}
               className={`relative px-3 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
                 activeTab === "all"
-                  ? "bg-neutral-700/80 text-white shadow-md"
-                  : "text-neutral-400 hover:text-white"
+                  ? "bg-slate-800 dark:bg-neutral-700/80 text-white shadow-md"
+                  : "text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white"
               }`}
             >
               <span>View All</span>
@@ -437,10 +426,10 @@ export default function PricingSection() {
                   <div className="flex items-center gap-3 mb-8">
                     <div className="h-8 w-1.5 rounded-full bg-[#f97316]" />
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white">
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                         2. MERO Plans (Bundled Value)
                       </h3>
-                      <p className="text-xs sm:text-sm text-neutral-400">
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-400">
                         Multi-service packages with exclusive savings & synchronized brand storytelling.
                       </p>
                     </div>
@@ -456,8 +445,8 @@ export default function PricingSection() {
                       transition={{ duration: 0.25 }}
                       className={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-8 transition-all duration-300 ${
                         plan.highlighted
-                          ? "bg-gradient-to-b from-[#1b1917] via-[#161619] to-[#141416] border-2 border-[#f97316] shadow-2xl shadow-orange-500/15 md:-translate-y-2"
-                          : "bg-[#161619] border border-neutral-800/90 hover:border-neutral-700 shadow-xl"
+                          ? "bg-orange-50/70 dark:bg-gradient-to-b dark:from-[#1b1917] dark:via-[#161619] dark:to-[#141416] border-2 border-[#f97316] shadow-xl md:-translate-y-2"
+                          : "bg-white dark:bg-[#161619] border border-neutral-200 dark:border-neutral-800/90 hover:border-neutral-300 dark:hover:border-neutral-700 shadow-md dark:shadow-xl"
                       }`}
                     >
                       {/* Top Badges / Highlight Pill */}
@@ -469,12 +458,12 @@ export default function PricingSection() {
                               MOST POPULAR
                             </span>
                           ) : plan.badge === "FULL TRIFECTA" ? (
-                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-amber-400/15 text-amber-300 border border-amber-400/30">
+                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
                               <Sparkles className="h-3 w-3" />
                               {plan.badge}
                             </span>
                           ) : (
-                            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-neutral-800 text-neutral-400 border border-neutral-700/60">
+                            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-slate-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">
                               {plan.badge}
                             </span>
                           )}
@@ -482,7 +471,7 @@ export default function PricingSection() {
 
                         {/* Save Amount Chip */}
                         {plan.saveAmount && (
-                          <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-black bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                          <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-black bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30">
                             {plan.saveAmount}
                           </span>
                         )}
@@ -491,49 +480,49 @@ export default function PricingSection() {
                       {/* Plan Header */}
                       <div>
                         <div className="flex items-baseline gap-2">
-                          <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+                          <h3 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
                             {plan.name}
                           </h3>
-                          <span className="text-sm font-semibold text-neutral-400">
+                          <span className="text-sm font-semibold text-slate-500 dark:text-neutral-400">
                             — {plan.subtitle}
                           </span>
                         </div>
 
-                        <p className="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed min-h-[40px]">
+                        <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-neutral-400 leading-relaxed min-h-[40px]">
                           {plan.description}
                         </p>
 
                         {/* Pricing Display */}
-                        <div className="mt-6 pt-6 border-t border-neutral-800/80 flex items-baseline gap-2">
-                          <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+                        <div className="mt-6 pt-6 border-t border-neutral-200 dark:border-neutral-800/80 flex items-baseline gap-2">
+                          <span className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
                             ₹{plan.price}
                           </span>
                           {plan.strikethrough && (
-                            <span className="text-base sm:text-lg text-neutral-500 line-through font-medium">
+                            <span className="text-base sm:text-lg text-slate-400 dark:text-neutral-500 line-through font-medium">
                               ₹{plan.strikethrough}
                             </span>
                           )}
-                          <span className="text-xs text-neutral-400 font-medium">
+                          <span className="text-xs text-slate-500 dark:text-neutral-400 font-medium">
                             / total package
                           </span>
                         </div>
 
                         {/* Feature Bullet List */}
                         <div className="mt-6 space-y-3">
-                          <p className="text-xs uppercase tracking-wider font-bold text-neutral-300">
+                          <p className="text-xs uppercase tracking-wider font-bold text-slate-700 dark:text-neutral-300">
                             What&apos;s Included:
                           </p>
                           <ul className="space-y-2.5">
                             {plan.features.map((feature) => (
                               <li
                                 key={feature}
-                                className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-300 leading-snug"
+                                className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-neutral-300 leading-snug"
                               >
                                 <span
                                   className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full mt-0.5 ${
                                     plan.highlighted
                                       ? "bg-[#f97316]/20 text-[#f97316]"
-                                      : "bg-neutral-800 text-amber-400"
+                                      : "bg-neutral-100 dark:bg-neutral-800 text-amber-600 dark:text-amber-400"
                                   }`}
                                 >
                                   <Check className="h-3 w-3 stroke-[2.5]" />
@@ -546,13 +535,13 @@ export default function PricingSection() {
                       </div>
 
                       {/* CTA Button */}
-                      <div className="mt-8 pt-6 border-t border-neutral-800/80">
+                      <div className="mt-8 pt-6 border-t border-neutral-200 dark:border-neutral-800/80">
                         <Link
                           href={plan.link}
                           className={`w-full inline-flex items-center justify-center gap-2 rounded-2xl py-3.5 px-6 text-sm font-bold transition-all duration-200 shadow-md ${
                             plan.highlighted
                               ? "bg-gradient-to-r from-[#f97316] to-[#ea580c] hover:from-[#ea580c] hover:to-[#c2410c] text-white shadow-orange-500/25 hover:shadow-orange-500/40"
-                              : "bg-[#202024] hover:bg-neutral-800 text-white border border-neutral-700/80 hover:border-neutral-600"
+                              : "bg-neutral-100 hover:bg-neutral-200 text-slate-900 border border-neutral-300 dark:bg-[#202024] dark:hover:bg-neutral-800 dark:text-white dark:border-neutral-700/80"
                           }`}
                         >
                           <span>{plan.ctaText}</span>
@@ -565,9 +554,9 @@ export default function PricingSection() {
 
                 {/* Sub-banner when viewing just MERO Plans */}
                 {activeTab === "mero-plans" && (
-                  <div className="mt-8 p-4 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-neutral-300">
-                      <Sparkles className="h-4 w-4 text-[#facc15] shrink-0" />
+                  <div className="mt-8 p-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-neutral-300">
+                      <Sparkles className="h-4 w-4 text-[#ea580c] dark:text-[#facc15] shrink-0" />
                       <span>
                         Need only a single service? Or ready for a custom web development package?
                       </span>
@@ -576,7 +565,7 @@ export default function PricingSection() {
                       <button
                         type="button"
                         onClick={() => setActiveTab("individual")}
-                        className="text-xs font-semibold text-[#f97316] hover:text-amber-400 transition-colors cursor-pointer"
+                        className="text-xs font-semibold text-[#f97316] hover:text-[#ea580c] dark:hover:text-amber-400 transition-colors cursor-pointer"
                       >
                         Individual Services (from ₹89) →
                       </button>
@@ -600,10 +589,10 @@ export default function PricingSection() {
                   <div className="flex items-center gap-3 mb-8">
                     <div className="h-8 w-1.5 rounded-full bg-[#facc15]" />
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white">
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                         1. Individual Services (A La Carte)
                       </h3>
-                      <p className="text-xs sm:text-sm text-neutral-400">
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-400">
                         Order single high-impact services with zero long-term commitments.
                       </p>
                     </div>
@@ -619,49 +608,49 @@ export default function PricingSection() {
                         key={service.id}
                         whileHover={{ y: -5 }}
                         transition={{ duration: 0.25 }}
-                        className="relative flex flex-col justify-between rounded-3xl bg-[#161619] border border-neutral-800/90 hover:border-neutral-700/90 p-6 shadow-xl transition-all duration-300 group"
+                        className="relative flex flex-col justify-between rounded-3xl bg-white dark:bg-[#161619] border border-neutral-200 dark:border-neutral-800/90 hover:border-neutral-300 dark:hover:border-neutral-700/90 p-6 shadow-md dark:shadow-xl transition-all duration-300 group"
                       >
                         <div>
                           {/* Top Icon & Tag */}
                           <div className="flex items-center justify-between mb-4">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-800/80 border border-neutral-700/50 text-[#facc15] group-hover:text-[#f97316] transition-colors">
+                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/50 text-[#ea580c] dark:text-[#facc15] group-hover:text-[#f97316] transition-colors">
                               <IconComponent className="h-5 w-5" />
                             </div>
-                            <span className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider">
+                            <span className="text-[11px] font-semibold text-slate-500 dark:text-neutral-400 uppercase tracking-wider">
                               A La Carte
                             </span>
                           </div>
 
                           {/* Title & Tagline */}
-                          <h3 className="text-xl font-bold text-white tracking-tight">
+                          <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
                             {service.name}
                           </h3>
-                          <p className="text-xs text-[#f97316] font-medium mt-1">
+                          <p className="text-xs text-[#ea580c] dark:text-[#f97316] font-medium mt-1">
                             {service.tagline}
                           </p>
 
-                          <p className="mt-3 text-xs text-neutral-400 leading-relaxed min-h-[36px]">
+                          <p className="mt-3 text-xs text-slate-600 dark:text-neutral-400 leading-relaxed min-h-[36px]">
                             {service.description}
                           </p>
 
                           {/* Price Tag */}
-                          <div className="mt-5 pt-4 border-t border-neutral-800/80 flex items-baseline gap-1.5">
-                            <span className="text-3xl font-black text-white tracking-tight">
+                          <div className="mt-5 pt-4 border-t border-neutral-200 dark:border-neutral-800/80 flex items-baseline gap-1.5">
+                            <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                               ₹{service.price}
                             </span>
-                            <span className="text-xs text-neutral-400 font-medium">
+                            <span className="text-xs text-slate-500 dark:text-neutral-400 font-medium">
                               / {service.period}
                             </span>
                           </div>
 
                           {/* Features List */}
-                          <ul className="mt-5 space-y-2 border-t border-neutral-800/60 pt-4">
+                          <ul className="mt-5 space-y-2 border-t border-neutral-200 dark:border-neutral-800/60 pt-4">
                             {service.features.map((item) => (
                               <li
                                 key={item}
-                                className="flex items-start gap-2 text-xs text-neutral-300 leading-snug"
+                                className="flex items-start gap-2 text-xs text-slate-700 dark:text-neutral-300 leading-snug"
                               >
-                                <Check className="h-3.5 w-3.5 text-[#facc15] shrink-0 mt-0.5" />
+                                <Check className="h-3.5 w-3.5 text-[#ea580c] dark:text-[#facc15] shrink-0 mt-0.5" />
                                 <span>{item}</span>
                               </li>
                             ))}
@@ -669,10 +658,10 @@ export default function PricingSection() {
                         </div>
 
                         {/* CTA Link */}
-                        <div className="mt-6 pt-4 border-t border-neutral-800/80">
+                        <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800/80">
                           <Link
                             href={service.link}
-                            className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-neutral-800/90 hover:bg-[#f97316] text-neutral-200 hover:text-white py-3 text-xs font-bold transition-all duration-200 border border-neutral-700/60 hover:border-orange-500 shadow-sm"
+                            className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-neutral-100 hover:bg-[#f97316] text-slate-800 hover:text-white dark:bg-neutral-800/90 dark:text-neutral-200 dark:hover:text-white py-3 text-xs font-bold transition-all duration-200 border border-neutral-200 hover:border-orange-500 dark:border-neutral-700/60 shadow-sm"
                           >
                             <span>{service.ctaText}</span>
                             <ArrowRight className="h-3.5 w-3.5" />
@@ -698,10 +687,10 @@ export default function PricingSection() {
                   <div className="flex items-center gap-3 mb-8">
                     <div className="h-8 w-1.5 rounded-full bg-emerald-500" />
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white">
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                         3. Custom Solutions & Business Systems
                       </h3>
-                      <p className="text-xs sm:text-sm text-neutral-400">
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-400">
                         Tailored web development, ongoing site care, and bespoke operational tools.
                       </p>
                     </div>
@@ -710,11 +699,11 @@ export default function PricingSection() {
 
                 {/* Sub-header 1: Website Making */}
                 <div className="mb-4 flex items-center justify-between">
-                  <h4 className="text-sm sm:text-base font-bold uppercase tracking-wider text-neutral-300 flex items-center gap-2">
+                  <h4 className="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-800 dark:text-neutral-300 flex items-center gap-2">
                     <Globe className="h-4 w-4 text-[#f97316]" />
                     Custom Website Development
                   </h4>
-                  <span className="text-xs text-neutral-500 font-mono">Turnaround: 3 to 12 Days</span>
+                  <span className="text-xs text-slate-500 dark:text-neutral-500 font-mono">Turnaround: 3 to 12 Days</span>
                 </div>
 
                 {/* 3 Cards: Websites */}
@@ -726,58 +715,58 @@ export default function PricingSection() {
                         key={item.id}
                         whileHover={{ y: -5 }}
                         transition={{ duration: 0.25 }}
-                        className="relative flex flex-col justify-between rounded-3xl bg-[#161619] border border-neutral-800/90 hover:border-neutral-700 p-6 sm:p-7 shadow-xl transition-all duration-300"
+                        className="relative flex flex-col justify-between rounded-3xl bg-white dark:bg-[#161619] border border-neutral-200 dark:border-neutral-800/90 hover:border-neutral-300 dark:hover:border-neutral-700 p-6 sm:p-7 shadow-md dark:shadow-xl transition-all duration-300"
                       >
                         <div>
                           <div className="flex items-center justify-between mb-4">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-800/80 border border-neutral-700/50 text-[#facc15]">
+                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/50 text-[#ea580c] dark:text-[#facc15]">
                               <IconComponent className="h-5 w-5" />
                             </div>
-                            <span className="text-[11px] font-semibold text-neutral-400 flex items-center gap-1 font-mono">
+                            <span className="text-[11px] font-semibold text-slate-500 dark:text-neutral-400 flex items-center gap-1 font-mono">
                               <Clock className="h-3 w-3" />
                               {item.turnaround}
                             </span>
                           </div>
 
-                          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
                             {item.name}
                           </h3>
-                          <p className="text-xs text-[#f97316] font-medium mt-1">
+                          <p className="text-xs text-[#ea580c] dark:text-[#f97316] font-medium mt-1">
                             {item.tagline}
                           </p>
 
-                          <p className="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed min-h-[44px]">
+                          <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-neutral-400 leading-relaxed min-h-[44px]">
                             {item.description}
                           </p>
 
                           {/* Price Tag */}
-                          <div className="mt-5 pt-4 border-t border-neutral-800/80 flex items-baseline gap-1.5">
-                            <span className="text-3xl font-black text-white tracking-tight">
+                          <div className="mt-5 pt-4 border-t border-neutral-200 dark:border-neutral-800/80 flex items-baseline gap-1.5">
+                            <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                               {item.price}
                             </span>
-                            <span className="text-xs text-neutral-400 font-medium">
+                            <span className="text-xs text-slate-500 dark:text-neutral-400 font-medium">
                               / {item.period}
                             </span>
                           </div>
 
                           {/* Features */}
-                          <ul className="mt-5 space-y-2 border-t border-neutral-800/60 pt-4">
+                          <ul className="mt-5 space-y-2 border-t border-neutral-200 dark:border-neutral-800/60 pt-4">
                             {item.features.map((feature) => (
                               <li
                                 key={feature}
-                                className="flex items-start gap-2 text-xs sm:text-sm text-neutral-300 leading-snug"
+                                className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-neutral-300 leading-snug"
                               >
-                                <Check className="h-3.5 w-3.5 text-[#facc15] shrink-0 mt-0.5" />
+                                <Check className="h-3.5 w-3.5 text-[#ea580c] dark:text-[#facc15] shrink-0 mt-0.5" />
                                 <span>{feature}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
-                        <div className="mt-6 pt-4 border-t border-neutral-800/80">
+                        <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800/80">
                           <Link
                             href={item.link}
-                            className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-neutral-800/90 hover:bg-[#f97316] text-neutral-200 hover:text-white py-3 text-xs sm:text-sm font-bold transition-all duration-200 border border-neutral-700/60 hover:border-orange-500 shadow-sm"
+                            className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-neutral-100 hover:bg-[#f97316] text-slate-800 hover:text-white dark:bg-neutral-800/90 dark:text-neutral-200 dark:hover:text-white py-3 text-xs sm:text-sm font-bold transition-all duration-200 border border-neutral-200 hover:border-orange-500 dark:border-neutral-700/60 shadow-sm"
                           >
                             <span>{item.ctaText}</span>
                             <ArrowRight className="h-3.5 w-3.5" />
@@ -790,11 +779,11 @@ export default function PricingSection() {
 
                 {/* Sub-header 2: Website Care & Custom Business Systems */}
                 <div className="mb-4 flex items-center justify-between">
-                  <h4 className="text-sm sm:text-base font-bold uppercase tracking-wider text-neutral-300 flex items-center gap-2">
-                    <Settings className="h-4 w-4 text-[#facc15]" />
+                  <h4 className="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-800 dark:text-neutral-300 flex items-center gap-2">
+                    <Settings className="h-4 w-4 text-[#ea580c] dark:text-[#facc15]" />
                     Website Maintenance & Custom Business Systems
                   </h4>
-                  <span className="text-xs text-neutral-500">Monthly Care & Bespoke Tooling</span>
+                  <span className="text-xs text-slate-500 dark:text-neutral-500">Monthly Care & Bespoke Tooling</span>
                 </div>
 
                 {/* 3 Cards: Website Care, Pro & Custom Business System */}
@@ -806,66 +795,66 @@ export default function PricingSection() {
                         key={item.id}
                         whileHover={{ y: -5 }}
                         transition={{ duration: 0.25 }}
-                        className={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-7 shadow-xl transition-all duration-300 ${
+                        className={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-7 shadow-md dark:shadow-xl transition-all duration-300 ${
                           item.badge === "BESPOKE"
-                            ? "bg-gradient-to-b from-[#1b1917] via-[#161619] to-[#141416] border-2 border-amber-400/60 hover:border-amber-400 shadow-amber-500/10"
-                            : "bg-[#161619] border border-neutral-800/90 hover:border-neutral-700"
+                            ? "bg-amber-50/70 border-2 border-amber-500/70 dark:bg-gradient-to-b dark:from-[#1b1917] dark:via-[#161619] dark:to-[#141416] dark:border-amber-400/60 hover:border-amber-500 shadow-amber-500/10"
+                            : "bg-white dark:bg-[#161619] border border-neutral-200 dark:border-neutral-800/90 hover:border-neutral-300 dark:hover:border-neutral-700"
                         }`}
                       >
                         <div>
                           <div className="flex items-center justify-between mb-4">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-800/80 border border-neutral-700/50 text-[#facc15]">
+                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/50 text-[#ea580c] dark:text-[#facc15]">
                               <IconComponent className="h-5 w-5" />
                             </div>
                             {item.badge && (
-                              <span className="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/40">
+                              <span className="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
                                 {item.badge}
                               </span>
                             )}
                           </div>
 
-                          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
                             {item.name}
                           </h3>
-                          <p className="text-xs text-[#f97316] font-medium mt-1">
+                          <p className="text-xs text-[#ea580c] dark:text-[#f97316] font-medium mt-1">
                             {item.tagline}
                           </p>
 
-                          <p className="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed min-h-[44px]">
+                          <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-neutral-400 leading-relaxed min-h-[44px]">
                             {item.description}
                           </p>
 
                           {/* Price Tag */}
-                          <div className="mt-5 pt-4 border-t border-neutral-800/80 flex items-baseline gap-1.5">
-                            <span className="text-3xl font-black text-white tracking-tight">
+                          <div className="mt-5 pt-4 border-t border-neutral-200 dark:border-neutral-800/80 flex items-baseline gap-1.5">
+                            <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                               {item.price}
                             </span>
-                            <span className="text-xs text-neutral-400 font-medium">
+                            <span className="text-xs text-slate-500 dark:text-neutral-400 font-medium">
                               {item.period}
                             </span>
                           </div>
 
                           {/* Features */}
-                          <ul className="mt-5 space-y-2 border-t border-neutral-800/60 pt-4">
+                          <ul className="mt-5 space-y-2 border-t border-neutral-200 dark:border-neutral-800/60 pt-4">
                             {item.features.map((feature) => (
                               <li
                                 key={feature}
-                                className="flex items-start gap-2 text-xs sm:text-sm text-neutral-300 leading-snug"
+                                className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-neutral-300 leading-snug"
                               >
-                                <Check className="h-3.5 w-3.5 text-[#facc15] shrink-0 mt-0.5" />
+                                <Check className="h-3.5 w-3.5 text-[#ea580c] dark:text-[#facc15] shrink-0 mt-0.5" />
                                 <span>{feature}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
-                        <div className="mt-6 pt-4 border-t border-neutral-800/80">
+                        <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800/80">
                           <Link
                             href={item.link}
                             className={`w-full inline-flex items-center justify-center gap-1.5 rounded-xl py-3 text-xs sm:text-sm font-bold transition-all duration-200 shadow-sm ${
                               item.badge === "BESPOKE"
                                 ? "bg-gradient-to-r from-[#f97316] to-[#ea580c] hover:from-[#ea580c] hover:to-[#c2410c] text-white shadow-orange-500/25"
-                                : "bg-neutral-800/90 hover:bg-[#f97316] text-neutral-200 hover:text-white border border-neutral-700/60 hover:border-orange-500"
+                                : "bg-neutral-100 hover:bg-[#f97316] text-slate-800 hover:text-white border border-neutral-200 hover:border-orange-500 dark:bg-neutral-800/90 dark:text-neutral-200 dark:hover:text-white dark:border-neutral-700/60"
                             }`}
                           >
                             <span>{item.ctaText}</span>
@@ -887,7 +876,7 @@ export default function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-14 sm:mt-18 rounded-3xl border border-neutral-800 bg-[#161619]/90 p-6 sm:p-8 backdrop-blur-md shadow-2xl"
+          className="mt-14 sm:mt-18 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-[#161619]/90 p-6 sm:p-8 backdrop-blur-md shadow-lg dark:shadow-2xl"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
             <div className="flex items-center gap-3">
@@ -895,40 +884,40 @@ export default function PricingSection() {
                 <Clock className="h-5 w-5" />
               </div>
               <div>
-                <h5 className="text-sm font-bold text-white">Fast Turnaround</h5>
-                <p className="text-xs text-neutral-400">24 to 48 hours for core documents</p>
+                <h5 className="text-sm font-bold text-slate-900 dark:text-white">Fast Turnaround</h5>
+                <p className="text-xs text-slate-600 dark:text-neutral-400">24 to 48 hours for core documents</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-[#facc15] border border-amber-500/20">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-[#facc15] border border-amber-500/20">
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <h5 className="text-sm font-bold text-white">100% Confidential</h5>
-                <p className="text-xs text-neutral-400">Your career data is never shared</p>
+                <h5 className="text-sm font-bold text-slate-900 dark:text-white">100% Confidential</h5>
+                <p className="text-xs text-slate-600 dark:text-neutral-400">Your career data is never shared</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
                 <Check className="h-5 w-5 stroke-[2.5]" />
               </div>
               <div>
-                <h5 className="text-sm font-bold text-white">Revisions Included</h5>
-                <p className="text-xs text-neutral-400">Iterative polish till you are satisfied</p>
+                <h5 className="text-sm font-bold text-slate-900 dark:text-white">Revisions Included</h5>
+                <p className="text-xs text-slate-600 dark:text-neutral-400">Iterative polish till you are satisfied</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20">
                 <HelpCircle className="h-5 w-5" />
               </div>
               <div>
-                <h5 className="text-sm font-bold text-white">Need Consultation?</h5>
+                <h5 className="text-sm font-bold text-slate-900 dark:text-white">Need Consultation?</h5>
                 <Link
                   href="/contact"
-                  className="text-xs font-semibold text-[#f97316] hover:text-amber-400 transition-colors inline-flex items-center gap-1"
+                  className="text-xs font-semibold text-[#f97316] hover:text-[#ea580c] dark:hover:text-amber-400 transition-colors inline-flex items-center gap-1"
                 >
                   <span>Talk with Satyajit</span>
                   <ArrowRight className="h-3 w-3" />

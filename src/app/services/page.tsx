@@ -4,7 +4,7 @@ import ServicesSection from "@/components/sections/ServicesSection";
 export const metadata: Metadata = {
   title: "Services | MERO - Executive Career & Digital Presence",
   description:
-    "Explore MERO's specialized services: LinkedIn Optimization, ATS Resume Building, Website Making, and Personal Portfolios.",
+    "Explore MERO's specialized services: LinkedIn Optimization, ATS Resume Building, Website Making, Personal Portfolios, WhatsApp CRM, and Stock Management Software.",
 };
 
 export default function ServicesPage() {
@@ -14,3 +14,4 @@ export default function ServicesPage() {
     </div>
   );
 }
+

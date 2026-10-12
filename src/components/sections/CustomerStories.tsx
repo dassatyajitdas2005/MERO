@@ -69,7 +69,7 @@ export default function CustomerStories() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative rounded-3xl border border-neutral-800/40 dark:border-neutral-800/40 border-neutral-200/80 bg-[#121214] dark:bg-[#121214] bg-neutral-950 text-white shadow-2xl overflow-hidden p-8 sm:p-12 lg:p-14"
+          className="relative rounded-3xl border border-neutral-200 dark:border-neutral-800/40 bg-white dark:bg-[#121214] text-slate-900 dark:text-white shadow-xl dark:shadow-2xl overflow-hidden p-8 sm:p-12 lg:p-14 transition-colors duration-300"
         >
           {/* Subtle Ambient Background Gradient */}
           <div className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-[#f97316]/10 blur-3xl" />
@@ -102,15 +102,15 @@ export default function CustomerStories() {
                   transition={{ duration: 0.3 }}
                   className="space-y-6"
                 >
-                  <p className="text-lg sm:text-xl md:text-2xl font-medium leading-relaxed text-neutral-200">
+                  <p className="text-lg sm:text-xl md:text-2xl font-medium leading-relaxed text-slate-700 dark:text-neutral-200">
                     {stories[activeStory].quote}
                   </p>
 
                   <div className="space-y-1">
-                    <div className="text-xs sm:text-sm font-bold tracking-wider uppercase text-white">
+                    <div className="text-xs sm:text-sm font-bold tracking-wider uppercase text-slate-900 dark:text-white">
                       {stories[activeStory].author}
                     </div>
-                    <div className="text-xs sm:text-sm text-neutral-400">
+                    <div className="text-xs sm:text-sm text-slate-500 dark:text-neutral-400">
                       {stories[activeStory].role}
                     </div>
                   </div>
@@ -130,7 +130,7 @@ export default function CustomerStories() {
           </div>
 
           {/* Bottom Logos Tab Bar */}
-          <div className="mt-12 sm:mt-16 pt-8 border-t border-neutral-800/80 flex flex-wrap items-center justify-between gap-6">
+          <div className="mt-12 sm:mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-800/80 flex flex-wrap items-center justify-between gap-6">
             {stories.map((story, idx) => {
               const isActive = activeStory === idx;
               return (
@@ -139,15 +139,15 @@ export default function CustomerStories() {
                   onClick={() => setActiveStory(idx)}
                   className={`group relative pb-2 text-sm sm:text-base font-extrabold tracking-tight transition-all cursor-pointer ${
                     isActive
-                      ? "text-white scale-105"
-                      : "text-neutral-500 hover:text-neutral-300"
+                      ? "text-slate-950 dark:text-white scale-105"
+                      : "text-neutral-400 dark:text-neutral-500 hover:text-slate-800 dark:hover:text-neutral-300"
                   }`}
                 >
                   <span>{story.company}</span>
                   {isActive && (
                     <motion.div
                       layoutId="activeStoryTab"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#f97316] dark:bg-white rounded-full"
                     />
                   )}
                 </button>

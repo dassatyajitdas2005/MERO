@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { useTheme } from "@/context/ThemeContext";
 
 interface BrandLogoProps {
   className?: string;
@@ -14,13 +15,15 @@ export default function BrandLogo({
   height = 36,
   width = 110,
 }: BrandLogoProps) {
+  const { theme } = useTheme();
+
   return (
     <div
       style={{ height }}
       className={`flex items-center justify-start ${className}`}
     >
       <Image
-        src="/brand-logo-dark.png"
+        src={theme === "light" ? "/brand-logo-light.png" : "/brand-logo-dark.png"}
         alt="MERO"
         width={width}
         height={height}

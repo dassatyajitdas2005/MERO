@@ -91,14 +91,14 @@ export default function EcosystemGrid() {
                 className={`group relative flex flex-col justify-between rounded-3xl p-7 sm:p-8 transition-all duration-300 min-h-[180px] sm:min-h-[200px] ${
                   card.isPrimary
                     ? "bg-[#f97316] hover:bg-[#ea580c] text-white shadow-xl shadow-orange-500/20 border border-orange-400/40"
-                    : "bg-[#161619] dark:bg-[#161619] bg-white border border-neutral-800/40 dark:border-neutral-800/40 border-neutral-200/70 hover:border-amber-400/40 dark:hover:border-amber-400/30 text-neutral-900 dark:text-white shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                    : "bg-white dark:bg-[#161619] border border-neutral-200 dark:border-neutral-800/40 hover:border-amber-400/40 dark:hover:border-amber-400/30 text-slate-900 dark:text-white shadow-md hover:shadow-lg hover:-translate-y-0.5"
                 }`}
               >
                 {/* Card Header (Title & Arrow) */}
                 <div className="flex items-center justify-between">
                   <h3
                     className={`text-xl sm:text-2xl font-bold tracking-tight ${
-                      card.isPrimary ? "text-white" : "text-neutral-900 dark:text-white"
+                      card.isPrimary ? "text-white" : "text-slate-900 dark:text-white"
                     }`}
                   >
                     {card.title}

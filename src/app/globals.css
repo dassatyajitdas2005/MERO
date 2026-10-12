@@ -3,8 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #ffffff;
+  --foreground: #09090b;
   --card-bg: #ffffff;
   --card-border: rgba(0, 0, 0, 0.08);
   --brand-yellow: #facc15;
@@ -29,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 body {
@@ -37,4 +38,21 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
   transition: background-color 0.25s ease, color 0.25s ease;
   min-height: 100vh;
+}
+
+/* Global automatic fallback for Day mode */
+html:not(.dark) .bg-\[\#121214\] {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) .bg-\[\#161619\] {
+  background-color: #f8fafc !important;
+}
+
+html:not(.dark) .bg-\[\#1e1f23\] {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) .bg-\[\#18181c\] {
+  background-color: #ffffff !important;
 }

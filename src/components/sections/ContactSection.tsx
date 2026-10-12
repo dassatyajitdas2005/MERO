@@ -70,7 +70,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="relative pt-6 pb-20 sm:pt-10 sm:pb-24 md:pt-12 md:pb-28 bg-[#121214] text-white overflow-hidden">
+    <section className="relative pt-6 pb-20 sm:pt-10 sm:pb-24 md:pt-12 md:pb-28 bg-white dark:bg-[#121214] text-slate-900 dark:text-white transition-colors duration-300 overflow-hidden">
       {/* Background Ambience Glow */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[380px] w-[580px] rounded-full bg-gradient-to-tr from-[#f97316]/10 via-[#facc15]/8 to-transparent blur-[130px]" />
@@ -84,7 +84,7 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl sm:text-5xl font-black tracking-tight text-white"
+            className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white"
           >
             Contact us
           </motion.h1>
@@ -92,7 +92,7 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-sm sm:text-base text-neutral-400 font-normal leading-relaxed"
+            className="text-sm sm:text-base text-slate-600 dark:text-neutral-400 font-normal leading-relaxed"
           >
             Have questions or want to discuss a project? Reach out, and let&apos;s
             craft the perfect solution with our tools and services.
@@ -109,7 +109,7 @@ export default function ContactSection() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="lg:col-span-7 space-y-6"
           >
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
               Fill in the form below
             </h2>
 
@@ -160,7 +160,7 @@ export default function ContactSection() {
                       placeholder="First Name"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className="w-full rounded-xl border border-neutral-800 bg-[#18181c] px-4 py-3.5 text-sm sm:text-base text-white placeholder-neutral-500 transition-all duration-200 focus:border-[#facc15] focus:bg-[#1a1a20] focus:outline-none focus:ring-1 focus:ring-[#facc15]"
+                      className="w-full rounded-xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#18181c] px-4 py-3.5 text-sm sm:text-base text-slate-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 transition-all duration-200 focus:border-[#f97316] focus:outline-none focus:ring-1 focus:ring-[#f97316]"
                     />
                   </div>
                   <div>
@@ -174,7 +174,7 @@ export default function ContactSection() {
                       placeholder="Last Name"
                       value={formData.lastName}
                       onChange={handleChange}
-                      className="w-full rounded-xl border border-neutral-800 bg-[#18181c] px-4 py-3.5 text-sm sm:text-base text-white placeholder-neutral-500 transition-all duration-200 focus:border-[#facc15] focus:bg-[#1a1a20] focus:outline-none focus:ring-1 focus:ring-[#facc15]"
+                      className="w-full rounded-xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#18181c] px-4 py-3.5 text-sm sm:text-base text-slate-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 transition-all duration-200 focus:border-[#f97316] focus:outline-none focus:ring-1 focus:ring-[#f97316]"
                     />
                   </div>
                 </div>
@@ -192,7 +192,7 @@ export default function ContactSection() {
                     placeholder="Email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full rounded-xl border border-neutral-800 bg-[#18181c] px-4 py-3.5 text-sm sm:text-base text-white placeholder-neutral-500 transition-all duration-200 focus:border-[#facc15] focus:bg-[#1a1a20] focus:outline-none focus:ring-1 focus:ring-[#facc15]"
+                    className="w-full rounded-xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#18181c] px-4 py-3.5 text-sm sm:text-base text-slate-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 transition-all duration-200 focus:border-[#f97316] focus:outline-none focus:ring-1 focus:ring-[#f97316]"
                   />
                 </div>
 
@@ -208,7 +208,7 @@ export default function ContactSection() {
                     placeholder="Phone Number"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full rounded-xl border border-neutral-800 bg-[#18181c] px-4 py-3.5 text-sm sm:text-base text-white placeholder-neutral-500 transition-all duration-200 focus:border-[#facc15] focus:bg-[#1a1a20] focus:outline-none focus:ring-1 focus:ring-[#facc15]"
+                    className="w-full rounded-xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#18181c] px-4 py-3.5 text-sm sm:text-base text-slate-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 transition-all duration-200 focus:border-[#f97316] focus:outline-none focus:ring-1 focus:ring-[#f97316]"
                   />
                 </div>
 
@@ -224,7 +224,7 @@ export default function ContactSection() {
                     placeholder="Details"
                     value={formData.details}
                     onChange={handleChange}
-                    className="w-full rounded-xl border border-neutral-800 bg-[#18181c] px-4 py-3.5 text-sm sm:text-base text-white placeholder-neutral-500 transition-all duration-200 focus:border-[#facc15] focus:bg-[#1a1a20] focus:outline-none focus:ring-1 focus:ring-[#facc15] resize-y"
+                    className="w-full rounded-xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-[#18181c] px-4 py-3.5 text-sm sm:text-base text-slate-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 transition-all duration-200 focus:border-[#f97316] focus:outline-none focus:ring-1 focus:ring-[#f97316] resize-y"
                   />
                 </div>
 
@@ -269,25 +269,25 @@ export default function ContactSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-5 flex flex-col divide-y divide-neutral-800/80 pt-2 lg:pt-0"
+            className="lg:col-span-5 flex flex-col divide-y divide-neutral-200 dark:divide-neutral-800/80 pt-2 lg:pt-0"
           >
             {/* Item 1: Knowledgebase */}
             <div className="pb-7 space-y-2">
               <div className="flex items-start gap-4">
-                <div className="flex h-7 w-7 items-center justify-center text-neutral-400 shrink-0 mt-0.5">
+                <div className="flex h-7 w-7 items-center justify-center text-slate-500 dark:text-neutral-400 shrink-0 mt-0.5">
                   <HelpCircle className="h-5 w-5 stroke-[1.8]" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-base sm:text-lg font-bold text-white">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
                     Knowledgebase
                   </h3>
-                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-400 leading-relaxed">
                     Browse through all of our knowledgebase articles and career guides.
                   </p>
                   <div className="pt-2">
                     <Link
                       href="/#features"
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-300 hover:text-[#facc15] transition-colors group"
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-700 hover:text-[#f97316] dark:text-neutral-300 dark:hover:text-[#facc15] transition-colors group"
                     >
                       <span>Visit guides &amp; tutorials</span>
                       <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -300,20 +300,20 @@ export default function ContactSection() {
             {/* Item 2: FAQ */}
             <div className="py-7 space-y-2">
               <div className="flex items-start gap-4">
-                <div className="flex h-7 w-7 items-center justify-center text-neutral-400 shrink-0 mt-0.5">
+                <div className="flex h-7 w-7 items-center justify-center text-slate-500 dark:text-neutral-400 shrink-0 mt-0.5">
                   <MessageSquare className="h-5 w-5 stroke-[1.8]" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-base sm:text-lg font-bold text-white">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
                     FAQ
                   </h3>
-                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-400 leading-relaxed">
                     Explore our FAQ for quick, clear answers to common queries about ATS, LinkedIn, and portfolios.
                   </p>
                   <div className="pt-2">
                     <Link
                       href="/#features"
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-300 hover:text-[#facc15] transition-colors group"
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-700 hover:text-[#f97316] dark:text-neutral-300 dark:hover:text-[#facc15] transition-colors group"
                     >
                       <span>Visit FAQ</span>
                       <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -326,17 +326,17 @@ export default function ContactSection() {
             {/* Item 3: Visit our office */}
             <div className="py-7 space-y-2">
               <div className="flex items-start gap-4">
-                <div className="flex h-7 w-7 items-center justify-center text-neutral-400 shrink-0 mt-0.5">
+                <div className="flex h-7 w-7 items-center justify-center text-slate-500 dark:text-neutral-400 shrink-0 mt-0.5">
                   <MapPin className="h-5 w-5 stroke-[1.8]" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-base sm:text-lg font-bold text-white">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
                     Visit our office
                   </h3>
-                  <p className="text-xs sm:text-sm text-neutral-300 font-medium">
+                  <p className="text-xs sm:text-sm text-slate-800 dark:text-neutral-300 font-semibold">
                     MERO Global Studio
                   </p>
-                  <p className="text-xs sm:text-sm text-neutral-400">
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-neutral-400">
                     Available Worldwide • Remote &amp; On-Demand Collaboration
                   </p>
                 </div>
@@ -346,20 +346,20 @@ export default function ContactSection() {
             {/* Item 4: Contact us by email */}
             <div className="pt-7 space-y-2">
               <div className="flex items-start gap-4">
-                <div className="flex h-7 w-7 items-center justify-center text-neutral-400 shrink-0 mt-0.5">
+                <div className="flex h-7 w-7 items-center justify-center text-slate-500 dark:text-neutral-400 shrink-0 mt-0.5">
                   <Mail className="h-5 w-5 stroke-[1.8]" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-base sm:text-lg font-bold text-white">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
                     Contact us by email
                   </h3>
-                  <p className="text-xs sm:text-sm text-neutral-400">
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-neutral-400">
                     Prefer the written word? Drop us an email at
                   </p>
                   <p className="pt-1">
                     <a
                       href="mailto:meroindian@gmail.com"
-                      className="text-xs sm:text-sm font-semibold text-[#facc15] hover:text-[#f97316] transition-colors underline underline-offset-4"
+                      className="text-xs sm:text-sm font-semibold text-[#f97316] dark:text-[#facc15] hover:underline transition-colors underline underline-offset-4"
                     >
                       meroindian@gmail.com
                     </a>

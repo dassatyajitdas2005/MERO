@@ -1,230 +1,341 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, ExternalLink, X, CheckCircle2, Quote } from "lucide-react";
+
+interface ClientReview {
+  id: string;
+  name: string;
+  role: string;
+  location: string;
+  initial: string;
+  shortText: string;
+  fullText: string;
+  service: string;
+  deliveryTime: string;
+  rating: number;
+}
+
+const reviews: ClientReview[] = [
+  {
+    id: "priya-patel",
+    name: "Priya Patel",
+    role: "Salon Owner",
+    location: "Kolkata, WB",
+    initial: "P",
+    shortText: "Their WhatsApp CRM setup automated our customer bookings and inquiries. Very professional and creative team.",
+    fullText: "Before working with MERO, our salon staff spent at least 3 to 4 hours every day manually replying to WhatsApp messages and writing down appointment bookings in a register. MERO set up an automated WhatsApp CRM with instant service menus, automatic slot confirmation, and reminder alerts. Our customer no-shows dropped by over 60%, and our booking volume increased within the first two weeks. Truly the best investment for our salon!",
+    service: "WhatsApp CRM & Automation",
+    deliveryTime: "4 Days",
+    rating: 5,
+  },
+  {
+    id: "rohan-das",
+    name: "Rohan Das",
+    role: "Grocery Store Owner",
+    location: "Siliguri, WB",
+    initial: "R",
+    shortText: "The website design they delivered is sleek, fast, and converting customers like crazy. Great ROI!",
+    fullText: "We wanted an online ordering catalog for our local grocery mart so customers could order fresh vegetables and daily essentials directly from their phones. MERO designed and launched a lightning-fast modern store with easy WhatsApp checkout. We got over 120 orders in our very first week. The support team is always responsive and helpful whenever we need product updates.",
+    service: "E-Commerce Website & Ordering",
+    deliveryTime: "5 Days",
+    rating: 5,
+  },
+  {
+    id: "ananya-manna",
+    name: "Ananya Manna",
+    role: "Beauty Parlor Owner",
+    location: "Howrah, WB",
+    initial: "A",
+    shortText: "Amazing digital solutions and fast delivery within 6 days. Highly transparent reporting. They know what they are doing.",
+    fullText: "Finding a reliable agency for local digital marketing and booking pages was tough until we connected with MERO. They built our website and launched our promotional campaign in just 6 days. The reporting was completely transparent, with clear metrics on calls and leads generated. We booked out all weekend bridal slots in our first month!",
+    service: "Digital Marketing & Landing Page",
+    deliveryTime: "6 Days",
+    rating: 5,
+  },
+  {
+    id: "vikram-sen",
+    name: "Vikram Sen",
+    role: "Retail Store Manager",
+    location: "Durgapur, WB",
+    initial: "V",
+    shortText: "Inventory software made multi-branch stock control so simple. Saved our staff 15+ hours every week!",
+    fullText: "Managing inventory between our three retail outlets used to be a complete logistical headache with frequent stockouts and discrepancies. MERO developed a custom cloud inventory system tailored specifically for our staff with barcode scanning and low-stock alerts. It saved our managers over 15 hours every week and eliminated billing errors completely.",
+    service: "Custom ERP & Inventory Software",
+    deliveryTime: "10 Days",
+    rating: 5,
+  },
+  {
+    id: "rajesh-gupta",
+    name: "Rajesh Gupta",
+    role: "Fitness Studio Founder",
+    location: "Asansol, WB",
+    initial: "R",
+    shortText: "Outstanding 24/7 support. Whenever we needed urgent tweaks, the M² team resolved them immediately.",
+    fullText: "MERO created our gym membership portal, automated monthly renewal reminders, and member check-in tracking. What impressed me most was their dedication—anytime we had an urgent question or requested a custom feature, their team responded within minutes. You rarely see this level of commitment and passion from tech agencies today.",
+    service: "Membership Portal & Automation",
+    deliveryTime: "7 Days",
+    rating: 5,
+  },
+];
 
 export default function BrandControl() {
-  const [activeStory, setActiveStory] = useState(0);
+  const [selectedReview, setSelectedReview] = useState<ClientReview | null>(null);
 
-  const stories = [
-    {
-      client: "Headspace",
-      stat: "30-40% increase in team productivity after adopting MERO",
-      subtext: "Unified WhatsApp CRM and automated inventory pipelines enabled instant customer responses.",
-      screenHeader: "What's on your mind?",
-      screenSubtext: "I want to...",
-      options: [
-        { label: "Automate sales & leads", selected: true },
-        { label: "Live inventory sync", selected: false },
-        { label: "Launch 98+ speed website", selected: false },
-      ],
-      link: "/contact?case=headspace",
-    },
-    {
-      client: "LogiTrack",
-      stat: "45% reduction in stockouts & 100% barcode ledger accuracy",
-      subtext: "Multi-warehouse real-time tracking with automatic low-stock purchase order triggers.",
-      screenHeader: "Inventory Overview",
-      screenSubtext: "Select action...",
-      options: [
-        { label: "Scan barcode SKU", selected: true },
-        { label: "Auto-reorder threshold", selected: false },
-        { label: "Export GST billing report", selected: false },
-      ],
-      link: "/contact?case=logitrack",
-    },
-    {
-      client: "Zenith Retail",
-      stat: "3.2x higher conversion rate & 24/7 automated WhatsApp sales",
-      subtext: "Direct-to-consumer catalogs and payment links integrated directly inside WhatsApp chats.",
-      screenHeader: "Customer Funnel",
-      screenSubtext: "Active campaigns...",
-      options: [
-        { label: "24/7 AI Chatbot Active", selected: true },
-        { label: "Broadcast catalog blast", selected: false },
-        { label: "Instant UPI payments", selected: false },
-      ],
-      link: "/contact?case=zenith",
-    },
-  ];
+  // Close modal on Escape key press & prevent background scrolling
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedReview(null);
+      }
+    };
 
-  const current = stories[activeStory];
+    if (selectedReview) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedReview]);
 
   return (
-    <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden bg-white dark:bg-[#121214] text-slate-900 dark:text-white transition-colors duration-300">
-      {/* Background Subtle Ambient Glow */}
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[380px] w-[750px] rounded-full bg-gradient-to-r from-[#f97316]/6 via-[#facc15]/6 to-transparent blur-[160px]" />
-      </div>
-
+    <section className="relative py-10 sm:py-14 md:py-16 bg-white dark:bg-[#121214] text-slate-900 dark:text-white transition-colors duration-300 overflow-hidden">
+      
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header Matching Screenshot Reference */}
-        <div className="text-center space-y-3 max-w-3xl mx-auto mb-12 sm:mb-16">
+        {/* ========================================================================= */}
+        {/* SECTION HEADER: "WHY PEOPLE LOVE US" (MATCHING HANDWRITTEN SCRIPT STYLE)  */}
+        {/* ========================================================================= */}
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-10">
           <motion.h2
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: -14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight"
+            transition={{ duration: 0.55 }}
+            className="font-script text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-bold tracking-tight text-slate-900 dark:text-white leading-[1.2] select-none"
           >
-            How MERO helps your business scale
+            <span>Why </span>
+            <span className="relative inline-block text-slate-900 dark:text-white">
+              people love us
+              {/* Hand-drawn amber brush stroke underline matching MERO brand */}
+              <svg
+                className="absolute -bottom-2 sm:-bottom-3.5 left-0 w-full h-3 sm:h-4 text-[#f59e0b] overflow-visible pointer-events-none"
+                viewBox="0 0 180 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 4 11 C 45 3, 110 4, 175 10"
+                  stroke="currentColor"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.08 }}
-            className="text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-neutral-300 font-normal max-w-2xl mx-auto"
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="font-script text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-medium text-slate-600 dark:text-neutral-300 mt-3 sm:mt-5 select-none"
           >
-            The measurable ROI teams achieved after selecting MERO.
+            Real reviews from businesses scaling with MERO
           </motion.p>
         </div>
 
-        {/* 2-Column Layout Without Card Background */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
-          {/* Left Column: Client Brand, Giant ROI Metric & Read Story Link */}
-          <div className="lg:col-span-7 space-y-6 text-left">
-            
-            {/* Client Tab Switcher Pills */}
-            <div className="flex flex-wrap items-center gap-2">
-              {stories.map((s, idx) => (
-                <button
-                  key={s.client}
-                  onClick={() => setActiveStory(idx)}
-                  className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
-                    activeStory === idx
-                      ? "bg-[#f97316] text-white shadow-lg shadow-orange-500/25"
-                      : "bg-neutral-100 dark:bg-neutral-800/80 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-black dark:hover:text-white"
-                  }`}
-                >
-                  {s.client}
-                </button>
-              ))}
-            </div>
+      </div>
 
-            {/* Main Client Impact Statement */}
-            <motion.h3
-              key={current.stat}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35 }}
-              className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black tracking-tight text-slate-900 dark:text-white leading-[1.15]"
+      {/* ========================================================================= */}
+      {/* 5 CARDS CONTINUOUS SMOOTH MARQUEE (RIGHT TO LEFT)                         */}
+      {/* ========================================================================= */}
+      <div className="relative w-full overflow-hidden py-4 select-none">
+        
+        {/* Side fade masks for seamless right-to-left marquee entrance & exit */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-28 md:w-36 z-10 bg-gradient-to-r from-white dark:from-[#121214] to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-28 md:w-36 z-10 bg-gradient-to-l from-white dark:from-[#121214] to-transparent" />
+
+        {/* Marquee Track (Loops seamlessly right-to-left, pauses on hover) */}
+        <div className="flex animate-marquee-rtl gap-6 hover:[animation-play-state:paused] px-4">
+          {[...reviews, ...reviews, ...reviews].map((rev, idx) => (
+            <div
+              key={`${rev.name}-${idx}`}
+              onClick={() => setSelectedReview(rev)}
+              className="w-[310px] sm:w-[360px] md:w-[390px] shrink-0 bg-white dark:bg-[#181a20] rounded-2xl sm:rounded-3xl p-6 sm:p-7 shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] border border-slate-100 dark:border-neutral-800/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-amber-300 dark:hover:border-amber-500/40 flex flex-col justify-between cursor-pointer group/card"
             >
-              {current.stat}
-            </motion.h3>
-
-            <p className="text-base sm:text-lg text-slate-600 dark:text-neutral-400 font-normal max-w-xl leading-relaxed">
-              {current.subtext}
-            </p>
-
-            {/* Read Story Action Link with Arrow */}
-            <div className="pt-2">
-              <Link
-                href={current.link}
-                className="inline-flex items-center gap-2 text-base sm:text-lg font-bold text-[#f97316] hover:text-[#ea580c] transition-colors group"
-              >
-                <span>Read story</span>
-                <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Right Column: Realistic Smartphone Mockup Matching Screenshot */}
-          <div className="lg:col-span-5 flex items-center justify-center lg:justify-end relative">
-            {/* Soft Ambient Glow behind Phone */}
-            <div className="absolute -inset-4 w-72 h-96 rounded-full bg-gradient-to-tr from-[#f97316]/15 via-[#facc15]/10 to-transparent blur-3xl pointer-events-none" />
-
-            <motion.div
-              key={current.client}
-              initial={{ opacity: 0, scale: 0.95, y: 12 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="relative w-full max-w-[280px] sm:max-w-[310px] z-10"
-            >
-              {/* Smartphone Device Chassis */}
-              <div className="relative rounded-[40px] border-[7px] border-neutral-800 bg-white shadow-2xl shadow-black/80 overflow-hidden aspect-[9/18.5] flex flex-col justify-between">
-                
-                {/* Top Status Bar & Notch */}
-                <div className="relative z-20 pt-2.5 px-6 flex items-center justify-between text-[11px] font-bold text-slate-900 select-none bg-[#f59e0b]">
-                  <span>12:00</span>
-                  {/* Punch-hole Selfie Camera */}
-                  <div className="w-3.5 h-3.5 rounded-full bg-slate-950 border border-slate-800" />
-                  <div className="flex items-center gap-1">
-                    <div className="w-3.5 h-2 rounded-xs border border-slate-900 p-0.5">
-                      <div className="h-full w-full bg-slate-900 rounded-2xs" />
+              {/* Top Header Row */}
+              <div>
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    {/* Avatar Initial Circle in #f59e0b */}
+                    <div className="w-11 h-11 rounded-full flex items-center justify-center font-black text-base shadow-md shrink-0 bg-[#f59e0b] text-white">
+                      {rev.initial}
                     </div>
-                  </div>
-                </div>
-
-                {/* App Screen Content */}
-                <div className="flex-1 flex flex-col justify-between bg-white overflow-hidden">
-                  
-                  {/* Warm Sunny Header with Friendly Mascot Avatar */}
-                  <div className="bg-[#f59e0b] pt-4 pb-8 px-6 rounded-b-[40px] flex items-center justify-center relative">
-                    <div className="w-20 h-20 rounded-full bg-[#f97316] shadow-lg flex items-center justify-center relative">
-                      {/* Friendly Zen Avatar Face */}
-                      <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none">
-                        <circle cx="24" cy="24" r="22" fill="#f97316" />
-                        {/* Closed Happy Eyes */}
-                        <path d="M14 20 Q 18 24 22 20" stroke="#451a03" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-                        <path d="M26 20 Q 30 24 34 20" stroke="#451a03" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-                        {/* Gentle Smile */}
-                        <path d="M19 28 Q 24 33 29 28" stroke="#451a03" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-                      </svg>
+                    <div className="text-left">
+                      <h4 className="font-bold text-base text-slate-900 dark:text-white leading-tight group-hover/card:text-[#f59e0b] transition-colors">
+                        {rev.name}
+                      </h4>
+                      <p className="text-xs text-slate-500 dark:text-neutral-400 font-medium mt-0.5">
+                        {rev.role}
+                      </p>
                     </div>
                   </div>
 
-                  {/* App Middle Content: "What's on your mind?" */}
-                  <div className="px-5 py-4 text-center space-y-1">
-                    <h4 className="text-base sm:text-lg font-black tracking-tight text-slate-950">
-                      {current.screenHeader}
-                    </h4>
-                    <p className="text-xs text-slate-500 font-medium">
-                      {current.screenSubtext}
-                    </p>
-                  </div>
-
-                  {/* App Options List with Checkmark Selection Matching Screenshot */}
-                  <div className="px-4 pb-5 space-y-2">
-                    {current.options.map((opt) => (
-                      <div
-                        key={opt.label}
-                        className={`rounded-2xl p-3 flex items-center justify-between text-xs font-bold transition-all ${
-                          opt.selected
-                            ? "bg-slate-200 text-slate-950 shadow-xs"
-                            : "bg-slate-100 text-slate-600"
-                        }`}
-                      >
-                        <span>{opt.label}</span>
-                        {opt.selected ? (
-                          <div className="w-5 h-5 rounded-full bg-slate-950 text-white flex items-center justify-center">
-                            <Check className="w-3 h-3 stroke-[3]" />
-                          </div>
-                        ) : (
-                          <div className="w-5 h-5 rounded-full border border-slate-300" />
-                        )}
-                      </div>
+                  {/* 5 Stars in #f59e0b */}
+                  <div className="flex items-center gap-0.5 text-[#f59e0b] shrink-0">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-current stroke-none" />
                     ))}
                   </div>
-
-                  {/* Bottom Home Indicator Bar */}
-                  <div className="pb-2 pt-1 flex justify-center">
-                    <div className="w-24 h-1 rounded-full bg-slate-400" />
-                  </div>
-
                 </div>
-              </div>
-            </motion.div>
-          </div>
 
+                {/* Review Text Body (Concise, Italicized Like Screenshot) */}
+                <p className="mt-4 text-xs sm:text-sm text-slate-600 dark:text-neutral-300 font-normal leading-relaxed italic text-left">
+                  &ldquo;{rev.shortText}&rdquo;
+                </p>
+              </div>
+
+              {/* Bottom Expand Review Link */}
+              <div className="mt-5 pt-3 border-t border-slate-100 dark:border-neutral-800/60 flex items-center justify-between text-left">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedReview(rev);
+                  }}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#f59e0b] hover:text-[#d97706] dark:hover:text-[#facc15] hover:underline cursor-pointer group/btn"
+                >
+                  <span>Expand review</span>
+                  <ExternalLink className="w-3.5 h-3.5 stroke-[2.2] transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                </button>
+                <span className="text-[11px] font-medium text-slate-400 dark:text-neutral-500">
+                  Verified Client
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
+
+      {/* ========================================================================= */}
+      {/* INTERACTIVE EXPANDED REVIEW MODAL (OPENS ON "EXPAND REVIEW" CLICK)        */}
+      {/* ========================================================================= */}
+      <AnimatePresence>
+        {selectedReview && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            {/* Backdrop with smooth blur */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setSelectedReview(null)}
+              className="fixed inset-0 bg-slate-950/65 backdrop-blur-md"
+            />
+
+            {/* Modal Dialog Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 16 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative z-10 w-full max-w-lg bg-white dark:bg-[#181a20] rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100 dark:border-neutral-800 my-auto text-left"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setSelectedReview(null)}
+                aria-label="Close review"
+                className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-neutral-800 transition-colors"
+              >
+                <X className="w-5 h-5 stroke-[2.2]" />
+              </button>
+
+              {/* Client Info Header */}
+              <div className="flex items-center gap-4 pr-10">
+                <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-black text-xl shadow-md shrink-0 bg-[#f59e0b] text-white">
+                  {selectedReview.initial}
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg sm:text-xl text-slate-900 dark:text-white leading-tight">
+                    {selectedReview.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-neutral-400 font-medium mt-0.5">
+                    {selectedReview.role} • {selectedReview.location}
+                  </p>
+                </div>
+              </div>
+
+              {/* Rating and Verification Row */}
+              <div className="mt-5 pt-4 border-t border-slate-100 dark:border-neutral-800/80 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1 text-[#f59e0b]">
+                    {[...Array(selectedReview.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current stroke-none" />
+                    ))}
+                  </div>
+                  <span className="text-xs font-bold text-slate-700 dark:text-neutral-200">
+                    5.0 Star Rating
+                  </span>
+                </div>
+
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50">
+                  <CheckCircle2 className="w-3.5 h-3.5 stroke-[2.5]" />
+                  <span>Verified MERO Client</span>
+                </div>
+              </div>
+
+              {/* Service & Turnaround Badges */}
+              <div className="mt-3.5 flex flex-wrap gap-2">
+                <span className="text-[11px] sm:text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-neutral-800/80 text-slate-700 dark:text-neutral-300">
+                  ⚡ Service: {selectedReview.service}
+                </span>
+                <span className="text-[11px] sm:text-xs font-semibold px-2.5 py-1 rounded-lg bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/40">
+                  ⏱ Turnaround: {selectedReview.deliveryTime}
+                </span>
+              </div>
+
+              {/* Full Detailed Review Body */}
+              <div className="mt-5 relative">
+                <Quote className="w-8 h-8 text-amber-500/20 absolute -top-3 -left-1 pointer-events-none rotate-180" />
+                <p className="text-sm sm:text-base text-slate-700 dark:text-neutral-200 leading-relaxed font-normal italic pl-4">
+                  &ldquo;{selectedReview.fullText}&rdquo;
+                </p>
+              </div>
+
+              {/* Modal Footer Actions */}
+              <div className="mt-7 pt-4 border-t border-slate-100 dark:border-neutral-800/80 flex items-center justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setSelectedReview(null)}
+                  className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-slate-100 dark:bg-neutral-800 text-slate-700 dark:text-neutral-300 hover:bg-slate-200 dark:hover:bg-neutral-700 transition-colors"
+                >
+                  Close
+                </button>
+                <a
+                  href="https://wa.me/919641049148?text=Hi%20MERO%2C%20I%20am%20Interested%20in%20your%20services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-[#f59e0b] hover:bg-[#d97706] text-white shadow-md shadow-amber-500/20 transition-all hover:scale-105"
+                >
+                  Discuss your project →
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
     </section>
   );
 }
+

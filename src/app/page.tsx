@@ -3,8 +3,6 @@ import FeatureBento from "@/components/sections/FeatureBento";
 import RolesShowcase from "@/components/sections/RolesShowcase";
 import SocialProof from "@/components/sections/SocialProof";
 import BrandControl from "@/components/sections/BrandControl";
-import EcosystemGrid from "@/components/sections/EcosystemGrid";
-import CustomerStories from "@/components/sections/CustomerStories";
 import CommunityBanner from "@/components/sections/CommunityBanner";
 import ConfidenceBanner from "@/components/sections/ConfidenceBanner";
 
@@ -16,8 +14,6 @@ export default function Home() {
       <RolesShowcase />
       <SocialProof />
       <BrandControl />
-      <EcosystemGrid />
-      <CustomerStories />
       <CommunityBanner />
       <ConfidenceBanner />
     </div>

@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function ConfidenceBanner() {
   return (
-    <section className="relative py-8 sm:py-12 md:py-14 overflow-visible bg-transparent transition-colors duration-300">
+    <section className="relative py-6 sm:py-8 md:py-10 overflow-visible bg-transparent transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,12 +29,12 @@ export default function ConfidenceBanner() {
                 MERO
               </span>
 
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-black tracking-tight text-slate-950 leading-[1.15]">
-                Stop guessing. Start building with confidence
+              <h2 className="font-script text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight text-slate-950 leading-[1.12]">
+                Stop searching. Start growing with MERO.
               </h2>
 
-              <p className="text-xs sm:text-sm md:text-base text-slate-950/85 font-medium leading-relaxed max-w-xl">
-                Bring clarity to prioritization, rally your career trajectory, and land the executive roles you deserve.
+              <p className="text-sm sm:text-base md:text-lg text-slate-950/90 font-medium leading-relaxed max-w-xl">
+                Bring your business vision to life with flexible digital solutions, streamline your operations, and accelerate your business growth.
               </p>
             </div>
 
@@ -44,7 +44,7 @@ export default function ConfidenceBanner() {
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-950 bg-slate-950 text-white hover:bg-slate-800 px-7 py-3 text-xs sm:text-sm font-bold transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer whitespace-nowrap"
               >
-                <span>Get it free</span>
+                <span>Get started</span>
               </Link>
 
               <Link

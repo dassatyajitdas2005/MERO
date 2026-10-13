@@ -56,3 +56,26 @@ html:not(.dark) .bg-\[\#1e1f23\] {
 html:not(.dark) .bg-\[\#18181c\] {
   background-color: #ffffff !important;
 }
+
+.font-script {
+  font-family: var(--font-caveat), cursive, sans-serif;
+}
+
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-rtl {
+  display: flex;
+  width: max-content;
+  animation: marquee-rtl 32s linear infinite;
+}
+
+.animate-marquee-rtl:hover {
+  animation-play-state: paused;
+}

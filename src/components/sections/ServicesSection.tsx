@@ -734,19 +734,19 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`group relative flex flex-col justify-between rounded-[36px] sm:rounded-[42px] border-2 transition-all duration-300 ${isLight
+                className={`group relative flex flex-col justify-between rounded-[28px] sm:rounded-[36px] lg:rounded-[42px] border-2 transition-all duration-300 ${isLight
                     ? "bg-[#f3f3f3] text-[#191a23] border-neutral-900 shadow-[0px_5px_0px_#000000] hover:shadow-[0px_8px_0px_#000000]"
                     : "bg-[#191a23] text-white border-neutral-700/80 shadow-[0px_5px_0px_#000000] hover:shadow-[0px_8px_0px_#facc15]/30 hover:border-neutral-600"
-                  } p-8 sm:p-10 lg:p-12 min-h-[300px] sm:min-h-[320px] ${isLastOdd ? "lg:col-span-2" : ""}`}
+                  } p-5 sm:p-8 lg:p-12 min-h-[280px] sm:min-h-[320px] ${isLastOdd ? "lg:col-span-2" : ""}`}
               >
                 {/* Top Section: Badges & Description on Left, Illustration on Right */}
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6 sm:gap-4 flex-1">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-5 sm:gap-4 flex-1">
 
                   {/* Left: 2-Line Highlight Title Badges & Short Description */}
                   <div className="space-y-1.5 flex-1 max-w-sm">
                     <div className="flex flex-col items-start gap-1">
                       <span
-                        className={`inline-block px-3 py-1 rounded-lg font-extrabold text-2xl sm:text-3xl tracking-tight ${item.badgeBg === "yellow"
+                        className={`inline-block px-2.5 sm:px-3 py-1 rounded-lg font-extrabold text-xl sm:text-2xl lg:text-3xl tracking-tight ${item.badgeBg === "yellow"
                             ? "bg-[#facc15] text-[#191a23]"
                             : "bg-white text-[#191a23]"
                           }`}
@@ -754,7 +754,7 @@ export default function ServicesSection() {
                         {item.badgeLines[0]}
                       </span>
                       <span
-                        className={`inline-block px-3 py-1 rounded-lg font-extrabold text-2xl sm:text-3xl tracking-tight ${item.badgeBg === "yellow"
+                        className={`inline-block px-2.5 sm:px-3 py-1 rounded-lg font-extrabold text-xl sm:text-2xl lg:text-3xl tracking-tight ${item.badgeBg === "yellow"
                             ? "bg-[#facc15] text-[#191a23]"
                             : "bg-white text-[#191a23]"
                           }`}

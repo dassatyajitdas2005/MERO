@@ -30,6 +30,9 @@
 html {
   scroll-behavior: smooth;
   transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
 }
 
 body {
@@ -38,6 +41,8 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
   transition: background-color 0.25s ease, color 0.25s ease;
   min-height: 100vh;
+  overflow-x: hidden;
+  touch-action: manipulation;
 }
 
 /* Global automatic fallback for Day mode */

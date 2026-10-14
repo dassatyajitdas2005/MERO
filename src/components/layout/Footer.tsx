@@ -48,9 +48,8 @@ export default function Footer() {
   };
 
   const ecosystemLinks = [
-    { label: "Executive Resumes", href: "/services" },
-    { label: "LinkedIn Optimization", href: "/services" },
-    { label: "Portfolio Websites", href: "/services" },
+    { label: "Static Web", href: "/services" },
+    { label: "Dynamic Web", href: "/services" },
     { label: "CRM", href: "/services" },
     { label: "Stock ERP", href: "/services" },
   ];
@@ -76,7 +75,7 @@ export default function Footer() {
               <BrandLogo height={34} width={115} />
             </Link>
             <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed max-w-xs">
-              Crafting distinct personal brands and elite career identities that command attention.
+              Empowering businesses with high-performance web architecture, WhatsApp CRM automation, and intelligent stock management software.
             </p>
           </div>
 
@@ -170,7 +169,7 @@ export default function Footer() {
                 </button>
               </div>
               <p className="text-xs text-neutral-400">
-                Stay updated with career branding insights and exclusive resources.
+                Stay updated with product releases, CRM automation tips, and web offers.
               </p>
             </form>
           </div>
@@ -179,7 +178,7 @@ export default function Footer() {
         {/* Bottom Bar: Copyright & Socials */}
         <div className="mt-16 pt-8 border-t border-neutral-300 dark:border-neutral-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-neutral-400">
           <div>
-            <span>© 2026 MERO. Crafted with precision for high-impact careers.</span>
+            <span>© 2026 MERO. All rights reserved. Built for growing businesses.</span>
           </div>
 
           {/* Social Icons */}

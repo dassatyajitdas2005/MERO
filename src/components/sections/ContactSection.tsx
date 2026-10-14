@@ -78,24 +78,61 @@ export default function ContactSection() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         
-        {/* Header (Exact Match to Screenshot) */}
-        <div className="text-center max-w-2xl mx-auto space-y-3">
+        {/* Header: MERO Handwritten Font Style with Highlight Underline */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <motion.h1
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white"
+            initial={{ opacity: 0, y: -14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="font-script text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold tracking-tight text-slate-900 dark:text-white leading-[1.18] select-none"
           >
-            Contact us
+            <span>Contact </span>
+            <span className="relative inline-block px-1 text-slate-900 dark:text-white font-bold select-none">
+              <span>us</span>
+              {/* Hand-drawn curved underline matching MERO brand */}
+              <svg
+                className="absolute -bottom-2 sm:-bottom-3.5 left-0 w-full h-3 sm:h-4 text-[#f97316] overflow-visible pointer-events-none select-none"
+                viewBox="0 0 100 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 4 11 C 30 4, 70 4, 96 10"
+                  stroke="currentColor"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </motion.h1>
+
           <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-sm sm:text-base text-slate-600 dark:text-neutral-400 font-normal leading-relaxed"
+            className="font-script text-xl sm:text-2xl md:text-3xl font-medium text-slate-600 dark:text-neutral-300 mt-3 sm:mt-4 max-w-2xl mx-auto select-none leading-snug sm:leading-relaxed"
           >
-            Have questions or want to discuss a project? Reach out, and let&apos;s
-            craft the perfect solution with our tools and services.
+            <span>Have questions or want to discuss a project? Reach out, and let&apos;s craft the </span>
+            <span className="relative inline-block text-slate-900 dark:text-white font-semibold">
+              perfect solution
+              <svg
+                className="absolute -bottom-1 sm:-bottom-1.5 left-0 w-full h-2 sm:h-2.5 text-[#facc15] overflow-visible pointer-events-none"
+                viewBox="0 0 100 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M 2 9 C 28 3, 72 3, 98 8"
+                  stroke="currentColor"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+            <span> with our tools and services.</span>
           </motion.p>
         </div>
 
@@ -308,7 +345,7 @@ export default function ContactSection() {
                     FAQ
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-400 leading-relaxed">
-                    Explore our FAQ for quick, clear answers to common queries about ATS, LinkedIn, and portfolios.
+                    Explore our FAQ for quick, clear answers to common queries about website, CRM, stock management.
                   </p>
                   <div className="pt-2">
                     <Link

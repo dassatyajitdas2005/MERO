@@ -257,8 +257,8 @@ export default function Hero() {
         {/* Water-Light Dome Canvas Area */}
         <div className="w-full bg-[#f1f5f9] dark:bg-[#181a20] pt-0 pb-10 sm:pb-14">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            {/* Shifted Slightly Higher (akdam thoda sa upper) into the Dome Curve with equal, balanced gaps */}
-            <div className="relative -mt-6 sm:-mt-10 md:-mt-12 flex items-start justify-center gap-8 sm:gap-14 md:gap-20 z-10">
+            {/* Shifted Slightly Higher into the Dome Curve with responsive gaps */}
+            <div className="relative -mt-6 sm:-mt-10 md:-mt-12 flex items-start justify-center gap-3.5 sm:gap-10 md:gap-16 lg:gap-20 z-10 px-1">
               {apps.map((app, idx) => (
                 <motion.div
                   key={app.id}
@@ -266,17 +266,17 @@ export default function Hero() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="group flex flex-col items-center text-center cursor-pointer w-20 sm:w-24 md:w-28 shrink-0 overflow-visible"
+                  className="group flex flex-col items-center text-center cursor-pointer w-[76px] sm:w-24 md:w-28 shrink-0 overflow-visible"
                 >
-                  {/* Clean White Squircle Tile matching Image 1 */}
+                  {/* Clean White Squircle Tile */}
                   <div
-                    className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl sm:rounded-[24px] md:rounded-[28px] flex items-center justify-center p-3.5 sm:p-4.5 transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 bg-white dark:bg-[#22252e] shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_25px_rgba(0,0,0,0.4)]"
+                    className="w-[76px] h-[76px] sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-[20px] sm:rounded-[24px] md:rounded-[28px] flex items-center justify-center p-3 sm:p-4.5 transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-2 bg-white dark:bg-[#22252e] shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_25px_rgba(0,0,0,0.4)]"
                   >
                     {app.icon}
                   </div>
 
-                  {/* Clean Bold Name matching Image 1 */}
-                  <span className="mt-3.5 text-xs sm:text-sm md:text-base font-bold text-slate-800 dark:text-neutral-100 group-hover:text-[#f97316] transition-colors whitespace-nowrap">
+                  {/* Clean Bold Name */}
+                  <span className="mt-2.5 sm:mt-3.5 text-[11px] sm:text-sm md:text-base font-bold text-slate-800 dark:text-neutral-100 group-hover:text-[#f97316] transition-colors whitespace-nowrap text-center leading-tight">
                     {app.name}
                   </span>
                 </motion.div>

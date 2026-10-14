@@ -203,7 +203,7 @@ export default function PricingSection() {
                   style={{ backgroundColor: plan.topBorderColor }}
                 />
 
-                <div className="p-6 sm:p-8 flex flex-col flex-1">
+                <div className="p-5 sm:p-8 flex flex-col flex-1">
                   
                   {/* Card Title & Optional Badge */}
                   <div className="flex items-start justify-between gap-2 mb-3">

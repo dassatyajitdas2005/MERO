@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingContact from "@/components/ui/FloatingContact";
+import ChromeInstallPrompt from "@/components/ui/ChromeInstallPrompt";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,9 +24,16 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "MERO | Professional Identity & Personal-Branding Service",
+  title: "MERO | Web Architecture, WhatsApp CRM & Business Software",
   description:
-    "Elevate your career with bespoke Resumes, LinkedIn Profiles, Portfolio Websites, and High-Impact Presentations.",
+    "Supercharge your business with ultra-fast Websites, automated WhatsApp CRM, and Stock Management ERP software.",
+  manifest: "/manifest.json",
+  themeColor: "#f97316",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "MERO",
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -44,13 +52,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} min-h-screen flex flex-col font-sans antialiased bg-[var(--background)] text-[var(--foreground)] transition-colors duration-200`}
+        className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} min-h-screen flex flex-col font-sans antialiased bg-[var(--background)] text-[var(--foreground)] transition-colors duration-200 overflow-x-hidden`}
       >
         <ThemeProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
           <FloatingContact />
+          <ChromeInstallPrompt />
         </ThemeProvider>
       </body>
     </html>

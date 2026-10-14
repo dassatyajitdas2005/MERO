@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingContact from "@/components/ui/FloatingContact";
 import ChromeInstallPrompt from "@/components/ui/ChromeInstallPrompt";
+import AppSplashLoader from "@/components/ui/AppSplashLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,10 +38,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
-    apple: "/icon.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -55,6 +57,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} min-h-screen flex flex-col font-sans antialiased bg-[var(--background)] text-[var(--foreground)] transition-colors duration-200 overflow-x-hidden`}
       >
         <ThemeProvider>
+          <AppSplashLoader />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

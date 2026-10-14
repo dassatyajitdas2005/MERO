@@ -122,16 +122,14 @@ export default function ChromeInstallPrompt() {
           {/* Header Row: App Icon + Name + Close Button */}
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-gradient-to-tr from-[#f97316] to-[#facc15] p-0.5 shadow-md shrink-0">
-                <div className="h-full w-full rounded-[14px] bg-[#121214] flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="/icon.png"
-                    alt="MERO App Icon"
-                    width={48}
-                    height={48}
-                    className="h-9 w-9 object-contain"
-                  />
-                </div>
+              <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-white border border-neutral-200 dark:border-neutral-700/80 p-1 shadow-md shrink-0 flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/icon.png"
+                  alt="MERO App Icon"
+                  width={48}
+                  height={48}
+                  className="h-full w-full object-contain"
+                />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ServicesSection from "@/components/sections/ServicesSection";
 
 export const metadata: Metadata = {
-  title: "Services | MERO - Executive Career & Digital Presence",
+  title: "Services | MERO - Digital Presence & Software Solutions",
   description:
-    "Explore MERO's specialized services: LinkedIn Optimization, ATS Resume Building, Website Making, Personal Portfolios, WhatsApp CRM, and Stock Management Software.",
+    "Explore MERO's specialized services: Static Website, Custom Software, WhatsApp CRM, and Stock Management Software.",
 };
 
 export default function ServicesPage() {

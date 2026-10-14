@@ -41,6 +41,7 @@ interface ServiceItem {
   variant: "light" | "dark";
   badgeBg: "yellow" | "white";
   price: string;
+  isContactButton?: boolean;
   illustration: React.ReactNode;
   shortDesc: string;
   category: string;
@@ -90,211 +91,13 @@ export default function ServicesSection() {
 
   const services: ServiceItem[] = [
     {
-      id: "linkedin-optimization",
-      badgeLines: ["LinkedIn", "optimization"],
-      variant: "light",
-      badgeBg: "yellow",
-      price: "from ₹89",
-      category: "PERSONAL BRANDING",
-      title: "LinkedIn Optimization Plan",
-      gradient: "bg-gradient-to-br from-[#0284c7] via-[#0ea5e9] to-[#0369a1]",
-      accentColor: "#0ea5e9",
-      rating: "4.9 (140 Reviews)",
-      served: "200+ Served",
-      verifiedBadge: "Pro Verified",
-      bannerIcon: (
-        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border-2 border-white/50 bg-white/15 backdrop-blur-md flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-          <span className="text-4xl sm:text-5xl font-black text-white tracking-tighter">in</span>
-        </div>
-      ),
-      whatsIncluded: [
-        { title: "Headline Engineering", desc: "Algorithmic recruiter keyword optimization", icon: "zap" },
-        { title: "Storytelling 'About'", desc: "High-converting 1st-person narrative", icon: "file" },
-        { title: "Experience Metrics", desc: "Quantified achievement metrics & XYZ formula", icon: "chart" },
-        { title: "Verified Visuals", desc: "Executive banner & portrait guidelines", icon: "badge" },
-        { title: "Inbound Playbook", desc: "Networking & algorithmic visibility strategy", icon: "send" },
-        { title: "Skills & Endorsements", desc: "Top skills prioritization for search algorithms", icon: "bot" },
-        { title: "Featured Section Setup", desc: "Showcase case studies & key links", icon: "message" },
-        { title: "1-on-1 Profile Audit", desc: "Strategic feedback & checklist review", icon: "support" },
-      ],
-      plans: [
-        { name: "Standard", price: "₹89", period: "/ one-time", popular: true },
-        { name: "Executive Revamp", price: "₹199", period: "/ full overhaul" },
-      ],
-      shortDesc: "Complete profile makeover to rank in recruiter searches and attract high-tier inbound leads.",
-      modalDetails: {
-        tagline: "Turn your LinkedIn into a 24/7 inbound opportunity magnet.",
-        description:
-          "We strategically rewrite your headline, about section, experience bullets, and featured media with high-intent industry keywords that algorithmic recruiter searches prioritize.",
-        deliverables: [
-          "Recruiter-search keyword optimized headline",
-          "High-converting 1st-person Storytelling 'About' section",
-          "Quantified experience highlights & achievement metrics",
-          "Custom banner & profile visual guidance",
-          "Engagement & networking playbook for 10x visibility",
-        ],
-        turnaround: "3 - 5 Days",
-      },
-      illustration: (
-        <svg
-          className="w-44 h-36 sm:w-52 sm:h-40 md:w-56 md:h-44 shrink-0 transition-transform duration-300 group-hover:scale-105"
-          viewBox="0 0 240 180"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Orbital ellipse rings */}
-          <ellipse cx="140" cy="95" rx="75" ry="32" stroke="#191a23" strokeWidth="1.8" strokeDasharray="4 3" />
-          <ellipse cx="140" cy="95" rx="90" ry="42" stroke="#191a23" strokeWidth="1.5" />
-
-          {/* Orbital satellite nodes */}
-          <circle cx="65" cy="85" r="5" fill="#facc15" stroke="#191a23" strokeWidth="1.8" />
-          <circle cx="215" cy="115" r="4" fill="#f97316" stroke="#191a23" strokeWidth="1.8" />
-          <circle cx="170" cy="58" r="3" fill="#191a23" />
-
-          {/* Profile badge card */}
-          <rect x="70" y="32" width="85" height="110" rx="14" fill="#ffffff" stroke="#191a23" strokeWidth="2" />
-          
-          {/* Avatar graphic */}
-          <circle cx="112.5" cy="62" r="16" fill="#fef08a" stroke="#191a23" strokeWidth="1.8" />
-          <path d="M102 75c0-5.8 4.7-10.5 10.5-10.5s10.5 4.7 10.5 10.5" fill="#facc15" stroke="#191a23" strokeWidth="1.8" />
-          <circle cx="112.5" cy="57" r="6" fill="#f97316" stroke="#191a23" strokeWidth="1.8" />
-
-          {/* Verified badge */}
-          <circle cx="125" cy="52" r="5.5" fill="#f97316" stroke="#191a23" strokeWidth="1.5" />
-          <path d="M123 52l1.5 1.5 2.5-2.5" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-
-          {/* Card text lines */}
-          <rect x="84" y="86" width="57" height="5" rx="2.5" fill="#191a23" />
-          <rect x="88" y="96" width="49" height="4" rx="2" fill="#9ca3af" />
-          
-          {/* Mini LinkedIn In-badge & status */}
-          <rect x="84" y="110" width="28" height="15" rx="4" fill="#facc15" stroke="#191a23" strokeWidth="1.4" />
-          <text x="98" y="121" fontSize="9" fontWeight="bold" textAnchor="middle" fill="#191a23" fontFamily="sans-serif">in</text>
-          <rect x="118" y="114" width="23" height="7" rx="3.5" fill="#f97316" />
-
-          {/* Large tilted Magnifying Glass */}
-          <g transform="translate(108, 48) rotate(-22)">
-            <circle cx="34" cy="34" r="25" fill="#fef9c3" fillOpacity="0.85" stroke="#191a23" strokeWidth="2.4" />
-            <circle cx="34" cy="34" r="19" stroke="#facc15" strokeWidth="2.4" strokeDasharray="3 3" />
-            <line x1="51" y1="51" x2="76" y2="76" stroke="#191a23" strokeWidth="6" strokeLinecap="round" />
-            <line x1="54" y1="54" x2="74" y2="74" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
-            <path d="M22 24 A15 15 0 0 1 34 18" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
-          </g>
-
-          {/* Sparkles */}
-          <path d="M38 52 Q38 62 28 62 Q38 62 38 72 Q38 62 48 62 Q38 62 38 52Z" fill="#facc15" stroke="#191a23" strokeWidth="1.4" />
-          <path d="M198 42 Q198 50 190 50 Q198 50 198 58 Q198 50 206 50 Q198 50 198 42Z" fill="#f97316" stroke="#191a23" strokeWidth="1.4" />
-        </svg>
-      ),
-    },
-    {
-      id: "resume-building-ats",
-      badgeLines: ["Resume building", "with ATS"],
-      variant: "dark",
-      badgeBg: "white",
-      price: "from ₹99",
-      category: "EXECUTIVE RESUME",
-      title: "Resume Building with ATS Plan",
-      gradient: "bg-gradient-to-br from-[#ea580c] via-[#f97316] to-[#c2410c]",
-      accentColor: "#f97316",
-      rating: "4.9 (190 Reviews)",
-      served: "350+ Served",
-      verifiedBadge: "Pro Verified",
-      bannerIcon: (
-        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border-2 border-white/50 bg-white/15 backdrop-blur-md flex flex-col items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.25)] gap-1">
-          <span className="text-2xl sm:text-3xl font-black text-white">99%</span>
-          <span className="text-[10px] sm:text-xs font-bold tracking-widest text-[#fef08a] uppercase">ATS PASS</span>
-        </div>
-      ),
-      whatsIncluded: [
-        { title: "ATS Algorithmic Test", desc: "100% compliant single/two-page clean layout", icon: "bot" },
-        { title: "Semantic Role Mapping", desc: "Target job posting keywords & semantic density", icon: "file" },
-        { title: "Action-Bullet Formulas", desc: "Accomplished [X] by [Y] measuring [Z] impact", icon: "chart" },
-        { title: "Dual Format Delivery", desc: "ATS-friendly Plaintext + High-Res Designer PDF", icon: "badge" },
-        { title: "Cover Letter Included", desc: "Modern, tailored executive cover letter template", icon: "message" },
-        { title: "HR Human Eye Check", desc: "Manual recruiter 6-second scan optimization", icon: "support" },
-        { title: "Unlimited Revisions", desc: "Fine-tune bullets until 100% satisfied", icon: "zap" },
-        { title: "Expedited Turnaround", desc: "Delivered in 48-72 hours with priority review", icon: "send" },
-      ],
-      plans: [
-        { name: "Standard ATS", price: "₹99", period: "/ one-time", popular: true },
-        { name: "Executive Suite", price: "₹249", period: "/ with cover letter" },
-      ],
-      shortDesc: "Engineered resumes configured to bypass Applicant Tracking Systems and impress executive hiring managers.",
-      modalDetails: {
-        tagline: "99% ATS match rate with punchy, high-impact career narratives.",
-        description:
-          "Applicant Tracking Systems filter out over 75% of qualified resumes before a human ever sees them. We reverse-engineer job postings to inject exact semantic keywords, eliminate parsing bugs, and highlight tangible ROI.",
-        deliverables: [
-          "100% ATS-compliant single or two-page clean layout",
-          "Target role keyword frequency & semantic mapping",
-          "XYZ metric-driven bullet formulas (Accomplished [X] as measured by [Y], by doing [Z])",
-          "Plaintext ATS export + High-resolution Designer PDF",
-          "Tailored cover letter template included",
-        ],
-        turnaround: "2 - 4 Days",
-      },
-      illustration: (
-        <svg
-          className="w-44 h-36 sm:w-52 sm:h-40 md:w-56 md:h-44 shrink-0 transition-transform duration-300 group-hover:scale-105"
-          viewBox="0 0 240 180"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Resume Document Canvas */}
-          <rect x="46" y="24" width="108" height="132" rx="8" fill="#ffffff" stroke="#ffffff" strokeWidth="2" />
-          
-          {/* Top Resume Header */}
-          <rect x="58" y="36" width="52" height="7" rx="3.5" fill="#191a23" />
-          <rect x="58" y="47" width="72" height="4" rx="2" fill="#9ca3af" />
-          <line x1="58" y1="58" x2="142" y2="58" stroke="#e5e7eb" strokeWidth="1.5" />
-
-          {/* Resume Body Lines */}
-          <rect x="58" y="66" width="82" height="4" rx="2" fill="#d1d5db" />
-          <rect x="58" y="74" width="68" height="4" rx="2" fill="#d1d5db" />
-          <rect x="58" y="82" width="76" height="4" rx="2" fill="#d1d5db" />
-
-          {/* ATS Keyword Match Highlight (Orange bar) */}
-          <rect x="58" y="93" width="72" height="9" rx="3.5" fill="#ffedd5" stroke="#f97316" strokeWidth="1.2" />
-          <rect x="62" y="96.5" width="34" height="2.5" rx="1.2" fill="#ea580c" />
-
-          <rect x="58" y="109" width="56" height="4" rx="2" fill="#d1d5db" />
-          <rect x="58" y="117" width="74" height="4" rx="2" fill="#d1d5db" />
-          <rect x="58" y="125" width="42" height="4" rx="2" fill="#d1d5db" />
-
-          {/* Laser Scanner Line (Horizontal orange beam across resume) */}
-          <line x1="36" y1="90" x2="162" y2="90" stroke="#f97316" strokeWidth="2.5" strokeDasharray="5 3" />
-          <circle cx="36" cy="90" r="3.5" fill="#f97316" />
-          <circle cx="162" cy="90" r="3.5" fill="#f97316" />
-
-          {/* 99% ATS Score Target Circle */}
-          <g transform="translate(132, 58)">
-            <circle cx="42" cy="42" r="35" fill="#191a23" stroke="#ffffff" strokeWidth="2" />
-            <circle cx="42" cy="42" r="27" stroke="#facc15" strokeWidth="3" strokeDasharray="135 30" />
-            <text x="42" y="40" fontSize="15" fontWeight="900" textAnchor="middle" fill="#ffffff" fontFamily="sans-serif">99%</text>
-            <text x="42" y="52" fontSize="7" fontWeight="bold" textAnchor="middle" fill="#facc15" fontFamily="sans-serif" letterSpacing="0.8">ATS PASS</text>
-            
-            {/* Floating check badge */}
-            <circle cx="67" cy="20" r="9.5" fill="#f97316" stroke="#ffffff" strokeWidth="2" />
-            <path d="M63 20l3 3 5-5" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-          </g>
-
-          {/* Cursor arrow pointing */}
-          <path d="M120 122l11 17-5 3-4-2-6 11-4-2 6-11-6-2 14-17z" fill="#ffffff" stroke="#191a23" strokeWidth="1.5" />
-
-          {/* Sparkles */}
-          <path d="M194 36 Q194 44 186 44 Q194 44 194 52 Q194 44 202 44 Q194 44 194 36Z" fill="#facc15" stroke="#ffffff" strokeWidth="1" />
-        </svg>
-      ),
-    },
-    {
       id: "website-making",
-      badgeLines: ["Website", "making"],
+      badgeLines: ["Static", "website"],
       variant: "dark",
       badgeBg: "white",
-      price: "from ₹999",
+      price: "from ₹2,899",
       category: "WEB ARCHITECTURE",
-      title: "High-Performance Website Plan",
+      title: "Static Website Plan",
       gradient: "bg-gradient-to-br from-[#7c3aed] via-[#8b5cf6] to-[#6d28d9]",
       accentColor: "#8b5cf6",
       rating: "4.9 (95 Reviews)",
@@ -321,8 +124,8 @@ export default function ServicesSection() {
         { title: "Free Deployment", desc: "Full source code handover & zero-downtime CI/CD", icon: "support" },
       ],
       plans: [
-        { name: "Landing Website", price: "₹999", period: "/ one-time", popular: true },
-        { name: "Business Multi-Page", price: "₹1,999", period: "/ full site" },
+        { name: "Landing Website", price: "₹2,899", period: "/ one-time", popular: true },
+        { name: "Business Multi-Page", price: "₹4,899", period: "/ full site" },
       ],
       shortDesc: "High-performance, bespoke websites that showcase your authority, services, or SaaS products.",
       modalDetails: {
@@ -347,10 +150,10 @@ export default function ServicesSection() {
         >
           {/* Browser Window Frame */}
           <rect x="35" y="32" width="165" height="114" rx="14" fill="#ffffff" stroke="#ffffff" strokeWidth="2" />
-          
+
           {/* Top Browser Bar */}
           <line x1="35" y1="56" x2="200" y2="56" stroke="#191a23" strokeWidth="1.5" />
-          
+
           {/* Window traffic lights */}
           <circle cx="50" cy="44" r="3.5" fill="#f87171" stroke="#191a23" strokeWidth="1" />
           <circle cx="62" cy="44" r="3.5" fill="#facc15" stroke="#191a23" strokeWidth="1" />
@@ -391,50 +194,51 @@ export default function ServicesSection() {
       ),
     },
     {
-      id: "portfolio-personal-web",
-      badgeLines: ["Portfolio", "(personal web)"],
+      id: "dynamic-website",
+      badgeLines: ["Dynamic website", "with admin panel"],
       variant: "light",
       badgeBg: "yellow",
-      price: "from ₹199",
-      category: "CREATIVE SHOWCASE",
-      title: "Interactive Portfolio Plan",
-      gradient: "bg-gradient-to-br from-[#d97706] via-[#f59e0b] to-[#b45309]",
-      accentColor: "#f59e0b",
-      rating: "4.8 (75 Reviews)",
-      served: "90+ Served",
+      price: "from ₹4,899",
+      category: "FULL-STACK CMS & PORTALS",
+      title: "Dynamic Website with Admin Panel Plan",
+      gradient: "bg-gradient-to-br from-[#0284c7] via-[#0ea5e9] to-[#0369a1]",
+      accentColor: "#0ea5e9",
+      rating: "4.9 (105 Reviews)",
+      served: "120+ Served",
       verifiedBadge: "Pro Verified",
       bannerIcon: (
-        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border-2 border-white/50 bg-white/15 backdrop-blur-md flex flex-col items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-          <span className="text-3xl sm:text-4xl">🚀</span>
+        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border-2 border-white/50 bg-white/15 backdrop-blur-md flex flex-col items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.25)] gap-1">
+          <span className="text-3xl sm:text-4xl">⚡</span>
+          <span className="text-[10px] font-bold tracking-widest text-[#facc15] uppercase">CMS ADMIN</span>
         </div>
       ),
       whatsIncluded: [
-        { title: "Interactive Proof-of-Work", desc: "Project showcase cards with live preview modals", icon: "zap" },
-        { title: "Custom Domain Link", desc: "Connected to yourname.com or custom branded URL", icon: "file" },
-        { title: "1-Click Resume Access", desc: "Embedded CV viewer and direct download button", icon: "badge" },
-        { title: "Omnichannel Socials", desc: "Integrated GitHub, LinkedIn, Twitter & booking links", icon: "send" },
-        { title: "Dark & Light Mode", desc: "Theme toggle with persistent visitor preference", icon: "bot" },
-        { title: "SEO Google Ranking", desc: "Personal keyword ranking for your name in Google", icon: "chart" },
-        { title: "Case Study Deep Dives", desc: "Rich project storytelling with quantified outcomes", icon: "message" },
-        { title: "Hosting & Maintenance", desc: "Fast cloud hosting with lifetime free upkeep", icon: "support" },
+        { title: "Custom Admin Dashboard", desc: "Intuitive portal to manage content, leads & products", icon: "badge" },
+        { title: "Dynamic Database CMS", desc: "Real-time PostgreSQL / MongoDB data architecture", icon: "zap" },
+        { title: "User Roles & Permissions", desc: "Admin, editor & viewer role security controls", icon: "bot" },
+        { title: "Instant Content Publishing", desc: "Add blogs, change banners & update text with zero code", icon: "file" },
+        { title: "Lead & Inquiry Inbox", desc: "All contact forms & booking requests in one dashboard", icon: "send" },
+        { title: "SEO Meta Automation", desc: "Dynamic OpenGraph cards, schema markup & sitemap generation", icon: "chart" },
+        { title: "REST / GraphQL APIs", desc: "Secure endpoints for mobile apps & third-party hooks", icon: "message" },
+        { title: "Free SSL & Cloud Hosting", desc: "Zero-downtime deployment with automatic daily backups", icon: "support" },
       ],
       plans: [
-        { name: "Starter Portfolio", price: "₹199", period: "/ one-time", popular: true },
-        { name: "Elite Flagship", price: "₹399", period: "/ custom domain" },
+        { name: "Dynamic Business CMS", price: "₹4,899", period: "/ setup", popular: true },
+        { name: "Custom Web Application", price: "₹8,999", period: "/ full platform" },
       ],
-      shortDesc: "Stand out from the pile with an interactive personal portfolio showcasing case studies, skills, and links.",
+      shortDesc: "High-speed dynamic web applications equipped with a powerful, no-code admin dashboard to manage content, inquiries, and users.",
       modalDetails: {
-        tagline: "Your own permanent home on the web that commands respect.",
+        tagline: "Bespoke dynamic web platforms with total administrative control.",
         description:
-          "Transform your traditional static PDF into an interactive, visually stunning personal portfolio. Show proof-of-work, project demos, client testimonials, and github repositories with effortless polish.",
+          "Scale beyond static pages with a powerful, customized admin dashboard. Easily publish blog posts, manage product catalogs, view real-time form submissions, and update your site without touching a line of code.",
         deliverables: [
-          "Interactive projects & case studies showcase with modal previews",
-          "Custom domain integration (yourname.com or mero.live/you)",
-          "1-Click downloadable resume and contact integration",
-          "Social proof, skill matrices, and dynamic achievements bar",
-          "Search-engine indexed to build personal Google ranking",
+          "Custom dynamic web application built on Next.js, React & scalable database",
+          "Secure password-protected admin dashboard with user roles & permissions",
+          "Dynamic content editor for blogs, services, media uploads & customer testimonials",
+          "Automated email & WhatsApp lead alerts on every new customer inquiry",
+          "1-click data export, Google Analytics integration & high-speed zero-downtime hosting",
         ],
-        turnaround: "3 - 7 Days",
+        turnaround: "6 - 12 Days",
       },
       illustration: (
         <svg
@@ -443,45 +247,90 @@ export default function ServicesSection() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Orbital Rings */}
-          <ellipse cx="125" cy="100" rx="90" ry="38" stroke="#191a23" strokeWidth="1.6" strokeDasharray="4 3" />
-          <ellipse cx="125" cy="100" rx="70" ry="24" stroke="#191a23" strokeWidth="1.4" />
+          {/* Orbital Background Ellipses */}
+          <ellipse cx="120" cy="95" rx="95" ry="40" stroke="#191a23" strokeWidth="1.6" strokeDasharray="4 3" />
+          <ellipse cx="120" cy="95" rx="76" ry="24" stroke="#191a23" strokeWidth="1.4" />
 
-          {/* Orbital Accent Dots */}
-          <circle cx="45" cy="115" r="5" fill="#f97316" stroke="#191a23" strokeWidth="1.8" />
-          <circle cx="205" cy="85" r="4" fill="#facc15" stroke="#191a23" strokeWidth="1.8" />
+          {/* Accent Orbit Dots */}
+          <circle cx="34" cy="90" r="4.5" fill="#facc15" stroke="#191a23" strokeWidth="1.8" />
+          <circle cx="210" cy="105" r="5" fill="#0ea5e9" stroke="#191a23" strokeWidth="1.8" />
+          <circle cx="175" cy="40" r="3.5" fill="#f97316" stroke="#191a23" strokeWidth="1.5" />
 
-          {/* Portfolio Frame Card */}
-          <g transform="translate(58, 38) rotate(-6)">
-            <rect x="0" y="0" width="85" height="102" rx="14" fill="#ffffff" stroke="#191a23" strokeWidth="2" />
-            <circle cx="22" cy="24" r="10" fill="#fed7aa" stroke="#191a23" strokeWidth="1.5" />
-            <circle cx="22" cy="21" r="4" fill="#ea580c" />
-            <rect x="38" y="17" width="36" height="5" rx="2.5" fill="#191a23" />
-            <rect x="38" y="26" width="26" height="3.5" rx="1.7" fill="#9ca3af" />
+          {/* Main Admin Dashboard Window */}
+          <g transform="translate(42, 28)">
+            <rect x="0" y="0" width="156" height="118" rx="14" fill="#ffffff" stroke="#191a23" strokeWidth="2" />
+            
+            {/* Header bar */}
+            <rect x="0" y="0" width="156" height="22" rx="14" fill="#191a23" />
+            <rect x="0" y="10" width="156" height="12" fill="#191a23" />
+            <circle cx="12" cy="11" r="3" fill="#f87171" />
+            <circle cx="22" cy="11" r="3" fill="#facc15" />
+            <circle cx="32" cy="11" r="3" fill="#4ade80" />
+            <rect x="52" y="7" width="58" height="8" rx="4" fill="#334155" />
+            <text x="81" y="13.5" fontSize="6" fontWeight="bold" textAnchor="middle" fill="#94a3b8" fontFamily="monospace">admin.portal</text>
+            <circle cx="144" cy="11" r="4" fill="#0ea5e9" />
 
-            {/* Portfolio URL Pill */}
-            <rect x="12" y="44" width="61" height="12" rx="6" fill="#fef08a" stroke="#191a23" strokeWidth="1.2" />
-            <text x="42.5" y="52.5" fontSize="6.5" fontWeight="bold" textAnchor="middle" fill="#191a23" fontFamily="sans-serif">mero.live/me</text>
+            {/* Left Sidebar Menu */}
+            <rect x="0" y="22" width="38" height="96" fill="#f8fafc" stroke="#191a23" strokeWidth="1.2" />
+            <rect x="6" y="30" width="26" height="5" rx="2.5" fill="#0ea5e9" />
+            <rect x="6" y="40" width="20" height="4" rx="2" fill="#cbd5e1" />
+            <rect x="6" y="49" width="24" height="4" rx="2" fill="#cbd5e1" />
+            <rect x="6" y="58" width="18" height="4" rx="2" fill="#cbd5e1" />
+            <rect x="6" y="67" width="22" height="4" rx="2" fill="#cbd5e1" />
+            {/* Logout pill at bottom */}
+            <rect x="6" y="102" width="26" height="8" rx="4" fill="#fee2e2" stroke="#f87171" strokeWidth="1" />
+            <text x="19" y="108" fontSize="5" fontWeight="bold" textAnchor="middle" fill="#dc2626">EXIT</text>
 
-            {/* Project Mockup Box */}
-            <rect x="12" y="63" width="61" height="26" rx="6" fill="#f9fafb" stroke="#191a23" strokeWidth="1.4" />
-            <circle cx="24" cy="76" r="5" fill="#facc15" stroke="#191a23" strokeWidth="1.2" />
-            <rect x="34" y="71" width="30" height="4" rx="2" fill="#191a23" />
-            <rect x="34" y="78" width="20" height="3" rx="1.5" fill="#9ca3af" />
+            {/* Top Stat Cards in Dashboard Body */}
+            <g transform="translate(44, 28)">
+              {/* Stat card 1: Analytics / Traffic */}
+              <rect x="0" y="0" width="50" height="28" rx="6" fill="#f0f9ff" stroke="#0ea5e9" strokeWidth="1.2" />
+              <text x="6" y="10" fontSize="5.5" fontWeight="bold" fill="#0369a1">TOTAL LEADS</text>
+              <text x="6" y="22" fontSize="9" fontWeight="900" fill="#0c4a6e">1,420</text>
+              <path d="M34 18l4-4 4 2 6-6" stroke="#0ea5e9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </g>
+
+            <g transform="translate(98, 28)">
+              {/* Stat card 2: CMS Active Articles */}
+              <rect x="0" y="0" width="50" height="28" rx="6" fill="#fefce8" stroke="#facc15" strokeWidth="1.2" />
+              <text x="6" y="10" fontSize="5.5" fontWeight="bold" fill="#854d0e">POSTS LIVE</text>
+              <text x="6" y="22" fontSize="9" fontWeight="900" fill="#713f12">48</text>
+              <circle cx="40" cy="18" r="4.5" fill="#22c55e" />
+              <path d="M38 18l1.5 1.5 3-3" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="round" />
+            </g>
+
+            {/* Content Table / Data Rows */}
+            <g transform="translate(44, 62)">
+              <rect x="0" y="0" width="104" height="46" rx="6" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="1" />
+              {/* Row 1 */}
+              <rect x="6" y="8" width="40" height="5" rx="2.5" fill="#191a23" />
+              <rect x="52" y="8" width="22" height="5" rx="2.5" fill="#22c55e" />
+              <rect x="80" y="8" width="18" height="5" rx="2.5" fill="#facc15" />
+              <line x1="6" y1="18" x2="98" y2="18" stroke="#e2e8f0" strokeWidth="1" />
+              {/* Row 2 */}
+              <rect x="6" y="23" width="34" height="5" rx="2.5" fill="#64748b" />
+              <rect x="52" y="23" width="22" height="5" rx="2.5" fill="#22c55e" />
+              <rect x="80" y="23" width="18" height="5" rx="2.5" fill="#0ea5e9" />
+              <line x1="6" y1="33" x2="98" y2="33" stroke="#e2e8f0" strokeWidth="1" />
+              {/* Row 3 */}
+              <rect x="6" y="37" width="28" height="5" rx="2.5" fill="#64748b" />
+              <rect x="52" y="37" width="18" height="5" rx="2.5" fill="#94a3b8" />
+              <rect x="80" y="37" width="18" height="5" rx="2.5" fill="#facc15" />
+            </g>
           </g>
 
-          {/* Soaring Dynamic 3D Paper Plane / Rocket */}
-          <g transform="translate(130, 42) rotate(14)">
-            <path d="M-15 32 L-2 22 L-10 40 Z" fill="#facc15" opacity="0.9" />
-            <path d="M-20 40 L-6 28 L-14 48 Z" fill="#f97316" opacity="0.9" />
-            <polygon points="45,5 5,30 20,20" fill="#ffffff" stroke="#191a23" strokeWidth="2" strokeLinejoin="round" />
-            <polygon points="45,5 20,20 18,36" fill="#facc15" stroke="#191a23" strokeWidth="2" strokeLinejoin="round" />
-            <polygon points="45,5 18,36 10,24" fill="#fef08a" stroke="#191a23" strokeWidth="2" strokeLinejoin="round" />
+          {/* Floating Admin Key / Lock Shield Badge */}
+          <g transform="translate(164, 98)">
+            <circle cx="16" cy="16" r="16" fill="#facc15" stroke="#191a23" strokeWidth="2" />
+            {/* Padlock icon */}
+            <rect x="10" y="14" width="12" height="10" rx="2.5" fill="#191a23" />
+            <path d="M12 14v-4a4 4 0 0 1 8 0v4" stroke="#191a23" strokeWidth="2" fill="none" strokeLinecap="round" />
+            <circle cx="16" cy="19" r="1.5" fill="#ffffff" />
           </g>
 
-          {/* 4-pointed Sparkle Stars */}
-          <path d="M195 45 Q195 53 187 53 Q195 53 195 61 Q195 53 203 53 Q195 53 195 45Z" fill="#facc15" stroke="#191a23" strokeWidth="1.4" />
-          <path d="M38 48 Q38 55 31 55 Q38 55 38 62 Q38 55 45 55 Q38 55 38 48Z" fill="#f97316" stroke="#191a23" strokeWidth="1.4" />
+          {/* Sparkles */}
+          <path d="M30 40 Q30 46 24 46 Q30 46 30 52 Q30 46 36 46 Q30 46 30 40Z" fill="#0ea5e9" stroke="#191a23" strokeWidth="1.2" />
+          <path d="M198 140 Q198 146 192 146 Q198 146 198 152 Q198 146 204 146 Q198 146 198 140Z" fill="#facc15" stroke="#191a23" strokeWidth="1.2" />
         </svg>
       ),
     },
@@ -490,7 +339,7 @@ export default function ServicesSection() {
       badgeLines: ["WhatsApp", "CRM"],
       variant: "light",
       badgeBg: "yellow",
-      price: "from ₹2,499",
+      price: "from ₹1,700",
       category: "DIGITAL MARKETING",
       title: "WhatsApp Marketing Plan",
       gradient: "bg-gradient-to-br from-[#059669] via-[#10b981] to-[#047857]",
@@ -517,7 +366,7 @@ export default function ServicesSection() {
         { title: "Technical Support", desc: "Ongoing API, webhook and team inbox assistance", icon: "support" },
       ],
       plans: [
-        { name: "Standard", price: "₹2,099", period: "/ month", popular: true },
+        { name: "Standard", price: "₹1,700", period: "/ month", popular: true },
         { name: "Lifetime Setup", price: "₹2,499", period: "/ one-time" },
       ],
       shortDesc: "Automated WhatsApp chatbots, unified team inbox, broadcast campaigns, and instant lead capture.",
@@ -599,7 +448,7 @@ export default function ServicesSection() {
       badgeLines: ["Stock management", "software"],
       variant: "dark",
       badgeBg: "white",
-      price: "from ₹3,499",
+      price: "from ₹4,899",
       category: "BUSINESS OPERATIONS",
       title: "Stock Management Plan",
       gradient: "bg-gradient-to-br from-[#334155] via-[#475569] to-[#1e293b]",
@@ -624,8 +473,8 @@ export default function ServicesSection() {
         { title: "Database & Excel Sync", desc: "1-click CSV import/export and automated backup", icon: "support" },
       ],
       plans: [
-        { name: "Standard", price: "₹3,499", period: "/ setup", popular: true },
-        { name: "Multi-Warehouse Pro", price: "₹6,999", period: "/ enterprise system" },
+        { name: "Standard", price: "₹4,899", period: "/ setup", popular: true },
+        { name: "Multi-Warehouse Pro", price: "₹8,999", period: "/ enterprise system" },
       ],
       shortDesc: "Real-time inventory tracking, multi-warehouse control, low-stock alerts, and custom analytics dashboards.",
       modalDetails: {
@@ -701,6 +550,102 @@ export default function ServicesSection() {
         </svg>
       ),
     },
+    {
+      id: "custom-software",
+      badgeLines: ["Custom", "Software"],
+      variant: "dark",
+      badgeBg: "white",
+      price: "Custom",
+      isContactButton: true,
+      category: "BESPOKE ENGINEERING",
+      title: "Custom Software Plan",
+      gradient: "bg-gradient-to-br from-[#d97706] via-[#f59e0b] to-[#b45309]",
+      accentColor: "#f59e0b",
+      rating: "4.9 (85 Reviews)",
+      served: "95+ Served",
+      verifiedBadge: "Pro Verified",
+      bannerIcon: (
+        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border-2 border-white/50 bg-white/15 backdrop-blur-md flex flex-col items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+          <span className="text-3xl sm:text-4xl">⚡</span>
+        </div>
+      ),
+      whatsIncluded: [
+        { title: "Bespoke Business Logic", desc: "Tailored software built around your exact workflow", icon: "zap" },
+        { title: "Scalable Architecture", desc: "Modern tech stack with high performance and security", icon: "bot" },
+        { title: "API & Cloud Database", desc: "Seamless integrations with payment gateways & ERPs", icon: "file" },
+        { title: "Role-Based Access Control", desc: "Secure multi-user permissions, audit logs & admin dashboards", icon: "badge" },
+        { title: "Automated Workflows", desc: "Cut repetitive operational tasks with custom bots", icon: "send" },
+        { title: "Real-Time Analytics", desc: "Live operational metrics & executive reporting", icon: "chart" },
+        { title: "Cross-Platform Access", desc: "Optimized for mobile, tablet, and desktop web", icon: "message" },
+        { title: "Dedicated Support & SLA", desc: "Continuous maintenance, updates, and fast issue resolution", icon: "support" },
+      ],
+      plans: [
+        { name: "Starter Scope", price: "Custom", period: "/ project", popular: true },
+        { name: "Enterprise Suite", price: "Tailored", period: "/ custom build" },
+      ],
+      shortDesc: "Tailor-made software, internal tools, and automated business systems engineered to scale your operations.",
+      modalDetails: {
+        tagline: "Custom software engineered to solve your exact business bottlenecks.",
+        description:
+          "Off-the-shelf software doesn't fit every unique workflow. We design, architect, and develop bespoke web applications, internal tools, and automation systems tailored to your business.",
+        deliverables: [
+          "Bespoke system architecture & modern UI/UX design",
+          "Secure database schema, APIs & third-party integrations",
+          "Role-based access control, admin management, and security",
+          "Automated workflow scripts & real-time analytics reporting",
+          "Deployment, staff onboarding guidance, and warranty support",
+        ],
+        turnaround: "7 - 21 Days",
+      },
+      illustration: (
+        <svg
+          className="w-44 h-36 sm:w-52 sm:h-40 md:w-56 md:h-44 shrink-0 transition-transform duration-300 group-hover:scale-105"
+          viewBox="0 0 240 180"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Orbital Rings */}
+          <ellipse cx="125" cy="100" rx="90" ry="38" stroke="#ffffff" strokeWidth="1.6" strokeDasharray="4 3" opacity="0.3" />
+          <ellipse cx="125" cy="100" rx="70" ry="24" stroke="#ffffff" strokeWidth="1.4" opacity="0.4" />
+
+          {/* Orbital Accent Dots */}
+          <circle cx="45" cy="115" r="5" fill="#f97316" stroke="#ffffff" strokeWidth="1.8" />
+          <circle cx="205" cy="85" r="4" fill="#facc15" stroke="#ffffff" strokeWidth="1.8" />
+
+          {/* Portfolio Frame Card */}
+          <g transform="translate(58, 38) rotate(-6)">
+            <rect x="0" y="0" width="85" height="102" rx="14" fill="#ffffff" stroke="#191a23" strokeWidth="2" />
+            <circle cx="22" cy="24" r="10" fill="#fed7aa" stroke="#191a23" strokeWidth="1.5" />
+            <circle cx="22" cy="21" r="4" fill="#ea580c" />
+            <rect x="38" y="17" width="36" height="5" rx="2.5" fill="#191a23" />
+            <rect x="38" y="26" width="26" height="3.5" rx="1.7" fill="#9ca3af" />
+
+            {/* Portfolio URL Pill */}
+            <rect x="12" y="44" width="61" height="12" rx="6" fill="#fef08a" stroke="#191a23" strokeWidth="1.2" />
+            <text x="42.5" y="52.5" fontSize="6.5" fontWeight="bold" textAnchor="middle" fill="#191a23" fontFamily="sans-serif">mero.live/me</text>
+
+            {/* Project Mockup Box */}
+            <rect x="12" y="63" width="61" height="26" rx="6" fill="#f9fafb" stroke="#191a23" strokeWidth="1.4" />
+            <circle cx="24" cy="76" r="5" fill="#facc15" stroke="#191a23" strokeWidth="1.2" />
+            <rect x="34" y="71" width="30" height="4" rx="2" fill="#191a23" />
+            <rect x="34" y="78" width="20" height="3" rx="1.5" fill="#9ca3af" />
+          </g>
+
+          {/* Soaring Dynamic 3D Paper Plane / Rocket */}
+          <g transform="translate(130, 42) rotate(14)">
+            <path d="M-15 32 L-2 22 L-10 40 Z" fill="#facc15" opacity="0.9" />
+            <path d="M-20 40 L-6 28 L-14 48 Z" fill="#f97316" opacity="0.9" />
+            <polygon points="45,5 5,30 20,20" fill="#ffffff" stroke="#191a23" strokeWidth="2" strokeLinejoin="round" />
+            <polygon points="45,5 20,20 18,36" fill="#facc15" stroke="#191a23" strokeWidth="2" strokeLinejoin="round" />
+            <polygon points="45,5 18,36 10,24" fill="#fef08a" stroke="#191a23" strokeWidth="2" strokeLinejoin="round" />
+          </g>
+
+          {/* 4-pointed Sparkle Stars */}
+          <path d="M195 45 Q195 53 187 53 Q195 53 195 61 Q195 53 203 53 Q195 53 195 45Z" fill="#facc15" stroke="#ffffff" strokeWidth="1.4" />
+          <path d="M38 48 Q38 55 31 55 Q38 55 38 62 Q38 55 45 55 Q38 55 38 48Z" fill="#f97316" stroke="#ffffff" strokeWidth="1.4" />
+        </svg>
+      ),
+    },
   ];
 
   return (
@@ -711,7 +656,7 @@ export default function ServicesSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header: Highlight Pill + Descriptive Text (matching screenshot) */}
         <div className="flex flex-col md:flex-row md:items-center gap-5 sm:gap-8 md:gap-10 mb-12 sm:mb-16">
           {/* Services Badge Pill */}
@@ -722,7 +667,7 @@ export default function ServicesSection() {
             transition={{ duration: 0.5 }}
             className="shrink-0"
           >
-            <span className="inline-block px-4 py-1.5 sm:px-5 sm:py-2 rounded-xl bg-[#facc15] text-[#191a23] font-black text-2xl sm:text-3xl md:text-4xl shadow-sm tracking-tight">
+            <span className="inline-block px-5 py-1.5 sm:px-6 sm:py-2 rounded-2xl bg-[#facc15] text-[#191a23] font-script font-bold text-3xl sm:text-4xl md:text-5xl shadow-sm tracking-tight select-none">
               Services
             </span>
           </motion.div>
@@ -733,16 +678,55 @@ export default function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-slate-600 dark:text-neutral-300 text-sm sm:text-base max-w-2xl leading-relaxed font-normal"
+            className="font-script text-xl sm:text-2xl md:text-3xl font-medium text-slate-600 dark:text-neutral-300 max-w-2xl leading-snug sm:leading-relaxed select-none"
           >
-            At MERO, we offer a specialized range of career acceleration and personal branding services to help professionals stand out, pass the ATS, and succeed online. These services include:
+            <span>At MERO, we offer a specialized range of </span>
+            <span className="relative inline-block text-slate-900 dark:text-white font-semibold">
+              modern web architecture
+              {/* Coral hand-drawn curved underline matching screenshot */}
+              <svg
+                className="absolute -bottom-1 sm:-bottom-1.5 left-0 w-full h-2 sm:h-2.5 text-[#f43f5e] overflow-visible pointer-events-none"
+                viewBox="0 0 100 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M 2 9 C 28 3, 72 3, 98 8"
+                  stroke="currentColor"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+            <span>, digital presence, and </span>
+            <span className="relative inline-block text-slate-900 dark:text-white font-semibold">
+              custom software solutions
+              {/* Sky blue hand-drawn curved underline */}
+              <svg
+                className="absolute -bottom-1 sm:-bottom-1.5 left-0 w-full h-2 sm:h-2.5 text-[#0ea5e9] dark:text-[#38bdf8] overflow-visible pointer-events-none"
+                viewBox="0 0 100 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M 2 9 C 28 3, 72 3, 98 8"
+                  stroke="currentColor"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+            <span> to help businesses and individuals stand out and succeed online. These services include:</span>
           </motion.p>
         </div>
 
-        {/* 2x2 Services Cards Grid (matching exact Positivus layout and alternating colors) */}
+        {/* Services Cards Grid (matching exact Positivus layout and alternating colors) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {services.map((item, idx) => {
             const isLight = item.variant === "light";
+            const isLastOdd = idx === services.length - 1 && services.length % 2 !== 0;
             return (
               <motion.div
                 key={item.id}
@@ -750,43 +734,39 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`group relative flex flex-col justify-between rounded-[36px] sm:rounded-[42px] border-2 transition-all duration-300 ${
-                  isLight
+                className={`group relative flex flex-col justify-between rounded-[36px] sm:rounded-[42px] border-2 transition-all duration-300 ${isLight
                     ? "bg-[#f3f3f3] text-[#191a23] border-neutral-900 shadow-[0px_5px_0px_#000000] hover:shadow-[0px_8px_0px_#000000]"
                     : "bg-[#191a23] text-white border-neutral-700/80 shadow-[0px_5px_0px_#000000] hover:shadow-[0px_8px_0px_#facc15]/30 hover:border-neutral-600"
-                } p-8 sm:p-10 lg:p-12 min-h-[300px] sm:min-h-[320px]`}
+                  } p-8 sm:p-10 lg:p-12 min-h-[300px] sm:min-h-[320px] ${isLastOdd ? "lg:col-span-2" : ""}`}
               >
                 {/* Top Section: Badges & Description on Left, Illustration on Right */}
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6 sm:gap-4 flex-1">
-                  
+
                   {/* Left: 2-Line Highlight Title Badges & Short Description */}
                   <div className="space-y-1.5 flex-1 max-w-sm">
                     <div className="flex flex-col items-start gap-1">
                       <span
-                        className={`inline-block px-3 py-1 rounded-lg font-extrabold text-2xl sm:text-3xl tracking-tight ${
-                          item.badgeBg === "yellow"
+                        className={`inline-block px-3 py-1 rounded-lg font-extrabold text-2xl sm:text-3xl tracking-tight ${item.badgeBg === "yellow"
                             ? "bg-[#facc15] text-[#191a23]"
                             : "bg-white text-[#191a23]"
-                        }`}
+                          }`}
                       >
                         {item.badgeLines[0]}
                       </span>
                       <span
-                        className={`inline-block px-3 py-1 rounded-lg font-extrabold text-2xl sm:text-3xl tracking-tight ${
-                          item.badgeBg === "yellow"
+                        className={`inline-block px-3 py-1 rounded-lg font-extrabold text-2xl sm:text-3xl tracking-tight ${item.badgeBg === "yellow"
                             ? "bg-[#facc15] text-[#191a23]"
                             : "bg-white text-[#191a23]"
-                        }`}
+                          }`}
                       >
                         {item.badgeLines[1]}
                       </span>
                     </div>
-                    
+
                     {/* Short Description */}
                     <p
-                      className={`text-xs sm:text-sm pt-3 line-clamp-2 max-w-xs ${
-                        isLight ? "text-neutral-600" : "text-neutral-400"
-                      }`}
+                      className={`text-xs sm:text-sm pt-3 line-clamp-2 max-w-xs ${isLight ? "text-neutral-600" : "text-neutral-400"
+                        }`}
                     >
                       {item.shortDesc}
                     </p>
@@ -812,34 +792,43 @@ export default function ServicesSection() {
                     aria-label={`Learn more about ${item.badgeLines.join(" ")}`}
                   >
                     <div
-                      className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:rotate-45 shadow-sm ${
-                        isLight
+                      className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:rotate-45 shadow-sm ${isLight
                           ? "bg-[#191a23] text-[#facc15] group-hover/btn:bg-[#f97316] group-hover/btn:text-white"
                           : "bg-white text-[#191a23] group-hover/btn:bg-[#facc15]"
-                      }`}
+                        }`}
                     >
                       <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
                     </div>
                     <span
-                      className={`text-base sm:text-lg font-semibold transition-colors duration-200 group-hover/btn:underline ${
-                        isLight
+                      className={`text-base sm:text-lg font-semibold transition-colors duration-200 group-hover/btn:underline ${isLight
                           ? "text-[#191a23] group-hover/btn:text-[#f97316]"
                           : "text-white group-hover/btn:text-[#facc15]"
-                      }`}
+                        }`}
                     >
                       Learn more
                     </span>
                   </button>
 
-                  {/* Far-Right Large Price */}
+                  {/* Far-Right Large Price or Contact Us Button */}
                   <div className="text-right">
-                    <span
-                      className={`text-xl sm:text-2xl font-black tracking-tight ${
-                        isLight ? "text-neutral-900" : "text-[#facc15]"
-                      }`}
-                    >
-                      {item.price}
-                    </span>
+                    {item.isContactButton ? (
+                      <Link
+                        href={`/contact?service=${item.id}`}
+                        className={`inline-flex items-center justify-center px-5 sm:px-6 py-2.5 rounded-2xl font-bold text-sm sm:text-base transition-all duration-200 shadow-sm hover:scale-[1.03] active:scale-[0.98] cursor-pointer ${isLight
+                            ? "bg-[#191a23] hover:bg-[#2c2d3a] text-white"
+                            : "bg-[#facc15] hover:bg-amber-400 text-[#191a23]"
+                          }`}
+                      >
+                        Contact us
+                      </Link>
+                    ) : (
+                      <span
+                        className={`text-xl sm:text-2xl font-black tracking-tight ${isLight ? "text-neutral-900" : "text-[#facc15]"
+                          }`}
+                      >
+                        {item.price}
+                      </span>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -856,14 +845,14 @@ export default function ServicesSection() {
           className="mt-12 sm:mt-16 rounded-[36px] sm:rounded-[42px] border-2 border-neutral-900 bg-[#f3f3f3] text-[#191a23] shadow-[0px_5px_0px_#000000] p-8 sm:p-12 lg:p-14 relative overflow-hidden"
         >
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            
+
             {/* Left Column: Heading + Copy + Action Button */}
             <div className="md:col-span-7 space-y-4">
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-[#191a23]">
                 Let&apos;s make things happen
               </h3>
               <p className="text-neutral-700 text-sm sm:text-base leading-relaxed max-w-lg">
-                Contact us today to learn more about how our career acceleration &amp; personal branding services can help you stand out, get hired, and build your digital presence.
+                Contact us today to learn more about how our custom web architecture &amp; digital software services can help you stand out, scale, and build your digital presence.
               </p>
               <div className="pt-2">
                 <Link
@@ -955,7 +944,7 @@ export default function ServicesSection() {
 
               {/* Scrollable Modal Content */}
               <div className="overflow-y-auto p-4 sm:p-6 space-y-5 sm:space-y-6">
-                
+
                 {/* 1. Header Hero Banner Card */}
                 <div className="relative rounded-3xl overflow-hidden p-6 sm:p-8 min-h-[190px] sm:min-h-[220px] flex flex-col justify-end text-white shadow-xl">
                   {/* Background Gradient */}
@@ -1064,11 +1053,10 @@ export default function ServicesSection() {
                           key={plan.name}
                           type="button"
                           onClick={() => setSelectedPlanIndex(idx)}
-                          className={`relative text-left rounded-2xl border-2 p-3.5 sm:p-4 transition-all duration-200 cursor-pointer ${
-                            isSelected
+                          className={`relative text-left rounded-2xl border-2 p-3.5 sm:p-4 transition-all duration-200 cursor-pointer ${isSelected
                               ? "border-[#facc15] bg-[#facc15]/10 shadow-[0_0_20px_rgba(250,204,21,0.12)]"
                               : "border-neutral-800 bg-[#1b1c20]/70 hover:border-neutral-700"
-                          }`}
+                            }`}
                         >
                           {plan.popular && (
                             <span

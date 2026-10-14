@@ -257,8 +257,8 @@ export default function Hero() {
         {/* Water-Light Dome Canvas Area */}
         <div className="w-full bg-[#f1f5f9] dark:bg-[#181a20] pt-0 pb-10 sm:pb-14">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            {/* Shifted Slightly Higher (akdam thoda sa upper) into the Dome Curve */}
-            <div className="relative -mt-6 sm:-mt-10 md:-mt-12 flex flex-wrap items-center justify-center gap-10 sm:gap-16 md:gap-24 z-10">
+            {/* Shifted Slightly Higher (akdam thoda sa upper) into the Dome Curve with equal, balanced gaps */}
+            <div className="relative -mt-6 sm:-mt-10 md:-mt-12 flex items-start justify-center gap-8 sm:gap-14 md:gap-20 z-10">
               {apps.map((app, idx) => (
                 <motion.div
                   key={app.id}
@@ -266,7 +266,7 @@ export default function Hero() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="group flex flex-col items-center text-center cursor-pointer"
+                  className="group flex flex-col items-center text-center cursor-pointer w-20 sm:w-24 md:w-28 shrink-0 overflow-visible"
                 >
                   {/* Clean White Squircle Tile matching Image 1 */}
                   <div
@@ -276,7 +276,7 @@ export default function Hero() {
                   </div>
 
                   {/* Clean Bold Name matching Image 1 */}
-                  <span className="mt-3.5 text-sm sm:text-base font-bold text-slate-800 dark:text-neutral-100 group-hover:text-[#f97316] transition-colors">
+                  <span className="mt-3.5 text-xs sm:text-sm md:text-base font-bold text-slate-800 dark:text-neutral-100 group-hover:text-[#f97316] transition-colors whitespace-nowrap">
                     {app.name}
                   </span>
                 </motion.div>

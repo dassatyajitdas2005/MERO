@@ -1,916 +1,395 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Check,
-  Sparkles,
-  Zap,
   ArrowRight,
   ShieldCheck,
   Clock,
-  Flame,
-  Globe,
-  Code2,
-  FileText,
-  Monitor,
-  Layers,
-  Settings,
   HelpCircle,
 } from "lucide-react";
 
-const LinkedinIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
-
-type PricingTab = "mero-plans" | "individual" | "custom" | "all";
+interface PricingPlan {
+  id: string;
+  title: string;
+  badge?: string;
+  topBorderColor: string; // Hex color for card top stripe
+  accentColor: string; // Color for large price text
+  price: string;
+  originalPrice: string;
+  pricePrefix?: string;
+  priceSuffix: string;
+  subTagline: string;
+  isCustomPoints?: boolean;
+  points?: Array<{
+    name: string;
+    price?: string;
+    desc: string;
+    isLink?: boolean;
+    href?: string;
+  }>;
+  features: string[];
+  ctaText: string;
+  ctaHref: string;
+}
 
 export default function PricingSection() {
-  const [activeTab, setActiveTab] = useState<PricingTab>("mero-plans");
-
-  // Group 1: Individual Services
-  const individualServices = [
+  const plans: PricingPlan[] = [
     {
-      id: "resume",
-      name: "Resume",
-      price: 99,
-      period: "one-time",
-      icon: FileText,
-      tagline: "ATS-Optimized Executive Format",
-      description: "Engineered to pass corporate ATS filters and highlight quantifiable career impact.",
+      id: "whatsapp-crm",
+      title: "WhatsApp CRM",
+      badge: "POPULAR",
+      topBorderColor: "#f43f5e", // Coral/Red top border (matching screenshot column 2)
+      accentColor: "#f43f5e",
+      price: "1,700",
+      originalPrice: "3,999", // User specified: "what app crm ka price set kero 1700 and side main 3999 ko upper se red se cross kero"
+      pricePrefix: "Rs",
+      priceSuffix: "starting",
+      subTagline: "Automated WhatsApp chatbot & team inbox",
       features: [
-        "99% ATS match rate layout",
-        "XYZ-metric bullet restructuring",
-        "Action verbs & industry keyword density",
-        "Delivery in 24 - 48 hours (PDF & Editable)",
-        "1 revision cycle included",
+        "Connect your business with WhatsApp messaging",
+        "Automated Customer Messaging",
+        "Approved templates for eligible business messaging",
+        "24/7 Customer Support",
+        "1-Month CRM Warranty: Receive support for eligible CRM issues for one month after purchase",
+        "Purchase the CRM for ₹1,700 and get access to affordable SMS top-ups (₹200 SMS top-up to send up to 100 business SMS messages to your customers)",
       ],
-      popular: false,
-      ctaText: "Order Resume",
-      link: "/contact?service=resume",
+      ctaText: "START NOW",
+      ctaHref: "/contact?service=whatsapp-crm",
     },
     {
-      id: "linkedin",
-      name: "LinkedIn Optimization",
-      price: 89,
-      period: "one-time",
-      icon: LinkedinIcon,
-      tagline: "Recruiter Inbound Magnet",
-      description: "Strategic profile makeover to rank in algorithmic recruiter searches.",
-      features: [
-        "High-intent search keyword headline",
-        "Storytelling 1st-person 'About' section",
-        "Experience bullet achievement metrics",
-        "Custom banner & visual presentation guide",
-        "Profile visibility & engagement playbook",
+      id: "website",
+      title: "Website",
+      topBorderColor: "#10b981", // Teal/Emerald top border (matching screenshot column 3)
+      accentColor: "#10b981",
+      price: "2,899",
+      originalPrice: "4,999",
+      pricePrefix: "Rs",
+      priceSuffix: "starting",
+      subTagline: "High-performance, bespoke web architecture",
+      isCustomPoints: true,
+      // User's exact 3 required tiers for Website:
+      points: [
+        {
+          name: "Static Website",
+          price: "₹2,899",
+          desc: "Ultra-fast single-page landing site, lead forms & 95+ speed",
+        },
+        {
+          name: "Dynamic Website",
+          price: "₹4,899",
+          desc: "Multi-page corporate site, CMS blog & database integration",
+        },
+        {
+          name: "Other Category",
+          price: "Contact Us",
+          desc: "Bespoke SaaS platforms, custom portals & web applications",
+          isLink: true,
+          href: "/contact?service=custom-website",
+        },
       ],
-      popular: false,
-      ctaText: "Optimize LinkedIn",
-      link: "/contact?service=linkedin-optimization",
+      features: [
+        "Ultra-fast loading speed (95+ Lighthouse)",
+        "Mobile responsive & clean modern UI",
+        "SEO meta tags & social open graph preview",
+        "Free SSL & continuous zero-downtime hosting",
+      ],
+      ctaText: "BUY NOW",
+      ctaHref: "/contact?service=website",
     },
     {
-      id: "one-page-portfolio",
-      name: "One-Page Portfolio",
-      price: 199,
-      period: "one-time",
-      icon: Monitor,
-      tagline: "Personal Web Headquarters",
-      description: "A fast, sleek personal site to showcase your projects, proof of work, and bio.",
+      id: "stock-management",
+      title: "Stock Management",
+      topBorderColor: "#f59e0b", // Amber/Gold top border
+      accentColor: "#f59e0b",
+      price: "4,899",
+      originalPrice: "6,999",
+      pricePrefix: "Rs",
+      priceSuffix: "starting",
+      subTagline: "Real-time inventory & warehouse control",
       features: [
-        "Modern single-page responsive design",
-        "Proof-of-work & case studies showcase",
-        "1-click resume download trigger",
-        "Mobile-first, lightning-fast loading",
-        "Custom domain setup ready",
+        "Expiry date alerts for near-expiry products",
+        "Real-time stock count and inventory tracking",
+        "Total sales overview and reporting",
+        "Total purchases tracking",
+        "Revenue monitoring and business performance reports",
+        "View stock levels, sales, purchases, and revenue at a glance",
+        "Generate bills, manage invoices, and track payments efficiently",
       ],
-      popular: false,
-      ctaText: "Build One-Page",
-      link: "/contact?service=one-page-portfolio",
-    },
-    {
-      id: "multi-page-portfolio",
-      name: "Multi-Page Portfolio",
-      price: 299,
-      period: "one-time",
-      icon: Globe,
-      tagline: "Executive Career Portal",
-      description: "Complete personal branding hub for senior builders, consultants, and leaders.",
-      features: [
-        "Multi-page architecture (Home, About, Work, Contact)",
-        "Interactive case study galleries",
-        "Full SEO meta tags & social cards",
-        "Custom animations & refined typography",
-        "Complete source code / live deployment",
-      ],
-      popular: false,
-      ctaText: "Build Multi-Page",
-      link: "/contact?service=multi-page-portfolio",
-    },
-  ];
-
-  // Group 2: MERO Plans
-  const meroPlans = [
-    {
-      id: "m",
-      name: "M",
-      subtitle: "One service",
-      badge: "Starter",
-      badgeColor: "neutral",
-      price: 99,
-      strikethrough: null,
-      saveAmount: null,
-      description: "Targeted single service to solve your most immediate career branding need.",
-      features: [
-        "Pick ANY 1 core service (Resume or LinkedIn)",
-        "ATS keyword audit & strategic review",
-        "Fast 24 - 48 hour turnaround",
-        "1 round of revisions included",
-        "Direct WhatsApp / Email delivery",
-      ],
-      highlighted: false,
-      ctaText: "Choose M Plan",
-      link: "/contact?plan=M",
-    },
-    {
-      id: "m2",
-      name: "M²",
-      subtitle: "Any 2 services",
-      badge: "MOST POPULAR",
-      badgeColor: "orange",
-      price: 179,
-      strikethrough: 188,
-      saveAmount: "SAVE ₹9",
-      description: "The essential dual-weapon combo for active job hunters who need maximum recruiter conversion.",
-      features: [
-        "Bundle ANY 2 services (e.g. Resume + LinkedIn)",
-        "Unified executive narrative across both assets",
-        "Strategic keyword synchronization",
-        "Priority 48-hour delivery",
-        "2 rounds of iterative revisions",
-        "Direct 1-on-1 career profile audit",
-      ],
-      highlighted: true,
-      ctaText: "Get M² Plan",
-      link: "/contact?plan=M2",
-    },
-    {
-      id: "m3",
-      name: "M³",
-      subtitle: "Resume + LinkedIn + One-Page Portfolio",
-      badge: "FULL Package",
-      badgeColor: "yellow",
-      price: 349,
-      strikethrough: 387,
-      saveAmount: "SAVE ₹38",
-      description: "The complete personal branding trifecta — resume, LinkedIn, and personal website in one unified package.",
-      features: [
-        "Complete 3-in-1 Suite: Resume + LinkedIn + Portfolio",
-        "99% ATS-proof resume with impact metrics",
-        "High-ranking LinkedIn profile makeover",
-        "Live One-Page Portfolio website hosted",
-        "100% Brand story consistency across all channels",
-        "VIP expedited turnaround & priority support",
-      ],
-      highlighted: false,
-      ctaText: "Get M³ Plan",
-      link: "/contact?plan=M3",
-    },
-  ];
-
-  // Group 3: Custom Solutions
-  const customWebsites = [
-    {
-      id: "landing-website",
-      name: "Landing Website",
-      price: "From ₹999",
-      period: "one-time",
-      icon: Zap,
-      tagline: "High-Converting Single Page",
-      description: "Designed for product launches, freelancers, and personal brand campaigns with clear lead capture.",
-      turnaround: "3 - 5 Days",
-      features: [
-        "Conversion-focused single page design",
-        "Modern responsive UI with smooth animations",
-        "Lead capture & contact form integration",
-        "Speed optimized (95+ Lighthouse score)",
-        "Custom domain configuration",
-      ],
-      ctaText: "Get Landing Website",
-      link: "/contact?solution=landing-website",
-    },
-    {
-      id: "business-website",
-      name: "Business Website",
-      price: "From ₹1,999",
-      period: "one-time",
-      icon: Globe,
-      tagline: "Multi-Page Corporate Presence",
-      description: "Full-scale corporate site for businesses, agencies, and ventures seeking instant digital authority.",
-      turnaround: "5 - 7 Days",
-      features: [
-        "5 to 8 custom responsive pages",
-        "CMS integration for blogs & case studies",
-        "Google SEO setup & meta tags",
-        "Client testimonials & booking integration",
-        "Mobile-first, cross-browser compatibility",
-      ],
-      ctaText: "Get Business Website",
-      link: "/contact?solution=business-website",
-    },
-    {
-      id: "premium-website",
-      name: "Premium Website",
-      price: "From ₹3,999",
-      period: "one-time",
-      icon: Sparkles,
-      tagline: "Bespoke Digital Flagship",
-      description: "Handcrafted web experience with custom micro-interactions, Next.js architecture, and elite polish.",
-      turnaround: "7 - 12 Days",
-      features: [
-        "Next.js 16 + React 19 state-of-the-art stack",
-        "Bespoke Framer Motion interactions",
-        "98+ Google Lighthouse performance guarantee",
-        "Custom design tokens & responsive components",
-        "Full source repository & CI/CD deployment",
-      ],
-      ctaText: "Get Premium Website",
-      link: "/contact?solution=premium-website",
-    },
-  ];
-
-  const customCareAndSystems = [
-    {
-      id: "website-care",
-      name: "Website Care",
-      price: "₹299",
-      period: "/month",
-      icon: ShieldCheck,
-      tagline: "Reliable Upkeep & Security",
-      description: "Keep your site secure, updated, and running smoothly without lifting a finger.",
-      features: [
-        "24/7 uptime & health monitoring",
-        "Weekly encrypted backups",
-        "Security patches & dependency updates",
-        "Monthly minor content & asset updates",
-        "Emergency bug resolution",
-      ],
-      ctaText: "Start Website Care",
-      link: "/contact?solution=website-care",
-    },
-    {
-      id: "website-pro",
-      name: "Website Pro",
-      price: "₹599",
-      period: "/month",
-      icon: Layers,
-      tagline: "Dedicated Growth Partner",
-      description: "Proactive speed optimization, SEO auditing, and priority development hours each month.",
-      features: [
-        "Priority 24-hour turnaround for requests",
-        "Monthly speed & SEO audit reports",
-        "Unlimited minor revisions & tweaks",
-        "Direct WhatsApp technical support",
-        "Performance & conversion recommendations",
-      ],
-      ctaText: "Start Website Pro",
-      link: "/contact?solution=website-pro",
-    },
-    {
-      id: "custom-system",
-      name: "Custom Business System",
-      price: "Let’s Talk",
-      period: "custom scope",
-      icon: Settings,
-      badge: "BESPOKE",
-      tagline: "CRM, Dashboard, Booking, Automation",
-      description: "Tailored internal operations tools engineered to automate manual work and scale revenue.",
-      features: [
-        "Custom CRM & client management dashboards",
-        "Automated booking, scheduling & payments",
-        "Multi-step webhook & API automations",
-        "Role-based access & database integration",
-        "Free discovery & architecture scoping call",
-      ],
-      ctaText: "Let’s Talk",
-      link: "/contact?solution=custom-business-system",
+      ctaText: "BUY NOW",
+      ctaHref: "/contact?service=stock-management",
     },
   ];
 
   return (
     <section
       id="pricing"
-      className="relative py-16 sm:py-20 md:py-28 bg-white dark:bg-[#121214] text-slate-900 dark:text-white overflow-hidden border-t border-neutral-200 dark:border-neutral-800/40 transition-colors duration-300"
+      className="relative pt-8 sm:pt-12 md:pt-16 pb-16 sm:pb-20 md:pb-24 bg-white dark:bg-[#121214] text-slate-900 dark:text-white overflow-hidden transition-colors duration-300"
     >
-      {/* Invisible anchor for backward compatibility with #blog */}
+      {/* Invisible anchor for backward compatibility */}
       <div id="blog" className="absolute -top-24 left-0 pointer-events-none" />
 
-      {/* Ambient Radial Background Glows */}
+      {/* Subtle Ambient Radial Background Glows */}
       <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[750px] rounded-full bg-gradient-to-tr from-[#f97316]/10 via-[#facc15]/8 to-transparent blur-[140px]" />
-        <div className="absolute bottom-1/4 right-1/4 h-[350px] w-[450px] rounded-full bg-gradient-to-br from-[#ea580c]/8 via-transparent to-transparent blur-[120px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[750px] rounded-full bg-gradient-to-tr from-[#f97316]/8 via-[#facc15]/6 to-transparent blur-[140px]" />
+        <div className="absolute bottom-1/4 right-1/4 h-[350px] w-[450px] rounded-full bg-gradient-to-br from-[#0ea5e9]/6 via-transparent to-transparent blur-[120px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-
-          {/* Heading */}
+        
+        {/* ========================================================================= */}
+        {/* SECTION HEADER: EXACT MATCH TO SCREENSHOT (HANDWRITTEN WITH HIGHLIGHT)     */}
+        {/* ========================================================================= */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <motion.h2
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: -14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="font-script text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold tracking-tight text-slate-900 dark:text-white leading-[1.18] select-none"
+          >
+            <span>You are not </span>
+            
+            {/* Hand-drawn coral/red highlight underline on "dreaming!" matching screenshot */}
+            <span className="relative inline-block px-1 text-slate-900 dark:text-white font-bold select-none">
+              <span>dreaming!</span>
+              <svg
+                className="absolute -bottom-2 sm:-bottom-3.5 left-0 w-full h-3 sm:h-4 text-[#f43f5e] overflow-visible pointer-events-none select-none"
+                viewBox="0 0 160 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 4 11 C 45 4, 110 4, 156 10"
+                  stroke="currentColor"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          </motion.h2>
+
+          {/* Subtitle in MERO theme subtext style */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.12]"
+            className="font-script text-xl sm:text-2xl md:text-3xl font-medium text-slate-600 dark:text-neutral-300 mt-3 sm:mt-4 max-w-xl mx-auto select-none"
           >
-            Start small. Build your professional identity.
-          </motion.h2>
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-neutral-400 font-normal max-w-2xl mx-auto leading-relaxed"
-          >
-            Pay only for what you need. Upgrade whenever you&apos;re ready.
+            Affordable, transparent pricing tailored to scale your business
           </motion.p>
         </div>
 
-        {/* Pricing Category Tabs Switcher */}
-        <div className="mt-10 sm:mt-12 flex justify-center">
-          <div className="inline-flex p-1.5 rounded-2xl bg-neutral-100 dark:bg-[#18181c] border border-neutral-200 dark:border-neutral-800 shadow-md dark:shadow-xl max-w-full overflow-x-auto">
-            <button
-              type="button"
-              onClick={() => setActiveTab("mero-plans")}
-              className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center gap-2 ${
-                activeTab === "mero-plans"
-                  ? "bg-gradient-to-r from-[#f97316] to-[#ea580c] text-white shadow-md shadow-orange-500/20"
-                  : "text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white"
-              }`}
-            >
-              <Zap className="h-3.5 w-3.5" />
-              <span>MERO Plans</span>
-              <span className="hidden sm:inline-block text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-black/20 dark:bg-black/30 text-amber-900 dark:text-amber-200">
-                Bundles
-              </span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveTab("individual")}
-              className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center gap-2 ${
-                activeTab === "individual"
-                  ? "bg-gradient-to-r from-[#f97316] to-[#ea580c] text-white shadow-md shadow-orange-500/20"
-                  : "text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white"
-              }`}
-            >
-              <FileText className="h-3.5 w-3.5" />
-              <span>Individual Services</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveTab("custom")}
-              className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center gap-2 ${
-                activeTab === "custom"
-                  ? "bg-gradient-to-r from-[#f97316] to-[#ea580c] text-white shadow-md shadow-orange-500/20"
-                  : "text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white"
-              }`}
-            >
-              <Code2 className="h-3.5 w-3.5" />
-              <span>Custom Solutions</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveTab("all")}
-              className={`relative px-3 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
-                activeTab === "all"
-                  ? "bg-slate-800 dark:bg-neutral-700/80 text-white shadow-md"
-                  : "text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white"
-              }`}
-            >
-              <span>View All</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Tab Content Display */}
-        <div className="mt-10 sm:mt-12">
-          <AnimatePresence mode="wait">
-            {/* VIEW 1: MERO PLANS */}
-            {(activeTab === "mero-plans" || activeTab === "all") && (
+        {/* ========================================================================= */}
+        {/* 3 PRICING CARDS: EXACT MATCH TO ODOO SCREENSHOT FORMAT                    */}
+        {/* ========================================================================= */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
+          {plans.map((plan, idx) => {
+            return (
               <motion.div
-                key="mero-plans-section"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.35 }}
-                className={activeTab === "all" ? "mb-20" : ""}
+                key={plan.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="relative flex flex-col justify-between rounded-2xl sm:rounded-3xl bg-white dark:bg-[#18181c] border border-neutral-200 dark:border-neutral-800 shadow-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
-                {activeTab === "all" && (
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="h-8 w-1.5 rounded-full bg-[#f97316]" />
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-                        2. MERO Plans (Bundled Value)
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-400">
-                        Multi-service packages with exclusive savings & synchronized brand storytelling.
-                      </p>
-                    </div>
-                  </div>
-                )}
+                {/* Colored Top Border Stripe (matching screenshot) */}
+                <div
+                  className="h-2 w-full shrink-0"
+                  style={{ backgroundColor: plan.topBorderColor }}
+                />
 
-                {/* 3 Cards Grid for MERO Plans */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-                  {meroPlans.map((plan) => (
-                    <motion.div
-                      key={plan.id}
-                      whileHover={{ y: -6 }}
-                      transition={{ duration: 0.25 }}
-                      className={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-8 transition-all duration-300 ${
-                        plan.highlighted
-                          ? "bg-orange-50/70 dark:bg-gradient-to-b dark:from-[#1b1917] dark:via-[#161619] dark:to-[#141416] border-2 border-[#f97316] shadow-xl md:-translate-y-2"
-                          : "bg-white dark:bg-[#161619] border border-neutral-200 dark:border-neutral-800/90 hover:border-neutral-300 dark:hover:border-neutral-700 shadow-md dark:shadow-xl"
-                      }`}
-                    >
-                      {/* Top Badges / Highlight Pill */}
-                      <div className="flex items-center justify-between gap-2 mb-4">
-                        <div className="flex items-center gap-2">
-                          {plan.badge === "MOST POPULAR" ? (
-                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-[#f97316] to-[#ea580c] text-white shadow-md shadow-orange-500/30">
-                              <Flame className="h-3.5 w-3.5" />
-                              MOST POPULAR
-                            </span>
-                          ) : plan.badge === "FULL TRIFECTA" ? (
-                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
-                              <Sparkles className="h-3 w-3" />
-                              {plan.badge}
-                            </span>
-                          ) : (
-                            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 text-slate-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700/60">
-                              {plan.badge}
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Save Amount Chip */}
-                        {plan.saveAmount && (
-                          <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-black bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30">
-                            {plan.saveAmount}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Plan Header */}
-                      <div>
-                        <div className="flex items-baseline gap-2">
-                          <h3 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-                            {plan.name}
-                          </h3>
-                          <span className="text-sm font-semibold text-slate-500 dark:text-neutral-400">
-                            — {plan.subtitle}
-                          </span>
-                        </div>
-
-                        <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-neutral-400 leading-relaxed min-h-[40px]">
-                          {plan.description}
-                        </p>
-
-                        {/* Pricing Display */}
-                        <div className="mt-6 pt-6 border-t border-neutral-200 dark:border-neutral-800/80 flex items-baseline gap-2">
-                          <span className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-                            ₹{plan.price}
-                          </span>
-                          {plan.strikethrough && (
-                            <span className="text-base sm:text-lg text-slate-400 dark:text-neutral-500 line-through font-medium">
-                              ₹{plan.strikethrough}
-                            </span>
-                          )}
-                          <span className="text-xs text-slate-500 dark:text-neutral-400 font-medium">
-                            / total package
-                          </span>
-                        </div>
-
-                        {/* Feature Bullet List */}
-                        <div className="mt-6 space-y-3">
-                          <p className="text-xs uppercase tracking-wider font-bold text-slate-700 dark:text-neutral-300">
-                            What&apos;s Included:
-                          </p>
-                          <ul className="space-y-2.5">
-                            {plan.features.map((feature) => (
-                              <li
-                                key={feature}
-                                className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-neutral-300 leading-snug"
-                              >
-                                <span
-                                  className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full mt-0.5 ${
-                                    plan.highlighted
-                                      ? "bg-[#f97316]/20 text-[#f97316]"
-                                      : "bg-neutral-100 dark:bg-neutral-800 text-amber-600 dark:text-amber-400"
-                                  }`}
-                                >
-                                  <Check className="h-3 w-3 stroke-[2.5]" />
-                                </span>
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      {/* CTA Button */}
-                      <div className="mt-8 pt-6 border-t border-neutral-200 dark:border-neutral-800/80">
-                        <Link
-                          href={plan.link}
-                          className={`w-full inline-flex items-center justify-center gap-2 rounded-2xl py-3.5 px-6 text-sm font-bold transition-all duration-200 shadow-md ${
-                            plan.highlighted
-                              ? "bg-gradient-to-r from-[#f97316] to-[#ea580c] hover:from-[#ea580c] hover:to-[#c2410c] text-white shadow-orange-500/25 hover:shadow-orange-500/40"
-                              : "bg-neutral-100 hover:bg-neutral-200 text-slate-900 border border-neutral-300 dark:bg-[#202024] dark:hover:bg-neutral-800 dark:text-white dark:border-neutral-700/80"
-                          }`}
-                        >
-                          <span>{plan.ctaText}</span>
-                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                        </Link>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Sub-banner when viewing just MERO Plans */}
-                {activeTab === "mero-plans" && (
-                  <div className="mt-8 p-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-neutral-300">
-                      <Sparkles className="h-4 w-4 text-[#ea580c] dark:text-[#facc15] shrink-0" />
-                      <span>
-                        Need only a single service? Or ready for a custom web development package?
+                <div className="p-6 sm:p-8 flex flex-col flex-1">
+                  
+                  {/* Card Title & Optional Badge */}
+                  <div className="flex items-start justify-between gap-2 mb-3">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                      {plan.title}
+                    </h3>
+                    {plan.badge && (
+                      <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-800 shrink-0">
+                        {plan.badge}
                       </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setActiveTab("individual")}
-                        className="text-xs font-semibold text-[#f97316] hover:text-[#ea580c] dark:hover:text-amber-400 transition-colors cursor-pointer"
+                    )}
+                  </div>
+
+                  {/* Sub-tagline */}
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-5 min-h-[32px] leading-relaxed">
+                    {plan.subTagline}
+                  </p>
+
+                  {/* Price Area: Matching Screenshot (Large colored number + red crossed-out 3999 / original price) */}
+                  <div className="mb-6 pb-6 border-b border-neutral-100 dark:border-neutral-800/80">
+                    <div className="flex items-baseline gap-2">
+                      {/* Currency Prefix */}
+                      <span
+                        className="text-xl sm:text-2xl font-black"
+                        style={{ color: plan.accentColor }}
                       >
-                        Individual Services (from ₹89) →
-                      </button>
+                        {plan.pricePrefix}
+                      </span>
+
+                      {/* Main Large Price Number */}
+                      <span
+                        className="text-4xl sm:text-5xl font-black tracking-tight"
+                        style={{ color: plan.accentColor }}
+                      >
+                        {plan.price}
+                      </span>
+
+                      {/* Original Price with Red Diagonal Slash (User requested: 3999 ko red se cross kero) */}
+                      <div className="relative inline-flex items-center ml-1 text-xs sm:text-sm font-semibold text-neutral-400 select-none">
+                        <span>{plan.originalPrice} Rs</span>
+                        <span className="text-[#f43f5e] font-bold ml-0.5">*</span>
+                        {/* Red diagonal strikethrough slash */}
+                        <svg
+                          className="absolute -inset-x-1 inset-y-0 w-[calc(100%+8px)] h-full text-[#f43f5e] pointer-events-none"
+                          viewBox="0 0 100 24"
+                          fill="none"
+                          preserveAspectRatio="none"
+                        >
+                          <line
+                            x1="0"
+                            y1="20"
+                            x2="100"
+                            y2="4"
+                            stroke="currentColor"
+                            strokeWidth="2.8"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* Suffix label (e.g. / month or starting) */}
+                    <div className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 mt-1">
+                      {plan.priceSuffix}
                     </div>
                   </div>
-                )}
-              </motion.div>
-            )}
 
-            {/* VIEW 2: INDIVIDUAL SERVICES */}
-            {(activeTab === "individual" || activeTab === "all") && (
-              <motion.div
-                key="individual-services-section"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.35 }}
-                className={activeTab === "all" ? "mb-20" : ""}
-              >
-                {activeTab === "all" && (
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="h-8 w-1.5 rounded-full bg-[#facc15]" />
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-                        1. Individual Services (A La Carte)
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-400">
-                        Order single high-impact services with zero long-term commitments.
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {/* 4 Cards Grid for Individual Services */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
-                  {individualServices.map((service) => {
-                    const IconComponent = service.icon;
-                    return (
-                      <motion.div
-                        key={service.id}
-                        whileHover={{ y: -5 }}
-                        transition={{ duration: 0.25 }}
-                        className="relative flex flex-col justify-between rounded-3xl bg-white dark:bg-[#161619] border border-neutral-200 dark:border-neutral-800/90 hover:border-neutral-300 dark:hover:border-neutral-700/90 p-6 shadow-md dark:shadow-xl transition-all duration-300 group"
-                      >
-                        <div>
-                          {/* Top Icon & Tag */}
-                          <div className="flex items-center justify-between mb-4">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/50 text-[#ea580c] dark:text-[#facc15] group-hover:text-[#f97316] transition-colors">
-                              <IconComponent className="h-5 w-5" />
-                            </div>
-                            <span className="text-[11px] font-semibold text-slate-500 dark:text-neutral-400 uppercase tracking-wider">
-                              A La Carte
+                  {/* Content Area */}
+                  {plan.isCustomPoints && plan.points ? (
+                    /* Custom 3 Points Format Specifically for Website (as requested) */
+                    <div className="space-y-3.5 mb-6 flex-1">
+                      <span className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-neutral-200 block mb-2">
+                        Options &amp; Tiers:
+                      </span>
+                      {plan.points.map((pt) => (
+                        <div
+                          key={pt.name}
+                          className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/60 dark:bg-[#1e1f24] p-3 text-left transition-colors hover:border-emerald-500/40"
+                        >
+                          <div className="flex items-center justify-between gap-1 mb-1">
+                            <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
+                              {pt.name}
                             </span>
-                          </div>
-
-                          {/* Title & Tagline */}
-                          <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
-                            {service.name}
-                          </h3>
-                          <p className="text-xs text-[#ea580c] dark:text-[#f97316] font-medium mt-1">
-                            {service.tagline}
-                          </p>
-
-                          <p className="mt-3 text-xs text-slate-600 dark:text-neutral-400 leading-relaxed min-h-[36px]">
-                            {service.description}
-                          </p>
-
-                          {/* Price Tag */}
-                          <div className="mt-5 pt-4 border-t border-neutral-200 dark:border-neutral-800/80 flex items-baseline gap-1.5">
-                            <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-                              ₹{service.price}
-                            </span>
-                            <span className="text-xs text-slate-500 dark:text-neutral-400 font-medium">
-                              / {service.period}
-                            </span>
-                          </div>
-
-                          {/* Features List */}
-                          <ul className="mt-5 space-y-2 border-t border-neutral-200 dark:border-neutral-800/60 pt-4">
-                            {service.features.map((item) => (
-                              <li
-                                key={item}
-                                className="flex items-start gap-2 text-xs text-slate-700 dark:text-neutral-300 leading-snug"
+                            {pt.isLink ? (
+                              <Link
+                                href={pt.href || "/contact"}
+                                className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#10b981] hover:underline"
                               >
-                                <Check className="h-3.5 w-3.5 text-[#ea580c] dark:text-[#facc15] shrink-0 mt-0.5" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* CTA Link */}
-                        <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800/80">
-                          <Link
-                            href={service.link}
-                            className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-neutral-100 hover:bg-[#f97316] text-slate-800 hover:text-white dark:bg-neutral-800/90 dark:text-neutral-200 dark:hover:text-white py-3 text-xs font-bold transition-all duration-200 border border-neutral-200 hover:border-orange-500 dark:border-neutral-700/60 shadow-sm"
-                          >
-                            <span>{service.ctaText}</span>
-                            <ArrowRight className="h-3.5 w-3.5" />
-                          </Link>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            )}
-
-            {/* VIEW 3: CUSTOM SOLUTIONS */}
-            {(activeTab === "custom" || activeTab === "all") && (
-              <motion.div
-                key="custom-solutions-section"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.35 }}
-              >
-                {activeTab === "all" && (
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="h-8 w-1.5 rounded-full bg-emerald-500" />
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-                        3. Custom Solutions & Business Systems
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-400">
-                        Tailored web development, ongoing site care, and bespoke operational tools.
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Sub-header 1: Website Making */}
-                <div className="mb-4 flex items-center justify-between">
-                  <h4 className="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-800 dark:text-neutral-300 flex items-center gap-2">
-                    <Globe className="h-4 w-4 text-[#f97316]" />
-                    Custom Website Development
-                  </h4>
-                  <span className="text-xs text-slate-500 dark:text-neutral-500 font-mono">Turnaround: 3 to 12 Days</span>
-                </div>
-
-                {/* 3 Cards: Websites */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 items-stretch">
-                  {customWebsites.map((item) => {
-                    const IconComponent = item.icon;
-                    return (
-                      <motion.div
-                        key={item.id}
-                        whileHover={{ y: -5 }}
-                        transition={{ duration: 0.25 }}
-                        className="relative flex flex-col justify-between rounded-3xl bg-white dark:bg-[#161619] border border-neutral-200 dark:border-neutral-800/90 hover:border-neutral-300 dark:hover:border-neutral-700 p-6 sm:p-7 shadow-md dark:shadow-xl transition-all duration-300"
-                      >
-                        <div>
-                          <div className="flex items-center justify-between mb-4">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/50 text-[#ea580c] dark:text-[#facc15]">
-                              <IconComponent className="h-5 w-5" />
-                            </div>
-                            <span className="text-[11px] font-semibold text-slate-500 dark:text-neutral-400 flex items-center gap-1 font-mono">
-                              <Clock className="h-3 w-3" />
-                              {item.turnaround}
-                            </span>
-                          </div>
-
-                          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
-                            {item.name}
-                          </h3>
-                          <p className="text-xs text-[#ea580c] dark:text-[#f97316] font-medium mt-1">
-                            {item.tagline}
-                          </p>
-
-                          <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-neutral-400 leading-relaxed min-h-[44px]">
-                            {item.description}
-                          </p>
-
-                          {/* Price Tag */}
-                          <div className="mt-5 pt-4 border-t border-neutral-200 dark:border-neutral-800/80 flex items-baseline gap-1.5">
-                            <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-                              {item.price}
-                            </span>
-                            <span className="text-xs text-slate-500 dark:text-neutral-400 font-medium">
-                              / {item.period}
-                            </span>
-                          </div>
-
-                          {/* Features */}
-                          <ul className="mt-5 space-y-2 border-t border-neutral-200 dark:border-neutral-800/60 pt-4">
-                            {item.features.map((feature) => (
-                              <li
-                                key={feature}
-                                className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-neutral-300 leading-snug"
-                              >
-                                <Check className="h-3.5 w-3.5 text-[#ea580c] dark:text-[#facc15] shrink-0 mt-0.5" />
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800/80">
-                          <Link
-                            href={item.link}
-                            className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-neutral-100 hover:bg-[#f97316] text-slate-800 hover:text-white dark:bg-neutral-800/90 dark:text-neutral-200 dark:hover:text-white py-3 text-xs sm:text-sm font-bold transition-all duration-200 border border-neutral-200 hover:border-orange-500 dark:border-neutral-700/60 shadow-sm"
-                          >
-                            <span>{item.ctaText}</span>
-                            <ArrowRight className="h-3.5 w-3.5" />
-                          </Link>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-
-                {/* Sub-header 2: Website Care & Custom Business Systems */}
-                <div className="mb-4 flex items-center justify-between">
-                  <h4 className="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-800 dark:text-neutral-300 flex items-center gap-2">
-                    <Settings className="h-4 w-4 text-[#ea580c] dark:text-[#facc15]" />
-                    Website Maintenance & Custom Business Systems
-                  </h4>
-                  <span className="text-xs text-slate-500 dark:text-neutral-500">Monthly Care & Bespoke Tooling</span>
-                </div>
-
-                {/* 3 Cards: Website Care, Pro & Custom Business System */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-                  {customCareAndSystems.map((item) => {
-                    const IconComponent = item.icon;
-                    return (
-                      <motion.div
-                        key={item.id}
-                        whileHover={{ y: -5 }}
-                        transition={{ duration: 0.25 }}
-                        className={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-7 shadow-md dark:shadow-xl transition-all duration-300 ${
-                          item.badge === "BESPOKE"
-                            ? "bg-amber-50/70 border-2 border-amber-500/70 dark:bg-gradient-to-b dark:from-[#1b1917] dark:via-[#161619] dark:to-[#141416] dark:border-amber-400/60 hover:border-amber-500 shadow-amber-500/10"
-                            : "bg-white dark:bg-[#161619] border border-neutral-200 dark:border-neutral-800/90 hover:border-neutral-300 dark:hover:border-neutral-700"
-                        }`}
-                      >
-                        <div>
-                          <div className="flex items-center justify-between mb-4">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/50 text-[#ea580c] dark:text-[#facc15]">
-                              <IconComponent className="h-5 w-5" />
-                            </div>
-                            {item.badge && (
-                              <span className="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
-                                {item.badge}
+                                <span>{pt.price}</span>
+                                <ArrowRight className="w-3 h-3" />
+                              </Link>
+                            ) : (
+                              <span className="text-xs font-black text-[#10b981]">
+                                {pt.price}
                               </span>
                             )}
                           </div>
-
-                          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
-                            {item.name}
-                          </h3>
-                          <p className="text-xs text-[#ea580c] dark:text-[#f97316] font-medium mt-1">
-                            {item.tagline}
+                          <p className="text-[11px] text-neutral-500 dark:text-neutral-400 leading-tight">
+                            {pt.desc}
                           </p>
-
-                          <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-neutral-400 leading-relaxed min-h-[44px]">
-                            {item.description}
-                          </p>
-
-                          {/* Price Tag */}
-                          <div className="mt-5 pt-4 border-t border-neutral-200 dark:border-neutral-800/80 flex items-baseline gap-1.5">
-                            <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-                              {item.price}
-                            </span>
-                            <span className="text-xs text-slate-500 dark:text-neutral-400 font-medium">
-                              {item.period}
-                            </span>
-                          </div>
-
-                          {/* Features */}
-                          <ul className="mt-5 space-y-2 border-t border-neutral-200 dark:border-neutral-800/60 pt-4">
-                            {item.features.map((feature) => (
-                              <li
-                                key={feature}
-                                className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-neutral-300 leading-snug"
-                              >
-                                <Check className="h-3.5 w-3.5 text-[#ea580c] dark:text-[#facc15] shrink-0 mt-0.5" />
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
                         </div>
-
-                        <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800/80">
-                          <Link
-                            href={item.link}
-                            className={`w-full inline-flex items-center justify-center gap-1.5 rounded-xl py-3 text-xs sm:text-sm font-bold transition-all duration-200 shadow-sm ${
-                              item.badge === "BESPOKE"
-                                ? "bg-gradient-to-r from-[#f97316] to-[#ea580c] hover:from-[#ea580c] hover:to-[#c2410c] text-white shadow-orange-500/25"
-                                : "bg-neutral-100 hover:bg-[#f97316] text-slate-800 hover:text-white border border-neutral-200 hover:border-orange-500 dark:bg-neutral-800/90 dark:text-neutral-200 dark:hover:text-white dark:border-neutral-700/60"
-                            }`}
+                      ))}
+                    </div>
+                  ) : (
+                    /* Standard Features Bullet List */
+                    <div className="space-y-3 mb-6 flex-1">
+                      <span className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-neutral-200 block mb-2">
+                        Included features:
+                      </span>
+                      {plan.features.map((feature) => (
+                        <div key={feature} className="flex items-start gap-2.5 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                          <div
+                            className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                            style={{
+                              backgroundColor: `${plan.topBorderColor}18`,
+                              color: plan.topBorderColor,
+                            }}
                           >
-                            <span>{item.ctaText}</span>
-                            <ArrowRight className="h-3.5 w-3.5" />
-                          </Link>
+                            <Check className="w-2.5 h-2.5 stroke-[3]" />
+                          </div>
+                          <span>{feature}</span>
                         </div>
-                      </motion.div>
-                    );
-                  })}
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Bottom Action CTA Button: Exactly matching screenshot solid purple/charcoal button */}
+                  <div className="mt-auto pt-2">
+                    <Link
+                      href={plan.ctaHref}
+                      className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#714b67] hover:bg-[#5b3c53] active:bg-[#4a3144] text-white py-3.5 px-4 text-xs sm:text-sm font-black tracking-wider uppercase shadow-md transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                      <span>{plan.ctaText}</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+
                 </div>
               </motion.div>
-            )}
-          </AnimatePresence>
+            );
+          })}
         </div>
 
-        {/* High-Trust Value Assurance Bar */}
+        {/* ========================================================================= */}
+        {/* VALUE ASSURANCE BAR AT BOTTOM                                             */}
+        {/* ========================================================================= */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-14 sm:mt-18 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-[#161619]/90 p-6 sm:p-8 backdrop-blur-md shadow-lg dark:shadow-2xl"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12 sm:mt-16 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-[#161619]/90 p-6 sm:p-8 backdrop-blur-md shadow-md max-w-6xl mx-auto"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-[#f97316] border border-orange-500/20">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0ea5e9]/10 text-[#0ea5e9] border border-[#0ea5e9]/20">
                 <Clock className="h-5 w-5" />
               </div>
               <div>
-                <h5 className="text-sm font-bold text-slate-900 dark:text-white">Fast Turnaround</h5>
-                <p className="text-xs text-slate-600 dark:text-neutral-400">24 to 48 hours for core documents</p>
+                <h5 className="text-sm font-bold text-slate-900 dark:text-white">Fast Deployment</h5>
+                <p className="text-xs text-slate-600 dark:text-neutral-400">Rapid 3 to 7 days delivery</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-[#facc15] border border-amber-500/20">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20">
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <h5 className="text-sm font-bold text-slate-900 dark:text-white">100% Confidential</h5>
-                <p className="text-xs text-slate-600 dark:text-neutral-400">Your career data is never shared</p>
+                <h5 className="text-sm font-bold text-slate-900 dark:text-white">Official APIs &amp; Code</h5>
+                <p className="text-xs text-slate-600 dark:text-neutral-400">Full source &amp; Meta verified</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f59e0b]/10 text-[#f59e0b] border border-[#f59e0b]/20">
                 <Check className="h-5 w-5 stroke-[2.5]" />
               </div>
               <div>
-                <h5 className="text-sm font-bold text-slate-900 dark:text-white">Revisions Included</h5>
-                <p className="text-xs text-slate-600 dark:text-neutral-400">Iterative polish till you are satisfied</p>
+                <h5 className="text-sm font-bold text-slate-900 dark:text-white">Zero Hidden Charges</h5>
+                <p className="text-xs text-slate-600 dark:text-neutral-400">Transparent flat pricing</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#714b67]/10 text-[#714b67] dark:text-purple-300 border border-[#714b67]/20">
                 <HelpCircle className="h-5 w-5" />
               </div>
               <div>
@@ -919,13 +398,14 @@ export default function PricingSection() {
                   href="/contact"
                   className="text-xs font-semibold text-[#f97316] hover:text-[#ea580c] dark:hover:text-amber-400 transition-colors inline-flex items-center gap-1"
                 >
-                  <span>Talk with Satyajit</span>
+                  <span>Talk with our team</span>
                   <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>
             </div>
           </div>
         </motion.div>
+
       </div>
     </section>
   );

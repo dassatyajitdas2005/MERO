@@ -14,6 +14,38 @@ interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
 }
 
+// Helper to detect if current device is a mobile or tablet (excludes desktop / laptops)
+function isMobileOrTabletDevice(): boolean {
+  if (typeof window === "undefined" || typeof navigator === "undefined") {
+    return false;
+  }
+
+  const ua = navigator.userAgent || "";
+
+  // 1. Explicit Desktop / Laptop OS check
+  // Windows desktop / laptop (including touchscreen laptops)
+  if (/Windows NT/i.test(ua)) return false;
+  // Chrome OS / Chromebook
+  if (/CrOS/i.test(ua)) return false;
+  // Linux desktop (excluding Android)
+  if (/Linux/i.test(ua) && !/Android/i.test(ua)) return false;
+  // macOS desktop / MacBook (excluding iPadOS which reports Macintosh but has multi-touch)
+  if (/Macintosh/i.test(ua) && (!navigator.maxTouchPoints || navigator.maxTouchPoints <= 1)) {
+    return false;
+  }
+
+  // 2. Mobile & Tablet detection
+  const isMobileOrTabletUA =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet|Silk|Kindle/i.test(
+      ua
+    );
+  // iPad on iPadOS 13+ (Safari reports Macintosh user agent, but has multi-touch > 1)
+  const isIPadOS =
+    /Macintosh/i.test(ua) && typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1;
+
+  return isMobileOrTabletUA || isIPadOS;
+}
+
 export default function ChromeInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
@@ -21,8 +53,16 @@ export default function ChromeInstallPrompt() {
   const [showGuide, setShowGuide] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [isChrome, setIsChrome] = useState(false);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
 
   useEffect(() => {
+    // Only show on mobile and tablet devices - completely disabled on desktop / laptop
+    if (!isMobileOrTabletDevice()) {
+      return;
+    }
+
+    setIsMobileOrTablet(true);
+
     // Check if already in standalone/installed mode
     if (
       window.matchMedia("(display-mode: standalone)").matches ||
@@ -36,7 +76,9 @@ export default function ChromeInstallPrompt() {
     const ua = navigator.userAgent;
     const isChromeBrowser =
       /Chrome/i.test(ua) && !/Edge|Edg|OPR|Opera/i.test(ua);
-    const isAppleMobile = /iPhone|iPad|iPod/i.test(ua);
+    const isAppleMobile =
+      /iPhone|iPad|iPod/i.test(ua) ||
+      (/Macintosh/i.test(ua) && typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1);
 
     setIsChrome(isChromeBrowser);
     setIsIOS(isAppleMobile);
@@ -63,7 +105,7 @@ export default function ChromeInstallPrompt() {
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
-    // Fallback: If on Chrome mobile or desktop and event hasn't fired after 3.5s, still show our install suggestion
+    // Fallback: If on Chrome mobile or tablet and event hasn't fired after 3.5s, still show our install suggestion
     const timer = setTimeout(() => {
       if (!isInstalled && isChromeBrowser) {
         setShowPrompt(true);
@@ -107,7 +149,7 @@ export default function ChromeInstallPrompt() {
     localStorage.setItem("mero_pwa_dismissed_at", Date.now().toString());
   };
 
-  if (isInstalled || !showPrompt) return null;
+  if (!isMobileOrTablet || isInstalled || !showPrompt) return null;
 
   return (
     <AnimatePresence>

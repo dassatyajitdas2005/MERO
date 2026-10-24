@@ -44,7 +44,7 @@ export default function PricingSection() {
       topBorderColor: "#f43f5e", // Coral/Red top border (matching screenshot column 2)
       accentColor: "#f43f5e",
       price: "1,700",
-      originalPrice: "3,999", // User specified: "what app crm ka price set kero 1700 and side main 3999 ko upper se red se cross kero"
+      originalPrice: "6,999",
       pricePrefix: "Rs",
       priceSuffix: "starting",
       subTagline: "Automated WhatsApp chatbot & team inbox",
@@ -65,7 +65,7 @@ export default function PricingSection() {
       topBorderColor: "#10b981", // Teal/Emerald top border (matching screenshot column 3)
       accentColor: "#10b981",
       price: "2,899",
-      originalPrice: "4,999",
+      originalPrice: "14,999",
       pricePrefix: "Rs",
       priceSuffix: "starting",
       subTagline: "High-performance, bespoke web architecture",
@@ -105,7 +105,7 @@ export default function PricingSection() {
       topBorderColor: "#f59e0b", // Amber/Gold top border
       accentColor: "#f59e0b",
       price: "4,899",
-      originalPrice: "6,999",
+      originalPrice: "18,999",
       pricePrefix: "Rs",
       priceSuffix: "starting",
       subTagline: "Real-time inventory & warehouse control",
